@@ -2,7 +2,7 @@
 {
   currentUser: {
     2: {
-      id: 1,
+      id: 2,
       username: 'GirSaws',
       password_digest: 'l22kafklajsklajfjnkjnsjhaw',
       session_token: 'askjhajfbncbjkhefEBFKJB'
@@ -42,6 +42,13 @@
       imageUrl: 'www.imGir.com/zzSDknncs221',
       title: 'Check out my applesauce',
       description: 'mmm AppleSaws is my favorite'
+    }
+    3: {
+      id: 3,
+      postId: 3,
+      imageUrl: 'www.imGir.com/zkjjkh2cs233',
+      title: 'Doom Song',
+      description: 'Doom-do-doom-doom'
     }
   }
 
