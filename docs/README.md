@@ -9,10 +9,10 @@ imGIR is a web application inspired by Imgur built using Ruby on Rails and React
 1. Hosting on Heroku
 2. Create production README
 3. New account creation, login, and guest/demo login
-4. Create Posts of images
+4. Create posts
 5. Comments on posts
 6. Upvote/Downvote posts and comments
-7. Search Bar Bonus Reply to comments Comment with gifs and pictures
+7. Search Bar
 
 Bonus:
 1. Upload Modal displays loading
@@ -36,7 +36,7 @@ Bonus:
 
 # Phase 1: Back-end setup and Front End User Authentication (2 days)
 
-  Objective: Functioning rails project with front-end Authentication
+  Objective: Functioning rails project with front-end authentication
 
 # Phase 2: Account Model, API, and components (2 days)
 
