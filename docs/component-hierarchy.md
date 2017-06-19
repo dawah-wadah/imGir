@@ -7,8 +7,7 @@ Component form that allows a user to sign in/up.
   Root Page, which will display the navBar, posts index, and optionally the comments index
 
 3) NavBar
-  Contains the logo, which will redirect to the homepage, upload button, search-bar, and depending on the current session,
-  login/signup/userpage button
+  Contains the logo, which will redirect to the homepage, upload button, search-bar, and depending on the current session, login/signup/userpage button
 
 4) PostShow
   Has the post, sidebar with an post index, as well as all corresponding comments
@@ -54,7 +53,7 @@ Component form that allows a user to sign in/up.
 **NewPostModal**
   * NewPostForm
 
-**HomePageContainer** (Home Page)
+**HomePageContainer**
   * Header
   * PostsIndex
     * PostIndexItem
@@ -68,7 +67,7 @@ Component form that allows a user to sign in/up.
   - New Post
   - Search Bar
 
-**PostShowPageContainer**
+**PostShowContainer**
   * PostIndexItem
     * PostIndexItemDetails
     * ImagesIndex
