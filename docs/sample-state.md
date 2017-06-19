@@ -10,15 +10,10 @@
   }
 
   forms; {
-    createPost: {
-      errors: []
-    }
-    signUp: {
-      errors: []
-    }
-    logIn: {
-      errors: []
-    }
+    createPost: { errors: ['Title cant be blank'] }
+    createComment: { errors: ['Body cant be blank'] }
+    signUp: { errors: [] }
+    logIn: { errors: [] }
   }
   posts {
     1: {
