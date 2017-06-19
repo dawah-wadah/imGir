@@ -10,6 +10,9 @@
   }
 
   forms; {
+    createPost: {
+      errors: []
+    }
     signUp: {
       errors: []
     }
