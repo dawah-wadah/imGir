@@ -59,7 +59,6 @@ Objective: Users will be able to upvote/downvote and favorite posts.
 Objective: Users can search for posts.
 
 # Bonus Features (TBD)
-  Search using tags
   Infinite Scroll
   Vote on Comments
   Navigate Site using Keypresses, as well as upvote/downvote/favorite

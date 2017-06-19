@@ -1,22 +1,22 @@
 ## Component Hierarchy
 
 1) AuthForm
-Component form that allows a user to sign in/up.
+  Users can sign in/up.
 
 2) HomePage
   Root Page, which will display the navBar, posts index, and optionally the comments index
 
 3) NavBar
-  Contains the logo, which will redirect to the homepage, upload button, search-bar, and depending on the current session, login/signup/userpage button
+  Contains the logo, which will redirect to the homepage, upload button, search-bar, and depending on the current session, login/signup or button to user page
 
 4) PostShow
-  Has the post, sidebar with an post index, as well as all corresponding comments
+  Has the post, sidebar with an post index, as well as all comments for that post
 
 5) PostsIndex
   Collection of all posts
 
 6) PostsIndexItem
-  Component that contains information (image and detail components) for a single post.
+  Component for a single post.
 
 7) CommentForm
   Area where the user will comment.
@@ -28,7 +28,7 @@ Component form that allows a user to sign in/up.
   A single comment for a post or comment.
 
 10) CommentsDetail/CommentsDetailContainer
-  Houses any voting data(pending), as well as replies
+  Houses any voting data(pending), as well as replies id
 
 11) ImagesIndex/ImagesIndexContainer
   Will contain all the images for a single post.
@@ -37,7 +37,7 @@ Component form that allows a user to sign in/up.
   A single image for the ImagesIndex.
 
 13) PostIndexItemDetails/PostIndexItemDetailsContainer
-  Component that contains the details for a specific post, such as upvotes/downvotes.
+  Component that contains the details for a specific post, such as upvotes/downvotes, and title.
 
 14) NewPostModal
   A container modal that allows the user to upload a post via a form.
