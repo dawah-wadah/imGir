@@ -23,6 +23,7 @@ column name       | data type | details
 id                | integer   | not null, primary key
 body              | string    | not null
 points            | integer   | not null, default: 0
+post_id           | integer   | not null, foreign key, indexed
 parent_id         | integer   |
 commenter_id      | integer   | not null, foreign key (references accounts), indexed
 
