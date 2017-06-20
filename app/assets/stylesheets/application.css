@@ -115,6 +115,8 @@
     border:0 none;
     cursor:pointer;
     border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .right {
@@ -129,6 +131,11 @@
   margin-right: 15px;
 }
 .signin-register-link a{
+  color: white;
+  text-decoration: none;
+
+}
+#back-zimngir a{
   color: white;
   text-decoration: none;
 
@@ -177,4 +184,22 @@
 }
 .inline{
   display: inline-block;
+}
+
+#back-zimngir {
+  display: flex;
+  font-size: 13px;
+  line-height: 28px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+  position: fixed;
+  margin: 20px;
+  z-index: 10;
+  height: 30px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+#back-zimngir img{
+  align-self: center;
+  height: 70px;
+  width: 75px;
 }
