@@ -5,7 +5,6 @@
 ### Root
 
 Method | URI | Description
-
 -------|-----|--------------------
 `GET`  | `/` | Loads Index (Feed)
 
