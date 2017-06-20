@@ -1,33 +1,47 @@
-# API endpoints
+# API Endpoints
 
-##HTML API
+## HTML
 
 ### Root
-  -`GET /` - loads React web application
+
+Method | URI | Description
+
+-------|-----|--------------------
+`GET`  | `/` | Loads Index (Feed)
 
 ### Users
-  - `GET/users/new`
-  - `POST/users/`
-  - `PATCH/users`
 
+Method  | URI                    | Description
+--------|------------------------|---------------------------
+`POST`  | `/api/users`           | Create new user
+`GET`   | `/api/users/:id`       | Get user id
+`PATCH` | `/api/users/:id`       | Edit User attributes
 
-### Sessions
-  - `GET/session/new`
-  - `POST/session/`
-  - `DELETE/session`
+## JSON
 
-## JSON API
+### Session
+
+Method   | URI            | Description
+---------|----------------|------------
+`POST`   | `/api/session` | Log in
+`DELETE` | `/api/session` | Log out
 
 ### Posts
-- `GET/posts/`
-- `POST/posts/`
-- `PATCH/posts`
-- `GET/posts/:id`
-- `DELETE/posts/:id`
 
-## Comments
-- `GET/posts/:id/comments`
-- `POST/posts/:id/comments`
-- `PATCH/posts/:id/comments/:commentId`
-- `GET/posts/:id/comments/:commentId`
-- `DELETE/posts/:id/comments/:commentId`
+Method   | URI                          | Description
+---------|------------------------------|----------------------------------
+`GET`    | `/api/posts`                | Get all posts
+`POST`   | `/api/posts`                | Create new post
+`GET`    | `/api/posts/:id`            | Get post by id
+`DELETE` | `/api/posts/:id`            | Delete post by id
+`GET`    | `/api/users/:user_id/posts` | Get all posts by user id
+
+### Comments
+
+Method   | URI                                  | Description
+---------|--------------------------------------|----------------------------------
+`GET`    | `/api/posts/:id/comments`            | Get all comments for a post
+`POST`   | `/api/posts/:id/comments`            | Create new comment
+`PATCH`  | `/api/posts/:id/comments/:commentId` | Get comment by id
+`DELETE` | `/api/posts/:id/comments/:commentId` | Delete comment by id
+`GET`    | `/api/users/:user_id/comments`       | Get all comments by user id
