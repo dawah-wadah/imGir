@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Img from 'react-image';
 import SocialButtons from './social_buttons';
 
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -86,17 +87,13 @@ class SessionForm extends React.Component {
   render(){
     return(
       <section>
-        <div id='back-zimngir'>
-          <img src='assets/gir-back-to-show'/>
-          <Link to="/">
-            back to Zim 'n' Gir
-          </Link>
-        </div>
         <section className="signin-container">
           <div className='signin-logo'>
             <img src='assets/logo'/>
           </div>
-          <SocialButtons/>
+          <div className=" socialButtons core-dark core-shadow br5">
+            <SocialButtons/>
+          </div>
           <div className="signin-box">
           <form onSubmit={this.handleSubmit} className="signin-form">
             <br/>

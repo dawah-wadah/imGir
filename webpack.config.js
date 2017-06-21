@@ -10,9 +10,9 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: [/\.jsx?$/, /\.js?$/, /\.css$/],
+        test: [/\.jsx?$/, /\.js?$/],
         exclude: /(node_modules)/,
-        loader: ['babel-loader', "style-loader!css-loader"],
+        loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react']
         }

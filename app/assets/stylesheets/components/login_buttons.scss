@@ -1,11 +1,16 @@
-body { padding: 2em; }
-
-
 
 .social-wrap{
   display: flex;
   justify-content: space-between;
 }
+
+.socialButtons {
+  padding-top: 4px;
+  padding-left: 2px;
+  padding-bottom: 5px;
+  margin-bottom: -10px;
+}
+
 /* Shared */
 .loginBtn {
     box-sizing: border-box;

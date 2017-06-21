@@ -49,7 +49,7 @@
   outline: 0;
   border: 1px solid transparent;
   font-size: 12.6px;
-  letter-spacing: .0252px;
+  letter-spacing: .0252;
   padding: 5px 10px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -150,14 +150,19 @@
   line-height: 28px;
   text-shadow: 1px 1px 1px rgba(0,0,0,.2);
   position: fixed;
-  margin: 20px;
+  margin: 11px;
   z-index: 10;
   height: 30px;
-  padding-left: 15px;
+  padding-left: 4px;
   cursor: pointer;
 }
+
+#back-zimngir:hover{
+    color:green;
+}
+
 #back-zimngir img{
   align-self: center;
-  height: 70px;
-  width: 75px;
+  height: 44px;
+  width: 54px;
 }

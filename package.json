@@ -9,13 +9,12 @@
     "test": "test"
   },
   "engines": {
-    "node": "6.7.0",
+    "node": "6.10.0",
     "npm": "5.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch",
-    "postinstall": "webpack"
+    "start": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,9 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "lodash": "^4.17.4",
+    "normalize.css": "^7.0.0",
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.6.1",
     "react-image": "^1.0.1",
     "react-redux": "^5.0.5",
