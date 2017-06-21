@@ -7,7 +7,8 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      passwordVerify: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logo = this.logo.bind(this);
@@ -29,7 +30,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({user});
+    if (this.props.formType === 'signup') {
+      if (this.state.password === this.state.passwordVerify) {
+        this.props.processForm({user});
+      } else {
+        this.props.receiveErrors(['Passwords dont match']);
+      }
+    } else {
+      this.props.processForm({user});
+    }
   }
 
   navLink() {
@@ -45,8 +54,8 @@ class SessionForm extends React.Component {
       return(
         <p>
           <input type="password"
-            value={this.state.password}
-            onChange={this.update('password')}
+            value={this.state.passwordVerify}
+            onChange={this.update('passwordVerify')}
             className="br5 lightest-dark login-input"
             placeholder="Confirm Password"
           />
