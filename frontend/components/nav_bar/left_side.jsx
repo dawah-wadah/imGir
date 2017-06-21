@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = ({ session }) => {
-  debugger
   return {
     loggedIn: Boolean(session.currentUser),
     errors: session.errors
