@@ -42,12 +42,11 @@
   background-size: contain;
 }
 
-.hoverable{
-  
-}
-.right-side a:hover {
+.hoverable:hover{
   background: #50545c;
   border-radius: 12px;
+}
+.right-side a:hover {
 }
 //
 #topbar a.topbar-icon, #topbar span.topbar-icon {

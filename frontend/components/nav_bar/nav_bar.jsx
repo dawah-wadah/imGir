@@ -2,11 +2,11 @@ import React from 'react';
 import { Router, Route, Link} from 'react-router-dom';
 
 
-  const NavBar = () => (
+  const NavBar = () => {
+    return (
     <div id='topbar'>
-
       <nav className='right-side'>
-        <a href='/'> <div className='logo-icon'></div> </a>
+        <a href='/' className='hoverable'> <div className='logo-icon'></div> </a>
           <div className='link-menu'>
             <i className="fa fa-chevron-circle-down" aria-hidden="true"></i>
           </div>
@@ -16,22 +16,22 @@ import { Router, Route, Link} from 'react-router-dom';
                    Upload
             </div>
           </div>
-      </nav>
-      <div className='left-side'>
-        <ul className='user-nav'>
-          <li id='global-search-container'>
-            <i className="fa fa-search" aria-hidden="true"></i>
-          </li>
-          <li className="signin-link">
-            <Link to='/login' className='navlink-btn'> sign in </Link>
-          </li>
-          <li className='signin-link'>
-            <Link to='/signup' className='navlink-btn'> sign up </Link>
-          </li>
-        </ul>
-      </div>
+        </nav>
+          <div className='left-side'>
+            <ul className='user-nav'>
+              <li id='global-search-container'>
+                <i className="fa fa-search" aria-hidden="true"></i>
+              </li>
+              <li className="signin-link hoverable">
+                <Link to='/login' className='navlink-btn'> sign in </Link>
+              </li>
+              <li className='signin-link hoverable'>
+                <Link to='/signup' className='navlink-btn'> sign up </Link>
+              </li>
+            </ul>
+          </div>
     </div>
-  );
+  );};
 
 
 export default NavBar;
