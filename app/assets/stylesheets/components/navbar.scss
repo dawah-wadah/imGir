@@ -1,11 +1,122 @@
 .navbar-container{
-width: 120%;
-background-color: #34373c;
-height: 50px;
-z-index: 100;
-position: fixed;
-top: 0;
-display: flex;
-align-content: center;
-border-radius: 6px;
+  width: 100%;
+  background-color: #34373c;
+  height: 50px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  align-content: center;
+}
+
+.navbar-container *{
+  color: white;
+}
+#topbar {
+    width: 58%;
+    background-color: #34373c;
+    font-size: 15px;
+    height: 50px;
+    z-index: 101;
+    top: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link-menu{
+  display: flex;
+  align-self: center;
+}
+
+.right-side {
+  display: flex;
+  align-content: center;
+}
+
+
+.logo-icon {
+  background: url(/assets/logo-2.png) center center no-repeat;
+  width: 58px;
+  height: 49px;
+  padding: 0 15px;
+  background-size: contain;
+}
+
+.right-side a:hover {
+  background: #50545c;
+  border-radius: 12px;
+}
+//
+#topbar a.topbar-icon, #topbar span.topbar-icon {
+    cursor: pointer;
+    color: #f2f2f2;
+    text-decoration: none;
+}
+//
+.upload-button {
+  align-self: center;
+}
+.link-menu i{
+  align-self: center;
+}
+
+.upload-button i{
+  font-size: 16px;
+  margin-right: 11px;
+}
+
+.upload-png{
+  background: url(/assets/upload.png) center center no-repeat;
+  height: 20px;
+  background-size: contain;
+}
+.upload-button-container {
+    display: flex;
+    margin: 9px 0 0 20px;
+    border-radius: 3px;
+    border: 1px solid #1bb76e;
+    background: #1bb76e;
+    line-height: 0;
+    cursor: pointer;
+    padding: 0 26px;
+}
+
+//
+.secondary-nav {
+    float: right;
+    position: relative;
+    margin-right: -15px;
+}
+//
+#topbar ul {
+    list-style: none;
+    margin: 0;
+}
+//
+#topbar ul, #topbar ul li {
+    padding: 0;
+    position: relative;
+}
+//
+#header-logo, #main-nav, .user-nav {
+    float: left;
+}
+//
+#topbar ul li {
+    float: left;
+    user-select: none;
+}
+//
+// #topbar ul, #topbar ul li {
+//     padding: 0;
+//     position: relative;
+// }
+
+.navlink-btn {
+    padding: 3px 15px 7px;
+    margin-top: 13px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #f2f2f2;
+    text-decoration: none;
 }
