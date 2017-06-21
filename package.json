@@ -9,7 +9,7 @@
     "test": "test"
   },
   "engines": {
-    "node": "6.10.0",
+    "node": "8.1.2",
     "npm": "5.0.3"
   },
   "scripts": {
@@ -34,6 +34,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "lodash": "^4.17.4",
+    "node": "0.0.0",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.0",

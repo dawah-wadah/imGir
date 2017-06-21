@@ -42,6 +42,9 @@
   background-size: contain;
 }
 
+.hoverable{
+  
+}
 .right-side a:hover {
   background: #50545c;
   border-radius: 12px;
@@ -82,10 +85,13 @@
 }
 
 //
-.secondary-nav {
-    float: right;
-    position: relative;
-    margin-right: -15px;
+.left-side {
+  display: flex;
+  align-content: center;
+}
+.user-nav {
+  align-self: center;
+  align-content: center;
 }
 //
 #topbar ul {

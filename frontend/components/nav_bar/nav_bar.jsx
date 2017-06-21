@@ -19,12 +19,14 @@ import { Router, Route, Link} from 'react-router-dom';
       </nav>
       <div className='left-side'>
         <ul className='user-nav'>
-          <li id='global-search-container'>Search</li>
+          <li id='global-search-container'>
+            <i className="fa fa-search" aria-hidden="true"></i>
+          </li>
           <li className="signin-link">
-            <Link to='/login' className='navlink-btn'> Login </Link>
+            <Link to='/login' className='navlink-btn'> sign in </Link>
           </li>
           <li className='signin-link'>
-            <Link to='/signup' className='navlink-btn'> Sign-Up </Link>
+            <Link to='/signup' className='navlink-btn'> sign up </Link>
           </li>
         </ul>
       </div>
