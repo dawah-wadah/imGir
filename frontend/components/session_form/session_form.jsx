@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Img from 'react-image';
+import SocialButtons from './social_buttons';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -93,7 +94,9 @@ class SessionForm extends React.Component {
         </div>
         <section className="signin-container">
           <div className='signin-logo'>
+            <img src='assets/logo'/>
           </div>
+          <SocialButtons/>
           <div className="signin-box">
           <form onSubmit={this.handleSubmit} className="signin-form">
             <br/>
