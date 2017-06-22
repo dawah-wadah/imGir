@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from  'react-redux';
+import { displayDropdown } from '../../actions/dropdown_actions';
+import UploadButtonContent from './upload_button_contents';
 
 
 
@@ -27,7 +30,8 @@ class UploadButton extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    document.getElementById("myDropdown").classList.toggle("show");
+    e.stopPropagation();
+    this.props.displayDropdown();
   }
 
   render() {
@@ -41,12 +45,9 @@ class UploadButton extends React.Component {
         New Post
       </div>
     <div className="dropdown">
-    <i className="fa fa-chevron-circle-down dropbtn" onClick={this.handleClick}aria-hidden="true"></i>
-      <div className="dropdown-content" id="myDropdown">
-        <a>Upload an Image</a>
-        <a>Make a Meme</a>
-        <a href='//imagest.herukoapp.com'> Visit Yaakov's Site</a>
-      </div>
+      <i className="fa fa-chevron-circle-down dropbtn"
+         onClick={this.handleClick} aria-hidden="true"></i>
+      { this.props.visible ? <UploadButtonContent /> : null }
     </div>
   </div>
   </span>
@@ -54,7 +55,19 @@ class UploadButton extends React.Component {
 }
 
 }
+const mapStateToProps = (state) => {
+  return {
+    visible: Boolean(state.dropdown.uploadDropdown)
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    displayDropdown: () => dispatch(displayDropdown({ uploadDropdown: true }))
+  };
+};
 
-
-export default UploadButton;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UploadButton);

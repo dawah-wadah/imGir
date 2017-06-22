@@ -1,5 +1,5 @@
 .navbar-container{
-  width: 100%;
+  width: 2000px;
   background-color: #34373c;
   height: 50px;
   z-index: 100;
@@ -11,6 +11,10 @@
 
 .navbar-container *{
   color: white;
+}
+
+.logo-menu-combo {
+  display: flex;
 }
 #topbar {
     width: 58%;
@@ -30,7 +34,7 @@
 }
 
 .right-side {
-  width: 40%;
+  width: 27%;
   display: flex;
   justify-content: space-around;
   align-content: center;
@@ -67,7 +71,7 @@
   position: relative;
     display: flex;
     width: 160px;
-    margin: 4px -5px 7px 54px;
+    margin: 9px 0px 9px 20px;
     border-radius: 4px;
     border: 1px solid #1bb76e;
     background: #1bb76e;

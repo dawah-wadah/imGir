@@ -13,11 +13,11 @@ import SessionForm from './session_form/session_form_container';
 import Header from './nav_bar/header';
 import backTo from './nav_bar/back_to';
 
-
+import { clearDropdowns } from '../actions/dropdown_actions';
 
 
 const App = () => (
-  <div id='main-window'>
+  <div id='main-window' onClick={() => window.dispatch(clearDropdowns())}>
     <Header/>
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />

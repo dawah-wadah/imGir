@@ -25,6 +25,5 @@ const Header = (props) => {
       );
   }
   };
-  // <GreetingContainer/>
 
 export default Header;
