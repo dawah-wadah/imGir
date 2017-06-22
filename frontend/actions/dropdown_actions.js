@@ -6,6 +6,8 @@ export const displayDropdown = (menu) => ({
   menu
 });
 
-export const clearDropdowns = () => ({
+export const clearDropdowns = () => {
+  debugger
+  return({
   type: CLEAR_DROPDOWNS
-});
+});}

@@ -10,6 +10,7 @@ import {
 import { AuthRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import SessionForm from './session_form/session_form_container';
+import PostIndex from './posts/post_index_container';
 import Header from './nav_bar/header';
 import backTo from './nav_bar/back_to';
 
@@ -22,6 +23,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />
       <AuthRoute exact path="/signup" component={SessionForm} />
+      <AuthRoute path='/' component={PostIndex}/>
     </Switch>
   </div>
 );

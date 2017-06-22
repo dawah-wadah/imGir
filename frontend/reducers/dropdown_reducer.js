@@ -6,7 +6,7 @@ import {
 const DropdownReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case "DISPLAY_DROPDOWN":
+    case DISPLAY_DROPDOWN:
       return Object.assign({}, state, action.menu);
     case CLEAR_DROPDOWNS:
       return {};

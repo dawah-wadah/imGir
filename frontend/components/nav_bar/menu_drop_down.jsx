@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import MenuDropdownContents from './menu_dropdown_contents.jsx';
-import { displayDropdown } from '../../actions/dropdown_actions';
+import { displayDropdown, clearDropdowns } from '../../actions/dropdown_actions';
 
 
 class MenuDrop extends React.Component {
@@ -25,7 +25,7 @@ class MenuDrop extends React.Component {
         <div className="dropdown">
           <i className="fa fa-chevron-circle-down dropbtn"
             onClick={this.handleClick} aria-hidden="true"></i>
-          { this.props.visible ? <MenuDropdownContents /> : null }
+          { this.props.visible ? <MenuDropdownContents clearDropdowns={clearDropdowns}/> : null }
         </div>
       </div>
       </span>
@@ -43,7 +43,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayDropdown: () => dispatch(displayDropdown({ menuDropDown: true }))
+    displayDropdown: () => dispatch(displayDropdown({ menuDropDown: true })),
+    clearDropdowns: () => dispatch(clearDropdowns())
   };
 };
 
