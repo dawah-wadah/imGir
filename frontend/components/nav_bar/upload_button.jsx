@@ -34,14 +34,18 @@ class UploadButton extends React.Component {
     return (
   <span className='upload-button-container'>
     <div className='upload-button'>
-
-    <a> <i className="fa fa-cloud-upload" aria-hidden="true"></i>
-      Upload</a>
+      <div className='upload-icon'>
+        <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+      </div>
+      <div className='upload-text'>
+        New Post
+      </div>
     <div className="dropdown">
     <i className="fa fa-chevron-circle-down dropbtn" onClick={this.handleClick}aria-hidden="true"></i>
       <div className="dropdown-content" id="myDropdown">
-        <a>Make a Meme</a>
         <a>Upload an Image</a>
+        <a>Make a Meme</a>
+        <a href='//imagest.herukoapp.com'> Visit Yaakov's Site</a>
       </div>
     </div>
   </div>

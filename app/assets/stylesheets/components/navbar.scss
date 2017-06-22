@@ -52,9 +52,11 @@
 
 
 .upload-button {
+  display: flex;
+  width: inherit;
+  justify-content: space-around;
   align-self: center;
-  font-size: 16px;
-  margin: 0 11px;
+  font-size: 14px;
 }
 .link-menu i{
   align-self: center;
@@ -64,6 +66,7 @@
 .upload-button-container {
   position: relative;
     display: flex;
+    width: 160px;
     margin: 4px -5px 7px 54px;
     border-radius: 4px;
     border: 1px solid #1bb76e;
