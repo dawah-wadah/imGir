@@ -9,12 +9,12 @@ const Header = (props) => {
   switch (location) {
     case 'login':
       return (
-        <div className="navbar-container">
+        <div>
           {backTo()}
         </div>
       );
     case 'signup':
-    return (<div className='navbar-container'>
+    return (<div>
       {backTo()}
     </div>);
     default:

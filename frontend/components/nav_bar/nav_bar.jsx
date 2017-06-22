@@ -1,6 +1,13 @@
 import React from 'react';
 import { Router, Route, Link} from 'react-router-dom';
+import UploadButton from './upload_button';
 
+// <div className='upload-button-container'>
+//   <div className='upload-button'>
+//     <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+//     Upload
+//   </div>
+// </div>
 
   const NavBar = () => {
     return (
@@ -8,14 +15,9 @@ import { Router, Route, Link} from 'react-router-dom';
       <nav className='right-side'>
         <a href='/' className='hoverable'> <div className='logo-icon'></div> </a>
           <div className='link-menu'>
-            <i className="fa fa-chevron-circle-down" aria-hidden="true"></i>
+            <i className="fa fa-chevron-circle-down hoverable" aria-hidden="true"></i>
           </div>
-          <div className='upload-button-container'>
-            <div className='upload-button'>
-              <i className="fa fa-cloud-upload" aria-hidden="true"></i>
-                   Upload
-            </div>
-          </div>
+          <UploadButton/>
         </nav>
           <div className='left-side'>
             <ul className='user-nav'>
