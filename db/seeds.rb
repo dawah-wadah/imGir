@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+wadah = User.create({username: 'Wadah', password: "password"})
+vlad = User.create({username: 'Vlad', password: "password"})
+yaakov = User.create({username: 'Yaakov', password: "password"})
+
+
+Post.create({title: 'first post', description: 'this is my first post', author_id: wadah.id})
+Post.create({title: 'second post', description: 'this is my second post', author_id: wadah.id})
+Post.create({title: 'third post', description: 'this is my third post', author_id: wadah.id})
+Post.create({title: 'first post', description: 'this is my third post', author_id: vlad.id})
