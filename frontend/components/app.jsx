@@ -8,6 +8,7 @@ import {
   HashRouter
 } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import GreetingContainer from './greeting/greeting_container';
 import SessionForm from './session_form/session_form_container';
 import PostIndexContainer from './posts/post_index_container';
@@ -19,14 +20,16 @@ import { clearDropdowns } from '../actions/dropdown_actions';
 
 
 const App = (props) => (
+  <MuiThemeProvider>
   <div id='main-window' onClick={() => props.clearDropdowns()}>
     <Header/>
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />
       <AuthRoute exact path="/signup" component={SessionForm} />
-      <AuthRoute path='/' component={PostIndexContainer}/>
+      <AuthRoute exact path='/' component={PostIndexContainer}/>
     </Switch>
   </div>
+</MuiThemeProvider>
 );
 
 const mapDispatchToProps = (dispatch) => ({

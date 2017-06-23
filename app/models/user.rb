@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 	before_validation :ensure_session_token_uniqueness
 
+	has_many :posts,
+		foreign_key: :author_id
+
 	def password= password
 		self.password_digest = BCrypt::Password.create(password)
 		@password = password

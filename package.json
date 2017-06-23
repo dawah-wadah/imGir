@@ -36,6 +36,7 @@
     "css-loader": "^0.28.4",
     "heroku-cli": "^6.11.17",
     "lodash": "^4.17.4",
+    "material-ui": "^0.18.3",
     "node": "0.0.0",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",

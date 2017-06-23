@@ -5,9 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.8'
 # Use postgresql as the database for Active Record
 gem 'figaro'
-gem 'paperclip'
+gem 'paperclip', '5.0.0.beta1'
 gem 'pg', '~> 0.15'
 gem 'rails_12factor'
+gem 'pry-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
