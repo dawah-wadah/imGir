@@ -33,24 +33,23 @@ html * {
   background-color: #141518;
 }
 
-.full-width {
- background-size: cover;
- background-position: center center;
- opacity: .35;
- width: 100%;
- height: 100%;
- z-index: 1;
-  background-position-x: center;
-  background-position-y: center;
-  background-size: cover;
-  background-repeat-x: initial;
-  background-repeat-y: initial;
-  background-attachment: initial;
-  background-origin: initial;
-  background-clip: initial;
-  background-color: initial;
-}
-
+// .full-width {
+//  background-size: cover;
+//  background-position: center center;
+//  opacity: .35;
+//  width: 100%;
+//  height: 100%;
+//  z-index: 1;
+//   background-position-x: center;
+//   background-position-y: center;
+//   background-size: cover;
+//   background-repeat-x: initial;
+//   background-repeat-y: initial;
+//   background-attachment: initial;
+//   background-origin: initial;
+//   background-clip: initial;
+//   background-color: initial;
+// }
 .test-stuff{
   font-size: 160px;
   color: white;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Link} from 'react-router-dom';
 import UploadButton from './upload_button';
 import MenuDrop from './menu_drop_down';
-import SearchBar from './search_bar_dropdown';
+import SearchBar from './search_bar_container';
 
 
 

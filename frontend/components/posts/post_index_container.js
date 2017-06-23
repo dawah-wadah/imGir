@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    requestAllPosts: () => dispatch(requestAllPosts),
-    requestSinglePost: () => dispatch(requestSinglePost)
+    requestAllPosts: () => dispatch(requestAllPosts()),
+    requestSinglePost: (id) => dispatch(requestSinglePost(id))
   };
 };
 

@@ -3,7 +3,6 @@ import React from 'react';
 class PostIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.requestAllPosts = this.props.requestAllPosts.bind(this);
   }
 
@@ -11,15 +10,14 @@ class PostIndex extends React.Component {
     this.requestAllPosts();
   }
 
-
   render(){
     if (this.props.posts.entities){
       return(<h1 className='test-stuff'>Youve got posts</h1>);
-    }
-
+    } else {
     return(
       <h1 className='test-stuff'>hello</h1>
     );
+  }
   }
 }
 

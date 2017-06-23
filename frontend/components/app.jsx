@@ -10,29 +10,28 @@ import {
 import { AuthRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import SessionForm from './session_form/session_form_container';
-import PostIndex from './posts/post_index_container';
+import PostIndexContainer from './posts/post_index_container';
 import Header from './nav_bar/header';
 import backTo from './nav_bar/back_to';
+import { connect } from 'react-redux';
 
 import { clearDropdowns } from '../actions/dropdown_actions';
 
 
-const App = () => (
-  <div id='main-window' onClick={() => window.dispatch(clearDropdowns())}>
+const App = (props) => (
+  <div id='main-window' onClick={() => props.clearDropdowns()}>
     <Header/>
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />
       <AuthRoute exact path="/signup" component={SessionForm} />
-      <AuthRoute path='/' component={PostIndex}/>
+      <AuthRoute path='/' component={PostIndexContainer}/>
     </Switch>
   </div>
 );
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  clearDropdowns: () => dispatch(clearDropdowns())
+});
 
-// <GreetingContainer />
-// <header>
-// <Link to="/" className="header-link">
-// <h1>Invader Gir</h1>
-// </Link>
-// </header>
+
+export default connect(null, mapDispatchToProps)(App);
