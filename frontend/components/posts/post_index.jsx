@@ -10,7 +10,6 @@ class PostIndex extends React.Component {
     const allPosts = this.props.posts.map((post) => (
       <PostIndexItem post={post} key={post.id}/>
     ));
-    debugger
     return(
       <div className='post-index-container'>
         {allPosts}
