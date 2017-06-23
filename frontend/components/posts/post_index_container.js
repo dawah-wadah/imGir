@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
 import { requestAllPosts, requestSinglePost } from '../../actions/post_actions';
+import { selectAllPosts } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.post
+    posts: selectAllPosts(state.post.entities)
   };
 };
 
