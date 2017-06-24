@@ -15,6 +15,7 @@ import PostIndexContainer from './posts/post_index_container';
 import Header from './nav_bar/header';
 import backTo from './nav_bar/back_to';
 import { connect } from 'react-redux';
+import Modal from './modal';
 
 import { clearDropdowns } from '../actions/dropdown_actions';
 
@@ -22,6 +23,7 @@ import { clearDropdowns } from '../actions/dropdown_actions';
 const App = (props) => (
   <MuiThemeProvider>
   <div id='main-window' onClick={() => props.clearDropdowns()}>
+    <Modal/>
     <Header/>
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />

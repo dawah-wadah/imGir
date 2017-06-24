@@ -1,30 +1,29 @@
 import React from 'react';
 import { connect } from  'react-redux';
 import { displayDropdown } from '../../actions/dropdown_actions';
+import { displayModal } from '../../actions/modal_actions';
 import UploadButtonContent from './upload_button_contents';
-
-
-
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import UploadModalContent from '../upload_button/upload_button';
 
 class UploadButton extends React.Component {
   constructor(props){
     super(props);
+    this.state = {open: false};
     this.handleClick = this.handleClick.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleOpen() {
+    this.setState({open: true});
+  }
+
+  handleClose() {
+    this.setState({open: false});
   }
 
 
@@ -34,36 +33,49 @@ class UploadButton extends React.Component {
     this.props.displayDropdown();
   }
 
+  handleModal(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.displayModal(UploadModalContent());
+  }
+
   render() {
     return (
-  <span className='upload-button-container'>
+  <span className='upload-button-container' onClick={() => this.props.displayModal(<UploadModalContent/>)}>
     <div className='upload-button'>
       <div className='upload-icon'>
         <i className="fa fa-cloud-upload" aria-hidden="true"></i>
       </div>
-      <div className='upload-text'>
+      <div className='upload-text' onClick={this.handleOpen}>
         New Post
+        <UploadButtonContent />
       </div>
     <div className="dropdown">
       <i className="fa fa-chevron-circle-down dropbtn"
          onClick={this.handleClick} aria-hidden="true"></i>
-      { this.props.visible ? <UploadButtonContent /> : null }
+       { this.props.visible ? <UploadButtonContent /> : null }
     </div>
   </div>
   </span>
   );
+
+
+
+
 }
 
 }
 const mapStateToProps = (state) => {
   return {
-    visible: Boolean(state.dropdown.uploadDropdown)
+    visible: Boolean(state.dropdown.uploadDropdown),
+    modal: Boolean(state.dropdown.uploadModal)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayDropdown: () => dispatch(displayDropdown({ uploadDropdown: true }))
+    displayDropdown: () => dispatch(displayDropdown({ uploadDropdown: true })),
+    displayModal: (component) => dispatch(displayModal(component))
   };
 };
 

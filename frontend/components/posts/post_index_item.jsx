@@ -20,7 +20,7 @@ const style = {
 };
 
 const PostDetail = ({post}) => (
-  <div className='post-info' onMouseOver={(e) => e.stopPropogation()}>
+  <div className='post-info'>
     <div className='post-info-border'>
       <div className='post-info-filler'></div>
       <div className='post-info-container'>
@@ -63,7 +63,6 @@ class PostIndexItem extends React.Component {
   render() {
     return (
 
-      // justifyContent='center'
   <div className='post-index-item' onMouseLeave={() => this.mouseLeave()}>
     <GridTile
       style={style.cell}
@@ -73,7 +72,6 @@ class PostIndexItem extends React.Component {
         <img src={this.props.post.image_url}/>
     </GridTile>
     { this.state.visibleDetails ? <PostDetail post={ this.props.post }
-      onMouseEnter={() => this.mouseEnter()}
      /> : null}
   </div>
 );}

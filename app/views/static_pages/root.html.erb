@@ -3,5 +3,13 @@
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
   		user: current_user).html_safe %>
   <% end %>
+
+  window.images = {
+   logo: "<%= image_path('logo.png') %>",
+   logo2: "<%= image_path('logo-2.png') %>",
+   gir: "<%= image_path('gir.png') %>",
+   upload: "<%= image_path('upload.png') %>",
+   back2show: "<%= image_path('gir-back-to-show.png') %>"
+ }
 </script>
 <main id="root">its not working</main>
