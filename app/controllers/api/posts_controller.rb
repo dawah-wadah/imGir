@@ -13,6 +13,11 @@ class Api::PostsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+  end
+
+
   private
   def post_params
     params.require(:post).permit(:title, :points, :author_id, :description)

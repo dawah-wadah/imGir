@@ -22,13 +22,13 @@ import { clearDropdowns } from '../actions/dropdown_actions';
 
 const App = (props) => (
   <MuiThemeProvider>
-  <div id='main-window' onClick={() => props.clearDropdowns()}>
+  <div id='main-window'>
     <Modal/>
     <Header/>
     <Switch>
       <AuthRoute exact path="/login" component={SessionForm} />
       <AuthRoute exact path="/signup" component={SessionForm} />
-      <AuthRoute exact path='/' component={PostIndexContainer}/>
+      <Route exact path='/' component={PostIndexContainer}/>
     </Switch>
   </div>
 </MuiThemeProvider>

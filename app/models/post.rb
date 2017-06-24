@@ -8,6 +8,11 @@ validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
     class_name: :User,
     foreign_key: :author_id
 
+  has_one :main_image,
+-> { where main_image: true },
+    class_name: 'Image',
+    foreign_key: :post_id
+
   has_many :comments
   has_many :images
 

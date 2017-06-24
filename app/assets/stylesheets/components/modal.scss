@@ -1,13 +1,31 @@
 .modal-background{
   height: 100%;
-  width: 100%
+  width: 100%;
+  background-color: rgba(0,0,0,.45);
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .modal-content{
   height: 300px;
-  width: 300px;
+  width: 500px;
+  border-radius: 13px;
+  border: 2px black solid;
   display: flex;
   align-content: center;
-  background-color: white;
+  background-color: #141518;
   margin: auto auto;
+  opacity: 1;
+}
+
+.modal-content div{
+  color: black;
+}
+
+.uploadModal {
+  display: flex;
+  justify-content: center;
 }

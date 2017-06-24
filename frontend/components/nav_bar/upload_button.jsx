@@ -48,7 +48,6 @@ class UploadButton extends React.Component {
       </div>
       <div className='upload-text' onClick={this.handleOpen}>
         New Post
-        <UploadButtonContent />
       </div>
     <div className="dropdown">
       <i className="fa fa-chevron-circle-down dropbtn"

@@ -11,7 +11,6 @@ const ModalReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case DISPLAY_MODAL:
-    debugger
       return Object.assign({}, {isOpen: true, component: action.component});
     case CLEAR_MODALS:
       return defaultState;

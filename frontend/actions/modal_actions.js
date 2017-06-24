@@ -6,7 +6,6 @@ export const displayModal = (Component) => ({
   component: Component,
 });
 
-export const clearModals = () => {
-  return({
+export const clearModals = () => ({
   type: CLEAR_MODALS
-});}
+});

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {displayModal} from '../actions/modal_actions';
+import {displayModal, clearModals} from '../actions/modal_actions';
 
 class Modal extends React.Component{
   constructor(props){
@@ -8,13 +8,12 @@ class Modal extends React.Component{
   }
 
   render(){
-    const { isOpen, component } = this.props;
-
-    if (isOpen) {
+    if (this.props.isOpen) {
       return(
-        <div className='modal-background'>
+        <div className='modal-background'
+          onClick={() => this.props.clearModals()}>
           <div className='modal-content'>
-            {component}
+            {this.props.component}
           </div>
         </div>
       );
@@ -27,5 +26,9 @@ const mapStateToProps = (state) => ({
   component: state.modal.component
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  clearModals: () => dispatch(clearModals())
+});
 
-export default connect(mapStateToProps, null)(Modal);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
