@@ -60,6 +60,7 @@ class PostIndexItem extends React.Component {
     this.setState({visibleDetails: false});
   }
 
+
   render() {
     return (
 
