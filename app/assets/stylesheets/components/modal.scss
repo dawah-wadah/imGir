@@ -10,22 +10,89 @@
 }
 
 .modal-content{
-  height: 300px;
-  width: 500px;
-  border-radius: 13px;
-  border: 2px black solid;
+  height: 450px;
+  width: 680px;
+  border-radius: 5px;
   display: flex;
   align-content: center;
-  background-color: #141518;
+  background-color: #45484f;
   margin: auto auto;
   opacity: 1;
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,.5);
 }
 
 .modal-content div{
   color: black;
 }
 
+.upload-input-container{
+  display: flex;
+  width: 420px;
+  align-items: baseline;
+  justify-content: center;
+}
+
 .uploadModal {
   display: flex;
   justify-content: center;
+}
+.nodisplay{
+  display: none;
+}
+
+.drag-and-drop{
+  width: 150px;
+  height: 100px;
+  border: 2px dotted #bbb;
+  border-radius: 5px;
+  position: relative;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.upload-form{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.uploadModal{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.primary-actions{
+  margin: 85px auto 0;
+  width: 420px;
+  justify-content: center;
+}
+
+.upload-giraffe{
+  position: absolute;
+  width: 75px;
+  top: -15px;
+  right: -20px;
+  box-shadow: 6px 6px 13px rgba(0,0,0,.4)
+}
+
+.upload-pointer{
+  position: absolute;
+  width: 14px;
+  top: 28px;
+  right: -14px;
+}
+
+.browse-btn{
+  display: inline-block;
+  color: #333;
+  padding: 4px 15px;
+  margin: 0 5px;
+  border-radius: 3px;
+  background-image: linear-gradient(to bottom,#e0e0e0,#b7b7b7);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+}
+
+.upload-form p{
+  color: #f2f2f2;
 }
