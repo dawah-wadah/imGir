@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Dropzone from 'react-dropzone';
 
 const UploadModalContent = () => (
 
@@ -9,7 +9,7 @@ const UploadModalContent = () => (
         <img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
         <img className='upload-pointer' src='assets/upload-pointer.png'></img>
       </div>
-      <div className='upload-input-container'>
+      <div className='drag-and-drop-text'>
         <input type="file" id="global-files-button"
         className="nodisplay" name="files[]"
         multiple=""
@@ -17,8 +17,16 @@ const UploadModalContent = () => (
         <label className="browse-btn" htmlFor="global-files-button">Browse</label>
         <p>or drag images here</p>
       </div>
-    <div className='buttom-stuff'>
+      <div className='paste-url'>
+        <input id="paste-url-input" placeholder="Paste Image or URL" />
+      </div>
+    <div className='misc'>
+      <div className='buttom-stuff'>
+
         <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
+        <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
+        <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
+      </div>
       </div>
     </div>
     <span className="upload-modal-terms">

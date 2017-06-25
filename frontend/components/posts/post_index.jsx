@@ -42,9 +42,6 @@ class PostIndex extends React.Component {
     );
   }
 
-  // render(){
-  //   return (<div className='test-stuff'>Test</div>);
-  // }
 }
 
 export default PostIndex;

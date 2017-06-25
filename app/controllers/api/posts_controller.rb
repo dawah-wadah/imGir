@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.show(params[:id])[0]
+    @post = Post.find(params[:id])
   end
 
   def create

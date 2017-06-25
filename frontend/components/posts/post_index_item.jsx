@@ -1,6 +1,6 @@
 import React from 'react';
 import { GridTile } from 'material-ui/GridList';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
@@ -70,7 +70,10 @@ class PostIndexItem extends React.Component {
       className='grid-tile-object'
       onMouseEnter={()=> this.mouseEnter()}
       >
+
+      <Link to={`posts/${this.props.post.id}`}>
         <img src={this.props.post.image_url}/>
+      </Link>
     </GridTile>
     { this.state.visibleDetails ? <PostDetail post={ this.props.post }
      /> : null}
