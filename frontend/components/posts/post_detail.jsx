@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PostZoom from './post_zoom';
+import SideBar from './side_bar';
 
 const PostDetail = ({post, displayModal}) => (
   <div className='show-page'>
@@ -20,14 +21,14 @@ const PostDetail = ({post, displayModal}) => (
       <img className='post-image' src={post.image_url}
         onClick={() => displayModal(<PostZoom img={post.image_url} />)}/>
     </div>
-    <div className='side-bar'>
-      stuff
-    </div>
 
     <div className='post-comments-container'>
 
     </div>
   </section>
+  <div className='side-bar'>
+    <SideBar/>
+  </div>
   </div>
 );
 import { displayModal } from '../../actions/modal_actions';
