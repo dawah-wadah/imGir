@@ -9,6 +9,8 @@ gem 'paperclip', '5.0.0.beta1'
 gem 'pg', '~> 0.15'
 gem 'rails_12factor'
 gem 'pry-rails'
+gem 'faker'
+gem 'annotate'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
