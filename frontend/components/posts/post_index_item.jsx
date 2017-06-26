@@ -19,24 +19,24 @@ const style = {
   },
 };
 
-const PostDetail = ({post}) => (
+const PostDetail = ({post}) =>(
   <div className='post-info'>
-    <div className='post-info-border'>
-      <div className='post-info-filler'></div>
-      <div className='post-info-container'>
-        <div className='post-info-votes'>
-          <p>Like/Dislike</p>
-          <p>Vote Diff</p>
-        </div>
-        <div className='post-info-details'>
-          <p>{post.title}</p>
-          <p>{post.author_name}</p>
-        </div>
-        <div className='post-info-tags'>
-          <p>Tags</p>
-          <p>Views Count</p>
-        </div>
+    <div className='post-info-votes'>
+      <div title="like"
+        className="arrows">
+        <i className="fa fa-arrow-up fa-2" aria-hidden="true"></i>
       </div>
+      <div title='dislike' className='arrows'>
+        <i className="fa fa-arrow-down fa-2" aria-hidden="true"></i>
+      </div>
+      <p>{post.totalvotes} points</p>
+    </div>
+    <div className='post-info-details'>
+      <p>{post.title}</p>
+    </div>
+    <div className='post-info-tags'>
+      <p>Tags</p>
+      <p>Views Count</p>
     </div>
   </div>
 );
@@ -72,7 +72,7 @@ class PostIndexItem extends React.Component {
       >
 
       <Link to={`posts/${this.props.post.id}`}>
-        <img src={this.props.post.image_url}/>
+        <img src={this.props.post.main_image}/>
       </Link>
     </GridTile>
     { this.state.visibleDetails ? <PostDetail post={ this.props.post }

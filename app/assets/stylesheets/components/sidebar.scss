@@ -1,30 +1,45 @@
 .side-bar{
-  position: relative;
-  height: 410px;
+  position: fixed;
+  top: 17%;
+  right: 9%;
+  height: 600px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .side-bar-items{
+  border-radius: 15px;
+  background: #34373c;
   overflow-y: scroll hidden;
-  box-sizing: inherit;
-  vertical-align: baseline;
   border: 0;
   margin: 0;
   padding: 0;
 }
-.side-bar-item{
-  width: 300px;
-  padding: 8px;
-  margin-bottom: 4px;
-  height: 80px;
-
-}
-.side-bar-item img{
-  height: 80px;
-  width: 113px;
+.side-bar-item-pic img{
+  height: auto;
+  width: 90px;
   margin: -8px 0 -8px -8px;
 }
+
+.side-bar-item{
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  padding: 8px;
+  margin: 5px 20px;
+  height: 80px;
+}
+
+.side-bar-item-info {
+  width: 210px;
+}
+
+.side-bar-item-info p{
+  word-wrap: break-word;
+  font-size: 15px;
+  color: white;
+}
+
 
 ::-webkit-scrollbar {
     display: none;

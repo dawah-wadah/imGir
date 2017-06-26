@@ -3,10 +3,11 @@
 # Table name: images
 #
 #  id                 :integer          not null, primary key
-#  post_id            :integer          not null
+#  description        :text
 #  title              :string           not null
 #  main_image         :boolean          default(TRUE), not null
-#  description        :text
+#  imageable_id       :integer
+#  imageable_type     :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  image_file_name    :string

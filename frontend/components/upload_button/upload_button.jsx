@@ -1,7 +1,21 @@
 import React from 'react';
-import Dropzone from 'react-dropzone';
+import Uploader from './drag_and_drop';
+
+const style = {
+  zIndex: '3',
+  margin: 'auto',
+  position: 'fixed',
+  width: '416px',
+  height: '224px',
+  borderWidth: '2px',
+  borderColor: 'rgb(102, 102, 102)',
+  borderStyle: 'dashed',
+  borderRadius: '5px',
+};
+<Uploader style={style}/>
 
 const UploadModalContent = () => (
+
 
   <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
     <div className='primary-actions'>

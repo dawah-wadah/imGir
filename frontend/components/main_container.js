@@ -1,5 +1,6 @@
 import { clearDropdowns } from '../actions/dropdown_actions';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Main from './main';
 
 
@@ -8,4 +9,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(null, mapDispatchToProps)(Main);
+export default withRouter(connect(null, mapDispatchToProps)(Main));

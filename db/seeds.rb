@@ -9,40 +9,34 @@ require 'faker'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-wadah = User.create({username: 'Wadah', password: "password"})
-vlad = User.create({username: 'Vlad', password: "password"})
-yaakov = User.create({username: 'Yaakov', password: "password"})
-
-
-Post.create({title: 'first post', description: 'this is my first post', author_id: wadah.id})
-Post.create({title: 'second post', description: 'this is my second post', author_id: wadah.id})
-Post.create({title: 'third post', description: 'this is my third post', author_id: wadah.id})
-Post.create({title: 'first post', description: 'this is my third post', author_id: vlad.id})
-
-
-5.times do |num|
+30.times do |num|
   a = User.create({
-    username: Faker::Name.name,
+    username: Faker::GameOfThrones.character,
     password: 'password'
     })
 
   b = Post.create({
-    title: Faker::Lorem.sentence(1),
+    title: Faker::ChuckNorris.fact,
     description: Faker::Lorem.paragraph,
     author_id: a.id,
-    upvotes: Faker::Number.between(0,58),
-    downvotes: Faker::Number.between(0, 58)
+    upvotes: Faker::Number.between(0,1000),
+    downvotes: Faker::Number.between(0, 1000)
     })
 
-    #  post_id            :integer          not null
-    #  title              :string           not null
-    #  main_image         :boolean          default(TRUE), not null
-    #  description        :text
-
-  c = Image.create({
-    post_id: b.id,
+    Image.create({
+    imageable_id: b.id,
+    imageable_type: 'Post',
     title: b.title,
+    image: Faker::LoremPixel.image,
     main_image: true,
-    description: Faker::Lorem.sentence(1)
+    description: Faker::ChuckNorris.fact
+    })
+    Image.create({
+    imageable_id: b.id,
+    imageable_type: 'Post',
+    title: b.title,
+    image: Faker::LoremPixel.image,
+    main_image: false,
+    description: Faker::ChuckNorris.fact
     })
 end

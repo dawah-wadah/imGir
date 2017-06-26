@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624152845) do
+ActiveRecord::Schema.define(version: 20170625204107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.integer  "post_id",                           null: false
+    t.text     "description"
     t.string   "title",                             null: false
     t.boolean  "main_image",         default: true, null: false
-    t.text     "description"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "image_file_name"
@@ -29,18 +30,16 @@ ActiveRecord::Schema.define(version: 20170624152845) do
     t.datetime "image_updated_at"
   end
 
+  add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
-    t.string   "title",                          null: false
-    t.integer  "upvotes",            default: 0, null: false
-    t.integer  "downvotes",          default: 0, null: false
+    t.string   "title",                   null: false
+    t.integer  "upvotes",     default: 0, null: false
+    t.integer  "downvotes",   default: 0, null: false
     t.text     "description"
-    t.integer  "author_id",                      null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.integer  "author_id",               null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|

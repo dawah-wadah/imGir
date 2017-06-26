@@ -5,8 +5,11 @@ import SessionForm from './session_form/session_form_container';
 import PostIndexContainer from './posts/post_index_container';
 import PostShow from './posts/post_show_container';
 
+// TODO: figure out how to connect this to the dispatch without
+//using the connect function
+
 const Main = ({clearDropdowns}) => (
-  <div id='main-window' >
+  <div id='main-window' onClick={() => clearDropdowns()}>
     <Switch>
       <Route exact path='/' component={PostIndexContainer}/>
       <Route exact path="/posts" component={PostIndexContainer}/>
@@ -17,5 +20,5 @@ const Main = ({clearDropdowns}) => (
   </div>
 );
 
-// onClick={() => clearDropdowns()}
+
 export default Main;
