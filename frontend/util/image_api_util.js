@@ -14,13 +14,23 @@ export const fetchImage = (id) => {
   })
 );};
 
-export const uploadImage = image => {
-  return (
+export const uploadImage = (props) => (
   $.ajax({
     method: 'POST',
-    url: '/api/images',
-    data: image,
+    url: 'api/images/',
+    data: props ,
     contentType: false,
-    processType: false,
+    processData: false,
   })
-);};
+);
+
+// export const uploadImage = ( props ) => {
+// //debugger
+//   return $.ajax({
+//     method: 'POST',
+//     url: 'api/images/',
+//     data: props ,
+//     contentType: false,
+//     processData: false,
+//   });
+// };

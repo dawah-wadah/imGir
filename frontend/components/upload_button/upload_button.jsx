@@ -27,24 +27,25 @@ class UploadModalContent extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  updateFile(e) {
-    let file = e.currentTarget.files[0];
-    let fileReader = new FileReader();
-    fileReader.onloadend = function () {
-      this.setState({ imageFile: file, imageUrl: fileReader.result});
-    }.bind(this);
+updateFile(e) {
+  let file = e.currentTarget.files[0];
+  let fileReader = new FileReader();
+  fileReader.onloadend = function () {
+    this.setState({ imageFile: file, imageUrl: fileReader.result});
+  }.bind(this);
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+  if (file) {
+    fileReader.readAsDataURL(file);
   }
+}
 
 handleSubmit(e){
+  e.preventDefault();
   let formData = new FormData();
-  formData.append('image[title]', this.state.title);
-  formData.append('image[description]', this.state.description);
-  formData.append('image[main_image]', this.state.main_image);
-  formData.append('image[image]', this.state.imageFile );
+  formData.append("image[title]", this.state.title);
+  formData.append("image[description]", this.state.description);
+  formData.append("image[main_image]", this.state.main_image);
+  formData.append("image[image]", this.state.imageFile );
   this.props.uploadImage(formData);
 }
 
@@ -61,7 +62,8 @@ render(){
         <img className='upload-pointer' src='assets/upload-pointer.png'></img>
       </div>
       <div className='drag-and-drop-text'>
-        <input type="file" id="global-files-button" onChange={this.updateFile} />
+        <input type="file" id="global-files-button"
+          onChange={this.updateFile} />
       <button onClick={this.handleSubmit}>Upload</button>
         <img className='image-preview' src={this.state.imageUrl} />
         <p>or drag images here</p>
@@ -72,9 +74,12 @@ render(){
     <div className='misc'>
       <div className='buttom-stuff'>
 
-        <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
-        <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
-        <a className='meme-generator' href='//imgur.com/memegen'>Create a Meme</a>
+        <a className='meme-generator'
+          href='//imgur.com/memegen'>Create a Meme</a>
+        <a className='meme-generator'
+          href='//imgur.com/memegen'>Create a Meme</a>
+        <a className='meme-generator'
+          href='//imgur.com/memegen'>Create a Meme</a>
       </div>
       </div>
     </div>
@@ -89,22 +94,4 @@ render(){
 }
 }
 
-import { connect } from 'react-redux';
-import { uploadImage } from '../../actions/image_actions';
-
-const mapStateToProps = (state) => {
-  return {
-    state
-  };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    uploadImage: (image) => dispatch(uploadImage(image)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UploadModalContent);
+export default UploadModalContent;

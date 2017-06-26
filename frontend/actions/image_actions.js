@@ -32,9 +32,11 @@ export const requestSingleImage = (id) => (dispatch) => {
   });
 };
 
-export const uploadImage = imagedata => dispatch => (
-  ImageUtil.uploadImage(imagedata).then(image => {
+export const uploadImage = imageData => dispatch => {
+  //debugger
+  return(
+  ImageUtil.uploadImage(imageData).then(image => {
     dispatch(receiveOneImage(image));
     return image;
   }).fail(err => dispatch(receiveImageErrors(err.responseJSON)))
-);
+)};

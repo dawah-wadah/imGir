@@ -6,7 +6,7 @@ import UploadButtonContent from './upload_button_contents';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import UploadModalContent from '../upload_button/upload_button';
+import UploadModalContent from '../upload_button/upload_button_container';
 
 class UploadButton extends React.Component {
   constructor(props){
