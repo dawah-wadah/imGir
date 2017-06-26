@@ -1,10 +1,8 @@
 class Api::ImagesController < ApplicationController
 
-
   def create
-    //debugger
-    @image = Image.new(image_params)
 
+    @image = Image.new(image_params)
     if @image.save
       render :show
     else
@@ -28,7 +26,7 @@ class Api::ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :post_id, :description, :main_image)
+    params.require(:image).permit(:title, :image, :post_id, :description, :main_image, :imageable_id, :imageable_type)
   end
 
 end

@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_IMAGE,
-  RECEIVE_IMAGES
+  RECEIVE_IMAGES,
 } from '../actions/image_actions';
 
 const defaultState = Object.freeze({

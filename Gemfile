@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.8'
 # Use postgresql as the database for Active Record
 gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
 gem 'paperclip', '5.0.0.beta1'
 gem 'pg', '~> 0.15'
 gem 'rails_12factor'
@@ -37,7 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a //debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a // console
   gem 'byebug'
 end
 

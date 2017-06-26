@@ -26,5 +26,6 @@ class Post < ActiveRecord::Base
 
   has_many :comments
   has_many :images, as: :imageable, dependent: :destroy
+  has_many :album, as: :imageable, dependent: :destroy
 
 end

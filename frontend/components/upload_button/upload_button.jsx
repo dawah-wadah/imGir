@@ -1,5 +1,5 @@
 import React from 'react';
-import Uploader from './drag_and_drop';
+import { bindall } from 'lodash';
 
 const style = {
   zIndex: '3',
@@ -17,14 +17,26 @@ class UploadModalContent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      postTitle: 'Default Post Title',
       imageFile: null,
       imageUrl: null,
-      title: 'Bullshit Title',
-      description: 'Bullshit Description',
+      title: 'Working Title',
+      description: 'Working Description',
       main_image: true,
     };
+
     this.updateFile = this.updateFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.update = this.update.bind(this);
+
+  }
+
+  updateState(post) {
+    this.setState({
+      title: post.title,
+      description: post.description
+    });
   }
 
 updateFile(e) {
@@ -39,58 +51,86 @@ updateFile(e) {
   }
 }
 
-handleSubmit(e){
-  e.preventDefault();
-  let formData = new FormData();
-  formData.append("image[title]", this.state.title);
-  formData.append("image[description]", this.state.description);
-  formData.append("image[main_image]", this.state.main_image);
-  formData.append("image[image]", this.state.imageFile );
-  this.props.uploadImage(formData);
+update(field) {
+  return e => this.setState({
+    [field]: e.currentTarget.value
+  });
 }
 
-// className="nodisplay" name="files[]"
-// <label className="browse-btn" htmlFor="global-files-button">Browse</label>
-// accept=".jpg,.jpeg,.png,.gif,.apng,.tiff,.tif,.bmp,.pdf,.xcf,.webp" />
+ handleSubmit(e) {
+  e.preventDefault();
+  let postData = {post: {
+    title: this.state.postTitle,
+    description: this.state.description
+  }};
+  let imageData = new FormData();
+  imageData.append("image[title]",this.state.title);
+  imageData.append("image[description]",this.state.description);
+  imageData.append("image[main_image]",this.state.main_image);
+  imageData.append("image[image]",this.state.imageFile );
+  this.props.createPost(postData).then(post => {
+    imageData.append("image[imageable_id]", post.id );
+    imageData.append("image[imageable_type]", 'Post' );
+    return (
+    this.props.uploadImage(imageData)
+  );});
+}
+
 
 render(){
-  return(
-  <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
-    <div className='primary-actions'>
-      <div className='drag-and-drop-box'>
-        <img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
-        <img className='upload-pointer' src='assets/upload-pointer.png'></img>
-      </div>
+  const thingsToShow = [
+    <div className='upload-actions'>
       <div className='drag-and-drop-text'>
         <input type="file" id="global-files-button"
           onChange={this.updateFile} />
-      <button onClick={this.handleSubmit}>Upload</button>
-        <img className='image-preview' src={this.state.imageUrl} />
-        <p>or drag images here</p>
+        <div className='drag-and-drop-box'>
+          <img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
+          <img className='upload-pointer' src='assets/upload-pointer.png'></img>
+        </div>
       </div>
       <div className='paste-url'>
         <input id="paste-url-input" placeholder="Paste Image or URL" />
       </div>
-    <div className='misc'>
-      <div className='buttom-stuff'>
-
-        <a className='meme-generator'
-          href='//imgur.com/memegen'>Create a Meme</a>
-        <a className='meme-generator'
-          href='//imgur.com/memegen'>Create a Meme</a>
-        <a className='meme-generator'
-          href='//imgur.com/memegen'>Create a Meme</a>
+      <div className='misc'>
       </div>
-      </div>
-    </div>
+    </div>,
     <span className="upload-modal-terms">
       By creating a post, you agree to Imgur's
       <a href="//imgur.com/tos">Terms of Service</a>
       and
       <a href="//imgur.com/privacy">Privacy Policy</a>
     </span>
+
+  ];
+
+  const gottenPhoto = [
+    <div className='uploadForm'>
+      <img className='image-preview' src={this.state.imageUrl} />
+        <input type="text"
+          value={this.state.postTitle}
+          onChange={this.update('postTitle')}
+          className="br5 lightest-dark login-input"
+          placeholder='Write a title here'
+        />
+        <input type="text"
+          value={this.state.description}
+          onChange={this.update('description')}
+          className="br5 lightest-dark login-input"
+          placeholder='What is your description'
+        />
+      <button onClick={this.handleSubmit}>Upload</button>
+    </div>
+
+  ];
+
+  return(
+  <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
+    { this.state.imageUrl ?
+      gottenPhoto
+      :thingsToShow
+    }
   </div>
-  );
+);
 }
 }
 

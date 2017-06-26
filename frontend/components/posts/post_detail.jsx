@@ -29,6 +29,9 @@ class PostDetail extends React.Component {
         </span>
       </div>
       {allPics}
+      <div className='post-description'>
+        {this.props.post.description}
+      </div>
         <div className='post-comments-container'>
         </div>
       </section>

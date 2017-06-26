@@ -33,10 +33,16 @@ export const requestSingleImage = (id) => (dispatch) => {
 };
 
 export const uploadImage = imageData => dispatch => {
-  //debugger
+  //
   return(
   ImageUtil.uploadImage(imageData).then(image => {
     dispatch(receiveOneImage(image));
     return image;
-  }).fail(err => dispatch(receiveImageErrors(err.responseJSON)))
-)};
+  }).fail(
+    err => {
+      ;
+      return(
+      dispatch(receiveImageErrors(err.responseJSON))
+    );
+    })
+);};

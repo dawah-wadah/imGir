@@ -113,8 +113,19 @@ margin-bottom: 27px;
   border-radius: 3px 3px 0 0;
   box-shadow: 0 4px 4px -2px rgba(0,0,0,.2);
   position: relative;
-
 }
+.post-description{
+  box-sizing: border-box;
+  width: 728px;
+  min-height: 100px;
+  padding: 20px;
+  background: #2c2f34;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,.2);
+  position: relative;
+}
+
+
 .post-title{
   color: #f2f2f2;
   font-size: 18px;

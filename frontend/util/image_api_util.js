@@ -14,7 +14,9 @@ export const fetchImage = (id) => {
   })
 );};
 
-export const uploadImage = (props) => (
+export const uploadImage = (props) => {
+
+  return (
   $.ajax({
     method: 'POST',
     url: 'api/images/',
@@ -22,10 +24,10 @@ export const uploadImage = (props) => (
     contentType: false,
     processData: false,
   })
-);
+);};
 
 // export const uploadImage = ( props ) => {
-// //debugger
+// //
 //   return $.ajax({
 //     method: 'POST',
 //     url: 'api/images/',

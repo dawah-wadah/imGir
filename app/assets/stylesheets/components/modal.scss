@@ -19,6 +19,11 @@
   box-shadow: 0 5px 15px 0 rgba(0,0,0,.5);
 }
 
+.image-preview{
+  height: 300px;
+  width: 200px;
+}
+
 .modal-content div{
   color: black;
 }
@@ -58,7 +63,7 @@
   justify-content: center;
 }
 
-.primary-actions{
+.upload-actions{
   margin: 85px auto 0;
   width: 420px;
   justify-content: center;

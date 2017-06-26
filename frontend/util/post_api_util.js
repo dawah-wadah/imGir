@@ -14,11 +14,12 @@ export const fetchPost = (id) => {
   })
 );};
 
-export const createPost = post => {
+export const createPost = (props) => {
+
   return (
   $.ajax({
     method: 'POST',
-    url: '/api/posts',
-    data: post,
+    url: 'api/posts/',
+    data: props ,
   })
 );};
