@@ -9,12 +9,12 @@ require 'faker'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-30.times do |num|
+5.times do |num|
   a = User.create({
     username: Faker::GameOfThrones.character,
     password: 'password'
     })
-
+  6.times do |num2|
   b = Post.create({
     title: Faker::ChuckNorris.fact,
     description: Faker::Lorem.paragraph,
@@ -24,19 +24,20 @@ require 'faker'
     })
 
     Image.create({
-    imageable_id: b.id,
-    imageable_type: 'Post',
-    title: b.title,
-    image: Faker::LoremPixel.image,
-    main_image: true,
-    description: Faker::ChuckNorris.fact
-    })
-    Image.create({
-    imageable_id: b.id,
-    imageable_type: 'Post',
-    title: b.title,
-    image: Faker::LoremPixel.image,
-    main_image: false,
-    description: Faker::ChuckNorris.fact
-    })
+      imageable_id: b.id,
+      imageable_type: 'Post',
+      title: b.title,
+      image: Faker::LoremPixel.image,
+      main_image: true,
+      description: Faker::ChuckNorris.fact
+      })
+      Image.create({
+        imageable_id: b.id,
+        imageable_type: 'Post',
+        title: b.title,
+        image: Faker::LoremPixel.image,
+        main_image: false,
+        description: Faker::ChuckNorris.fact
+      })
+  end
 end
