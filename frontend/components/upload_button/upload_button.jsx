@@ -12,11 +12,48 @@ const style = {
   borderStyle: 'dashed',
   borderRadius: '5px',
 };
-<Uploader style={style}/>
 
-const UploadModalContent = () => (
+class UploadModalContent extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      imageFile: null,
+      imageUrl: null,
+      title: 'Bullshit Title',
+      description: 'Bullshit Description',
+      main_image: true,
+    };
+    this.updateFile = this.updateFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
+  updateFile(e) {
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result});
+    }.bind(this);
 
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+handleSubmit(e){
+  let formData = new FormData();
+  formData.append('image[title]', this.state.title);
+  formData.append('image[description]', this.state.description);
+  formData.append('image[main_image]', this.state.main_image);
+  formData.append('image[image]', this.state.imageFile );
+  this.props.uploadImage(formData);
+}
+
+// className="nodisplay" name="files[]"
+// <label className="browse-btn" htmlFor="global-files-button">Browse</label>
+// accept=".jpg,.jpeg,.png,.gif,.apng,.tiff,.tif,.bmp,.pdf,.xcf,.webp" />
+
+render(){
+  return(
   <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
     <div className='primary-actions'>
       <div className='drag-and-drop-box'>
@@ -24,11 +61,9 @@ const UploadModalContent = () => (
         <img className='upload-pointer' src='assets/upload-pointer.png'></img>
       </div>
       <div className='drag-and-drop-text'>
-        <input type="file" id="global-files-button"
-        className="nodisplay" name="files[]"
-        multiple=""
-        accept=".jpg,.jpeg,.png,.gif,.apng,.tiff,.tif,.bmp,.pdf,.xcf,.webp" />
-        <label className="browse-btn" htmlFor="global-files-button">Browse</label>
+        <input type="file" id="global-files-button" onChange={this.updateFile} />
+      <button onClick={this.handleSubmit}>Upload</button>
+        <img className='image-preview' src={this.state.imageUrl} />
         <p>or drag images here</p>
       </div>
       <div className='paste-url'>
@@ -50,6 +85,26 @@ const UploadModalContent = () => (
       <a href="//imgur.com/privacy">Privacy Policy</a>
     </span>
   </div>
-);
+  );
+}
+}
 
-export default UploadModalContent;
+import { connect } from 'react-redux';
+import { uploadImage } from '../../actions/image_actions';
+
+const mapStateToProps = (state) => {
+  return {
+    state
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    uploadImage: (image) => dispatch(uploadImage(image)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UploadModalContent);

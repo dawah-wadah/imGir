@@ -1,4 +1,3 @@
-
 class Api::PostsController < ApplicationController
   def index
       @posts = Post.all
@@ -9,8 +8,13 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(post_params)
-    render :show
+    @post = Post.new(post_params)
+    @post.author_id = current_user.id
+    if @photo.save
+      render :show
+    else
+      render json: @photo.errors.full_messages, status: 422
+    end
   end
 
   def destroy
