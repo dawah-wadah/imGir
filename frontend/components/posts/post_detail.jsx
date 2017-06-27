@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import NewComment from '../comments/create_comments';
+import NewComment from '../comments/create_comment_container';
 import {connect} from 'react-redux';
 import PostZoom from './post_zoom';
 import SideBar from './side_bar';
@@ -34,7 +34,7 @@ class PostDetail extends React.Component {
             {this.props.post.description}
           </div>
           <div className='post-comments-container'>
-            <NewComment/>
+            <NewComment parentId={this.props.post.id} parentType={'Post'}/>
             <CommentIndexItem/>
           </div>
         </section>

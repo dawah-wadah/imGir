@@ -17,7 +17,5 @@ export const createComment = (props) => (
     method: 'POST',
     url: 'api/comments/',
     data: props,
-    contentType: false,
-    processData: false,
   })
 );

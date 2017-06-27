@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
-import NewComment from './create_comment';
+import NewComment from './create_comments';
 
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
+// const mapStateToProps = (stuff) => {
+//   
+//   return({
+//   parentId: stuff.id,
+//   commentType: stuff.type
+// })};
 
 const mapDispatchToProps = dispatch => ({
   createComment: (comment) => dispatch(createComment(comment))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(NewComment);

@@ -2,7 +2,7 @@ json.id comment.id
 json.author_name comment.author.username
 if comment.replies
   json.replies comment.replies.each do |reply|
-      json.author_name reply.author.username
+      json.author_name reply.user.username
       json.body reply.body
     end
 end
