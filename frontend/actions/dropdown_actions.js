@@ -7,6 +7,7 @@ export const displayDropdown = (menu) => ({
 });
 
 export const clearDropdowns = () => {
-  return({
-  type: CLEAR_DROPDOWNS
-});}
+  return ({
+    type: CLEAR_DROPDOWNS
+  });
+};

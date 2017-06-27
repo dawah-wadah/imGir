@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
       <section>
         <section className="signin-container">
           <div className='signin-logo'>
-            <img src='assets/logo'/>
+            <img src={window.images.logo}/>
           </div>
           <div className=" socialButtons core-dark core-shadow br5">
             <SocialButtons/>

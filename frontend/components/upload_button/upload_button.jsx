@@ -1,17 +1,6 @@
 import React from 'react';
 import { bindall } from 'lodash';
-
-const style = {
-  zIndex: '3',
-  margin: 'auto',
-  position: 'fixed',
-  width: '416px',
-  height: '224px',
-  borderWidth: '2px',
-  borderColor: 'rgb(102, 102, 102)',
-  borderStyle: 'dashed',
-  borderRadius: '5px',
-};
+import {Redirect } from 'react-router-dom';
 
 class UploadModalContent extends React.Component {
   constructor(props){
@@ -32,18 +21,15 @@ class UploadModalContent extends React.Component {
 
   }
 
-  updateState(post) {
-    this.setState({
-      title: post.title,
-      description: post.description
-    });
-  }
+updateState(post) {
+  this.setState({title: post.title, description: post.description});
+}
 
 updateFile(e) {
   let file = e.currentTarget.files[0];
   let fileReader = new FileReader();
-  fileReader.onloadend = function () {
-    this.setState({ imageFile: file, imageUrl: fileReader.result});
+  fileReader.onloadend = function() {
+    this.setState({imageFile: file, imageUrl: fileReader.result});
   }.bind(this);
 
   if (file) {
@@ -52,10 +38,9 @@ updateFile(e) {
 }
 
 update(field) {
-  return e => this.setState({
-    [field]: e.currentTarget.value
-  });
+  return e => this.setState({[field]: e.currentTarget.value});
 }
+
 
  handleSubmit(e) {
   e.preventDefault();

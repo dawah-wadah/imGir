@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-      @posts = Post.all
+    @posts = Post.all
   end
 
   def show
@@ -24,6 +24,7 @@ class Api::PostsController < ApplicationController
 
 
   private
+  
   def post_params
     params.require(:post).permit(:title, :points, :author_id, :description)
   end

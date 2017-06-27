@@ -16,16 +16,15 @@ class Post < ActiveRecord::Base
   validates :title, :author, presence: true
 
   belongs_to :author,
-    class_name: :User,
-    foreign_key: :author_id
+             class_name: :User,
+             foreign_key: :author_id
 
   has_one :main_image,
--> { where main_image: true },
-    class_name: 'Image',
-    foreign_key: :imageable_id
+          -> { where main_image: true },
+          class_name: 'Image',
+          foreign_key: :imageable_id
 
-  has_many :comments
+  has_many :comments, as: :parent, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_many :album, as: :imageable, dependent: :destroy
-
 end
