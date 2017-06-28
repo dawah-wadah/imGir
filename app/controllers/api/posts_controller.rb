@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments).find(params[:id])
   end
 
   def create
@@ -24,7 +24,7 @@ class Api::PostsController < ApplicationController
 
 
   private
-  
+
   def post_params
     params.require(:post).permit(:title, :points, :author_id, :description)
   end

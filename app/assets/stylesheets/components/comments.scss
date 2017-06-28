@@ -11,6 +11,12 @@
   resize          : none;
 }
 
+
+.author{
+  font-size: 11px;
+margin-bottom: 4px;
+color: #bbb;
+}
 .post-comments-container {
   position   : relative;
   width      : 728px;
@@ -47,10 +53,10 @@
 }
 
 .summary {
-  height      : 36px;
-  color       : #8a8a8a;
-  font-size   : 12px;
-  line-height : 60px;
+  height: 36px;
+  color: #8a8a8a;
+  font-size: 12px;
+  line-height: 60px;
 }
 
 form.caption-create {
@@ -170,4 +176,94 @@ form.caption-create {
   border-radius : 0 6px 6px;
   background    : #2c2f34;
   line-height   : 16px;
+}
+
+#captions .comment[data-level="0"]>.caption .usertext {
+    border-radius: 6px 6px 6px 0;
+}
+#captions .usertext {
+    padding: 9px 12px 11px 15px;
+    border-radius: 0 6px 6px;
+    line-height: 16px;
+    background: #2c2f34;
+    position: relative;
+  }
+
+  #captions .usertext>span {
+    line-height: 20px;
+    padding-right: 50px;
+    display: inherit;
+    overflow: hidden;
+}
+
+.comment-create-reply {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 56px;
+    height: 100%;
+    background: #4a4c51;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cf:after, .cf:before {
+    content: " ";
+    display: table;
+}
+
+.comment-votes {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: -55px;
+    padding: 3px 20px 20px 10px;
+}
+
+.caption {
+    max-height: 999px;
+}
+
+.caption, .comment-votes.touch, .comment-votes:hover {
+    opacity: 1;
+}
+.caption {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.comment[data-level="0"]>.caption .comment-username {
+    max-width: 478px;
+}
+
+a strong, a:active, a:visited {
+    color: #7789ff;
+    text-decoration: none;
+}
+.comment-username {
+    color: #bbb!important;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: text-top;
+}
+.caption-create-username, .comment-username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+a {
+    text-decoration: none;
+}
+
+.comment{
+  background: #2c2F34;
+  margin: 9px 0;
+  padding: 7px 17px;
+  border-radius: 5px;
+}
+
+.comment-body{
+  line-height: 20px;
 }

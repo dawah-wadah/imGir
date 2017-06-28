@@ -1,7 +1,7 @@
 class Api::ImagesController < ApplicationController
 
   def create
-
+    
     @image = Image.new(image_params)
     if @image.save
       render :show

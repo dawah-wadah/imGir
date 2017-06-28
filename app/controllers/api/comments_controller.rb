@@ -1,6 +1,8 @@
 class Api::CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def show

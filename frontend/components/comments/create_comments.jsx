@@ -1,13 +1,15 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 class NewComment extends React.Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
-			body: '',
-			parent_id: this.props.parentId,
-      parent_type: this.props.parentType,
+				body: '',
+				parent_id: this.props.parentId,
+				parent_type: this.props.parentType,
+			charsLeft: 0
 		};
 		this.updateState = this
 			.updateState
@@ -15,11 +17,13 @@ class NewComment extends React.Component {
 		this.update = this
 			.update
 			.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmit = this
+			.handleSubmit
+			.bind(this);
 	}
 
-	updateState(comment) {
-		this.setState({body: comment.body});
+	updateState(stuff) {
+		this.setState({body: stuff.body, parent_id: this.props.parent_id, parent_type: this.props.parent_type});
 	}
 
 	update(field) {
@@ -28,17 +32,18 @@ class NewComment extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		
 		let commentData = {
 			comment: {
-        parent_id: this.state.parent_id,
-        parent_type: this.state.parent_type,
-				body: this.state.body
+				body: this.state.body,
+				parent_id: this.state.parent_id,
+				parent_type: this.state.parent_type
 			}
 		};
+		
 		this
 			.props
-			.createComment(commentData);
+			.createComment(commentData)
+			.then(() => this.setState({body: ''}));
 	}
 
 	render() {
@@ -47,9 +52,11 @@ class NewComment extends React.Component {
 			<form onSubmit={this.handleSubmit} className="caption-create">
 				<span className="icon-x right pointer"></span>
 				<textarea placeholder="Write a comment" className='create-comment-box'></textarea>
-				<textarea placeholder="Write a comment"
-          onChange={this.update('body')}
-          className='create-comment-box2'></textarea>
+				<textarea
+					placeholder="Write a comment"
+					onChange={this.update('body')}
+					value={this.state.body}
+					className='create-comment-box2'></textarea>
 
 				<div className="summary">
 					<input

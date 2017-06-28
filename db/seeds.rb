@@ -9,7 +9,7 @@ require 'faker'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Random.rand(9).times do |num|
+1.times do |num|
   a = User.create({
     username: Faker::GameOfThrones.character,
     password: 'password'
@@ -30,7 +30,7 @@ Random.rand(9).times do |num|
       main_image: true,
       description: Faker::ChuckNorris.fact
       })
-  Random.rand(6).times do |num3|
+  1.times do |num3|
     Image.create({
       imageable_id: b.id,
       imageable_type: 'Post',

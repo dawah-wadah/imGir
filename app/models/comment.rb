@@ -15,5 +15,6 @@ class Comment < ActiveRecord::Base
   validates :user, :body, presence: true
   belongs_to :user
   belongs_to :parent, polymorphic: true
-  has_many :replies, as: :parent, dependent: :destroy
+  has_many :replies, as: :parent, dependent: :destroy,
+                     class_name: 'Comment'
 end

@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  
+
   window.createPost = PostActions.createPost;
   window.requestAllPosts = PostActions.requestAllPosts;
   window.dispatch = store.dispatch;

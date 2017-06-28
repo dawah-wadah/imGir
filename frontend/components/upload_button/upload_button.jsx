@@ -1,11 +1,13 @@
 import React from 'react';
 import { bindall } from 'lodash';
 import {Redirect } from 'react-router-dom';
+import Dropzone from 'react-dropzone';
 
 class UploadModalContent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      images: [],
       postTitle: 'Default Post Title',
       imageFile: null,
       imageUrl: null,
@@ -26,7 +28,7 @@ updateState(post) {
 }
 
 updateFile(e) {
-  let file = e.currentTarget.files[0];
+  let file = e[0];
   let fileReader = new FileReader();
   fileReader.onloadend = function() {
     this.setState({imageFile: file, imageUrl: fileReader.result});
@@ -57,18 +59,42 @@ update(field) {
     imageData.append("image[imageable_id]", post.id );
     imageData.append("image[imageable_type]", 'Post' );
     return (
-    this.props.uploadImage(imageData)
+    this.props.uploadImage(imageData).then(
+      response => {
+        if (response.imageable_id) {
+          this.props.history.push(`/posts/${response.imageable_id}`).
+          then(
+            () => this.props.clearModal());
+        }
+      }
+    )
   );});
 }
 
+// <input type="file" id="global-files-button"
+//   onChange={this.updateFile} />
 
 render(){
   const thingsToShow = [
     <div className='upload-actions'>
       <div className='drag-and-drop-text'>
-        <input type="file" id="global-files-button"
-          onChange={this.updateFile} />
+
+
+
+
         <div className='drag-and-drop-box'>
+
+
+          <Dropzone
+            onDrop={this.updateFile}
+            onClick={() => console.log('hi')}
+            className='drag-and-drop-box draggable'>
+            {this.state.images.length > 0
+              ? 'Reticulating Spline...'
+              : 'Drag Your Images Here'}
+            </Dropzone>
+
+
           <img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
           <img className='upload-pointer' src='assets/upload-pointer.png'></img>
         </div>
