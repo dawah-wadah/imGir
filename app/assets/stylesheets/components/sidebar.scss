@@ -5,7 +5,6 @@
   height: 400px;
   box-sizing: border-box;
   overflow: auto;
-  background: linear-gradient(to bottom,transparent,#000)
 }
 
 .side-bar-items{
@@ -14,6 +13,15 @@
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+.bottom-fade{
+  height: 50px;
+width: 100%;;
+bottom: 0;
+position: sticky;
+background: linear-gradient(to bottom,transparent 0,#141518 100%);
+pointer-events: none;
 }
 
 .side-bar-item-pic {

@@ -66,6 +66,8 @@ class PostDetail extends React.Component {
 				</section>
 				<div className='side-bar'>
 					<SideBar/>
+						<div className='bottom-fade'></div>
+
 				</div>
 			</div>
 		);

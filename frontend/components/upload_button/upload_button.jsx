@@ -83,19 +83,26 @@ class UploadModalContent extends React.Component {
 	}
 
 	render() {
-		const thingsToShow = [ < div className = 'upload-actions' > <div className='drag-and-drop-text'>
+		const thingsToShow = [ < div className = 'upload-actions' >
+		<div className='drag-and-drop-text'>
 			<div className='drag-and-drop-box'>
-				<Dropzone onDrop={this.updateFile} className='drag-and-drop-box draggable'>
+				<Dropzone
+					onDrop={this.updateFile}
+					className='drag-and-drop-box draggable'>
 					{this.state.images.length > 0
 						? 'Reticulating Spline...'
 						: 'Drag Your Images Here'}
 				</Dropzone>
-				<img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
-				<img className='upload-pointer' src='assets/upload-pointer.png'></img>
+				<img className='upload-giraffe'
+					src='assets/upload-giraffe.png'></img>
+				<img className='upload-pointer'
+					src='assets/upload-pointer.png'></img>
 			</div>
-		</div> < div className = 'paste-url' > <input id="paste-url-input" placeholder="Paste Image or URL"/> < /div>
+		</div> < div className = 'paste-url' > <input id="paste-url-input"
+		placeholder="Paste Image or URL"/> < /div>
       <div className='misc'>
-      </div > </div>, < span className = "upload-modal-terms" > By creating a post,
+      </div > </div>, < span className = "upload-modal-terms" >
+			By creating a post,
 			you agree to Imgur 's
  < a href = "//imgur.com/tos" > Terms of Service < /a>
       and

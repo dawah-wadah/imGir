@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 import SessionForm from './session_form/session_form_container';
-import PostIndex from './posts/post_index_container2';
+import PostIndex from './posts/post_index_container';
 import PostShow from './posts/post_show_container';
 
 // TODO: figure out how to connect this to the dispatch without
