@@ -35,7 +35,7 @@ class PostDetail extends React.Component {
 			.props
 			.post
 			.images
-			.map((image) => (<ImageShow image={image}/>));
+			.map((image) => (<ImageShow key={image.id} image={image}/>));
 		} else {
 			allPics = null;
 		}

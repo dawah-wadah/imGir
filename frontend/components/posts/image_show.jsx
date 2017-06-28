@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PostZoom from './post_zoom';
 
 const ImageShow = ({image, displayModal}) => (
-    <div className='post-images'>
+    <div className='post-images' key={image.id} >
       <img className='post-image' src={image.image_url}
         onClick={() => displayModal(<PostZoom img={image.image_url} />)}/>
     </div>
