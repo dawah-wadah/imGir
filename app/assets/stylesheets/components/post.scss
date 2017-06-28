@@ -1,15 +1,15 @@
-.post-index-container {
-  top: 90px;
-  width: 70%;
-  border-radius: 15px;
-  padding: 10px 0;
-  background-color: #34373c;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-};
+// .post-index-container {
+  // top: 90px;
+  // width: 70%;
+  // border-radius: 15px;
+  // padding: 10px 0;
+  // background-color: #34373c;
+  // margin: 0 auto;
+  // position: relative;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-around;
+// };
 
 
 .gridList {
@@ -26,9 +26,10 @@
   display: none;
 }
 .post-index-container img{
-  width: 100%;
-  height: auto;
+  max-height: 100%;
   display: flex;
+  object-fit: cover;
+  overflow: hidden;
   flex-direction: column;
 }
 

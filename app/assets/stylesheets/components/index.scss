@@ -1,0 +1,50 @@
+.image-index-item {
+  display          : inline-block;
+  box-sizing       : border-box;
+  position         : relative;
+  width            : 180px;
+  height           : 180px;
+  margin           : 4px 2px;
+  padding          : 2px;
+  background-color : #181817;
+  line-height      : 0;
+}
+
+.image-list-link {
+  width          : 180px;
+  height         : 180px;
+  object-fit: fill;
+  overflow       : hidden;
+  outline        : #121211 solid 1px;
+  outline-offset : -1px;
+}
+
+.image-index-title {}
+
+.index-no-overflow {}
+
+.post-index-container {
+  top: 90px;
+  width: 50%;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #34373c;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.try {
+  display          : flex;
+  position         : relative;
+  top              : 90px;
+  width            : 50%;
+  margin           : 0 auto;
+  padding          : 10px 0;
+  border-radius    : 15px;
+  background-color : #34373c;
+  flex-wrap        : wrap;
+  justify-content  : space-around;
+}

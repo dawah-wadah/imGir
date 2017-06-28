@@ -10,6 +10,7 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className='comment'>
 <div className='author'>
