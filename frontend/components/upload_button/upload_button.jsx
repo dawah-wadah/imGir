@@ -1,116 +1,106 @@
 import React from 'react';
-import { bindall } from 'lodash';
-import {Redirect } from 'react-router-dom';
+import {bindall} from 'lodash';
+import {Redirect} from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 
 class UploadModalContent extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      images: [],
-      postTitle: 'Default Post Title',
-      imageFile: null,
-      imageUrl: null,
-      title: 'Working Title',
-      description: 'Working Description',
-      main_image: true,
-    };
+	constructor(props) {
+		super(props);
+		this.state = {
+			images: [],
+			postTitle: 'Default Post Title',
+			imageFile: null,
+			imageUrl: null,
+			title: 'Working Title',
+			description: 'Working Description',
+			main_image: true
+		};
 
-    this.updateFile = this.updateFile.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateState = this.updateState.bind(this);
-    this.update = this.update.bind(this);
+		this.updateFile = this
+			.updateFile
+			.bind(this);
+		this.handleSubmit = this
+			.handleSubmit
+			.bind(this);
+		this.updateState = this
+			.updateState
+			.bind(this);
+		this.update = this
+			.update
+			.bind(this);
 
-  }
+	}
 
-updateState(post) {
-  this.setState({title: post.title, description: post.description});
-}
+	updateState(post) {
+		this.setState({title: post.title, description: post.description});
+	}
 
-updateFile(e) {
-  let file = e[0];
-  let fileReader = new FileReader();
-  fileReader.onloadend = function() {
-    this.setState({imageFile: file, imageUrl: fileReader.result});
-  }.bind(this);
+	updateFile(e) {
+		let file = e[0];
+		let fileReader = new FileReader();
+		fileReader.onloadend = function() {
+			this.setState({imageFile: file, imageUrl: fileReader.result});
+		}.bind(this);
 
-  if (file) {
-    fileReader.readAsDataURL(file);
-  }
-}
+		if (file) {
+			fileReader.readAsDataURL(file);
+		}
+	}
 
-update(field) {
-  return e => this.setState({[field]: e.currentTarget.value});
-}
+	update(field) {
+		return e => this.setState({[field]: e.currentTarget.value});
+	}
 
+	handleSubmit(e) {
+		e.preventDefault();
+		let postData = {
+			post: {
+				title: this.state.postTitle,
+				description: this.state.description
+			}
+		};
+		let imageData = new FormData();
+		imageData.append("image[title]", this.state.title);
+		imageData.append("image[description]", this.state.description);
+		imageData.append("image[main_image]", this.state.main_image);
+		imageData.append("image[image]", this.state.imageFile);
+		this
+			.props
+			.createPost(postData)
+			.then(post => {
+				imageData.append("image[imageable_id]", post.id);
+				imageData.append("image[imageable_type]", 'Post');
+				return (this.props.uploadImage(imageData).then(response => {
+					this
+						.props
+						.clearModals();
+					this
+						.props
+						.history
+						.push(`/posts/${response.id}`);
+				}));
+			});
+	}
 
- handleSubmit(e) {
-  e.preventDefault();
-  let postData = {post: {
-    title: this.state.postTitle,
-    description: this.state.description
-  }};
-  let imageData = new FormData();
-  imageData.append("image[title]",this.state.title);
-  imageData.append("image[description]",this.state.description);
-  imageData.append("image[main_image]",this.state.main_image);
-  imageData.append("image[image]",this.state.imageFile );
-  this.props.createPost(postData).then(post => {
-    imageData.append("image[imageable_id]", post.id );
-    imageData.append("image[imageable_type]", 'Post' );
-    return (
-    this.props.uploadImage(imageData).then(
-      response => {
-        if (response.imageable_id) {
-          this.props.history.push(`/posts/${response.imageable_id}`).
-          then(
-            () => this.props.clearModal());
-        }
-      }
-    )
-  );});
-}
-
-// <input type="file" id="global-files-button"
-//   onChange={this.updateFile} />
-
-render(){
-  const thingsToShow = [
-    <div className='upload-actions'>
-      <div className='drag-and-drop-text'>
-
-
-
-
-        <div className='drag-and-drop-box'>
-
-
-          <Dropzone
-            onDrop={this.updateFile}
-            onClick={() => console.log('hi')}
-            className='drag-and-drop-box draggable'>
-            {this.state.images.length > 0
-              ? 'Reticulating Spline...'
-              : 'Drag Your Images Here'}
-            </Dropzone>
-
-
-          <img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
-          <img className='upload-pointer' src='assets/upload-pointer.png'></img>
-        </div>
-      </div>
-      <div className='paste-url'>
-        <input id="paste-url-input" placeholder="Paste Image or URL" />
-      </div>
+	render() {
+		const thingsToShow = [ < div className = 'upload-actions' > <div className='drag-and-drop-text'>
+			<div className='drag-and-drop-box'>
+				<Dropzone onDrop={this.updateFile} className='drag-and-drop-box draggable'>
+					{this.state.images.length > 0
+						? 'Reticulating Spline...'
+						: 'Drag Your Images Here'}
+				</Dropzone>
+				<img className='upload-giraffe' src='assets/upload-giraffe.png'></img>
+				<img className='upload-pointer' src='assets/upload-pointer.png'></img>
+			</div>
+		</div> < div className = 'paste-url' > <input id="paste-url-input" placeholder="Paste Image or URL"/> < /div>
       <div className='misc'>
-      </div>
-    </div>,
-    <span className="upload-modal-terms">
-      By creating a post, you agree to Imgur's
-      <a href="//imgur.com/tos">Terms of Service</a>
+      </div > </div>, < span className = "upload-modal-terms" > By creating a post,
+			you agree to Imgur 's
+ < a href = "//imgur.com/tos" > Terms of Service < /a>
       and
-      <a href="//imgur.com/privacy">Privacy Policy</a>
-    </span>
+      <a href="//imgur.com/privacy ">Privacy Policy</a>
+ < /span>
 
   ];
 
@@ -140,9 +130,8 @@ render(){
       gottenPhoto
       :thingsToShow
     }
-  </div>
-);
-}
-}
+  </div >);
+		}
+	}
 
-export default UploadModalContent;
+	export default UploadModalContent;

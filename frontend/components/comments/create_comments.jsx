@@ -39,7 +39,7 @@ class NewComment extends React.Component {
 				parent_type: this.state.parent_type
 			}
 		};
-		
+
 		this
 			.props
 			.createComment(commentData)
@@ -48,10 +48,10 @@ class NewComment extends React.Component {
 
 	render() {
 
+		// <textarea placeholder="Write a comment" className='create-comment-box'></textarea>
 		return (
 			<form onSubmit={this.handleSubmit} className="caption-create">
 				<span className="icon-x right pointer"></span>
-				<textarea placeholder="Write a comment" className='create-comment-box'></textarea>
 				<textarea
 					placeholder="Write a comment"
 					onChange={this.update('body')}

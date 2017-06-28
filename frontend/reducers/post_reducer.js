@@ -7,7 +7,6 @@ import {
 
 const defaultState = () => ({
   entities: {},
-  currentPost: null,
 });
 
 const PostReducer = (state = defaultState(), action) => {
@@ -17,9 +16,8 @@ const PostReducer = (state = defaultState(), action) => {
       return merge({}, state, { entities: action.posts });
     case RECEIVE_ONE_POST:
       const post = action.post;
-      return merge({}, state, {
+      return Object.assign({}, state, {
         entities: { [post.id]: post },
-        currentPost: post.id
       });
     default:
       return state;

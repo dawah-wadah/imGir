@@ -14,7 +14,7 @@ class PostShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
   if (this.props.match.params.id !== nextProps.match.params.id) {
-    this.props.requestSinglePost(this.props.id);
+    this.props.requestSinglePost(nextProps.match.params.id);
     }
   }
 

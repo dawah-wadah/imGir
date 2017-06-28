@@ -31,7 +31,6 @@ class PostDetail extends React.Component {
 
 		let allPics;
 		if (this.props.post.images) {
-
 		allPics = this
 			.props
 			.post

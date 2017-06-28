@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     uploadImage: (image) => dispatch(uploadImage(image)),
-    createPost: (post) => dispatch(createPost(post)),
+    createPost: (post, image) => dispatch(createPost(post, image)),
     clearModals: () => dispatch(clearModals())
   };
 };

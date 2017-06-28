@@ -10,7 +10,9 @@ class SideBar extends React.Component {
   }
 
 componentDidMount() {
-  this.props.requestAllPosts();
+  if (this.props.posts.length < 2) {
+    this.props.requestAllPosts();
+  }
 }
 
 
