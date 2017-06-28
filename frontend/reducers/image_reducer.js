@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 
 import {
-  RECEIVE_IMAGE,
+  RECEIVE_ONE_IMAGE,
   RECEIVE_IMAGES,
 } from '../actions/image_actions';
 
@@ -17,7 +17,7 @@ const ImageReducer = (state = defaultState, action) => {
       return merge({}, state, {
         entities: action.images
       });
-    case RECEIVE_IMAGE:
+    case RECEIVE_ONE_IMAGE:
       const image = action.image;
 
       return merge({}, state, {

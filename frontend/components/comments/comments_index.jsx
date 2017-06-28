@@ -7,6 +7,7 @@ class CommentIndex extends React.Component{
   }
 
   render(){
+    
     const allComments = this.props.comments.map((comment) => (
       <CommentIndexItem comment={comment}/>
     ));

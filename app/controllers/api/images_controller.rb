@@ -1,10 +1,18 @@
 class Api::ImagesController < ApplicationController
 
   def create
-    
     @image = Image.new(image_params)
+    klass = image_params[:imageable_type] == "Post" ? Post : Comment
+    @imageable_item = klass.find(image_params[:imageable_id])
+    # @post = image_params[:imageable_type].find(image_params[:imageable_id])
+    # @image = @post.id
+    # render /api/posts/show
+    # image_params[:imageable_type].find(imageable_id)/
+
     if @image.save
-      render :show
+    instance_variable_set("@#{klass}".downcase, @imageable_item)
+
+      render "/api/#{"#{klass}".downcase}s/show"
     else
       render json: @image.errors.full_messages, status: 422
     end
@@ -26,7 +34,7 @@ class Api::ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:title, :image, :post_id, :description, :main_image, :imageable_id, :imageable_type)
+    params.require(:image).permit(:title, :image, :description, :main_image, :imageable_id, :imageable_type)
   end
 
 end

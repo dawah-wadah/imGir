@@ -40,7 +40,6 @@ export const uploadImage = imageData => dispatch => {
     return image;
   }).fail(
     err => {
-      ;
       return(
       dispatch(receiveImageErrors(err.responseJSON))
     );

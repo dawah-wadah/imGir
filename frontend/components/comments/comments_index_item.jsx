@@ -6,7 +6,7 @@ import NewComment from './create_comment_container';
 class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {openReply: false};
+    this.state = {openReply : false};
   }
 
   render() {
