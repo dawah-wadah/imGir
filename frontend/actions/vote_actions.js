@@ -19,3 +19,16 @@ export const createVote = voteData => dispatch => (
     return post;
   })
 );
+
+export const editVote = voteData => dispatch => (
+  VoteUtil.editVote(voteData).then(post => {
+    dispatch(receiveOnePost(post));
+    return post;
+  })
+);
+export const deleteVote = id => dispatch => (
+  VoteUtil.deleteVote(id).then(post => {
+    dispatch(receiveOnePost(post));
+    return post;
+  })
+);
