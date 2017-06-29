@@ -11,12 +11,32 @@
   resize          : none;
 }
 
-
-.author{
-  font-size: 11px;
-margin-bottom: 4px;
-color: #bbb;
+.comment-reply-icon {
+  display : none;
 }
+
+.comment:hover .comment-reply-icon {
+  display: block;
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 51px;
+  height: 65px;
+  box-sizing: border-box;
+  padding: auto;
+  border-radius: 0px 6px 6px 0;
+  background: #4a4c51;
+  text-align: center;
+  cursor: pointer;
+}
+
+.author {
+  display: flex;
+  margin-bottom : 4px;
+  color         : #bbb;
+  font-size     : 11px;
+}
+
 .post-comments-container {
   position   : relative;
   width      : 728px;
@@ -53,10 +73,10 @@ color: #bbb;
 }
 
 .summary {
-  height: 36px;
-  color: #8a8a8a;
-  font-size: 12px;
-  line-height: 60px;
+  height      : 36px;
+  color       : #8a8a8a;
+  font-size   : 12px;
+  line-height : 60px;
 }
 
 form.caption-create {
@@ -166,11 +186,11 @@ form.caption-create {
   margin-bottom : 12px;
 }
 
-#captions .comment[data-level="0"]>.caption .usertext {
+#captions .comment[data-level="0"]>.caption .comment-user-name {
   border-radius : 6px 6px 6px 0;
 }
 
-#captions .usertext {
+#captions .comment-user-name {
   position      : relative;
   padding       : 9px 12px 11px 15px;
   border-radius : 0 6px 6px;
@@ -178,92 +198,144 @@ form.caption-create {
   line-height   : 16px;
 }
 
-#captions .comment[data-level="0"]>.caption .usertext {
-    border-radius: 6px 6px 6px 0;
+#captions .comment[data-level="0"]>.caption .comment-user-name {
+  border-radius : 6px 6px 6px 0;
 }
-#captions .usertext {
-    padding: 9px 12px 11px 15px;
-    border-radius: 0 6px 6px;
-    line-height: 16px;
-    background: #2c2f34;
-    position: relative;
-  }
 
-  #captions .usertext>span {
-    line-height: 20px;
-    padding-right: 50px;
-    display: inherit;
-    overflow: hidden;
+#captions .comment-user-name {
+  position      : relative;
+  padding       : 9px 12px 11px 15px;
+  border-radius : 0 6px 6px;
+  background    : #2c2f34;
+  line-height   : 16px;
+}
+
+#captions .comment-user-name>span {
+  display       : inherit;
+  padding-right : 50px;
+  overflow      : hidden;
+  line-height   : 20px;
 }
 
 .comment-create-reply {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 56px;
-    height: 100%;
-    background: #4a4c51;
-    border-radius: 0 6px 6px 0;
-    cursor: pointer;
-    text-align: center;
+  display       : none;
+  position      : absolute;
+  top           : 0;
+  right         : 0;
+  width         : 56px;
+  height        : 100%;
+  border-radius : 0 6px 6px 0;
+  background    : #4a4c51;
+  text-align    : center;
+  cursor        : pointer;
 }
 
-.cf:after, .cf:before {
-    content: " ";
-    display: table;
+.cf:after,
+.cf:before {
+  content : " ";
+  display : table;
 }
 
 .comment-votes {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: -55px;
-    padding: 3px 20px 20px 10px;
+  position : absolute;
+  top      : 0;
+  left     : -55px;
+  padding  : 3px 20px 20px 10px;
+  opacity  : 0;
 }
 
 .caption {
-    max-height: 999px;
+  max-height : 999px;
 }
 
-.caption, .comment-votes.touch, .comment-votes:hover {
-    opacity: 1;
+.caption,
+.comment-votes.touch,
+.comment-votes:hover {
+  opacity : 1;
 }
+
 .caption {
-    margin-bottom: 12px;
-    position: relative;
+  position      : relative;
+  margin-bottom : 12px;
 }
 
 .comment[data-level="0"]>.caption .comment-username {
-    max-width: 478px;
+  max-width : 478px;
 }
 
-a strong, a:active, a:visited {
-    color: #7789ff;
-    text-decoration: none;
+a:active,
+a:visited,
+a strong {
+  color           : #7789ff;
+  text-decoration : none;
 }
+
 .comment-username {
-    color: #bbb!important;
-    font-weight: 700;
-    display: inline-block;
-    vertical-align: text-top;
+  display        : inline-block;
+  color          : #bbb!important;
+  vertical-align : text-top;
+  font-weight    : 700;
 }
-.caption-create-username, .comment-username {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+.caption-create-username,
+.comment-username {
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  white-space   : nowrap;
 }
+
 a {
-    text-decoration: none;
+  text-decoration : none;
 }
 
-.comment{
-  background: #2c2F34;
-  margin: 9px 0;
-  padding: 7px 17px;
+.comment {
+  margin: 8px;
+  padding: 7px 7px 7px 17px;
   border-radius: 5px;
+  background: #2c2F34;
+  display: flex;
+  justify-content: space-between;
 }
 
-.comment-body{
-  line-height: 20px;
+.comment-body {
+  line-height : 20px;
+}
+
+.reply-icon {
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0 0 10px 15px;
+  color: #bbb;
+  position: relative;
+  top: 4px;
+  display: block;
+}
+
+
+.comment-replies {
+  align-self: flex-end;
+margin-left: 7%;
+display: block;
+}
+
+.spacer{
+  margin-left: 18px;
+}
+
+.sm-spacer {
+  margin-left: 3px;
+}
+
+.post-footer {
+  display: flex;
+}
+
+.upvote-button {
+
+}
+
+
+
+.downvote-button {
+
 }

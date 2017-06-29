@@ -16,7 +16,7 @@ const PostReducer = (state = defaultState(), action) => {
       return merge({}, state, { entities: action.posts });
     case RECEIVE_ONE_POST:
       const post = action.post;
-      return Object.assign({}, state, {
+      return merge({}, state, {
         entities: { [post.id]: post },
       });
     default:

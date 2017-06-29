@@ -1,3 +1,17 @@
 // Place all the styles related to the api/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.reply-icon {
+  font-size: 11px;
+  font-weight: 700;
+  margin: 3px 0 14px 15px;
+  color: #bbb;
+  position: relative;
+  top: 4px;
+  display: block;
+}
+
+
+.comment-replies {
+  width: 60%;
+}

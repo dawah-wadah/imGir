@@ -10,6 +10,12 @@ import CommentIndex from '../comments/comments_index';
 class PostDetail extends React.Component {
 	constructor(props) {
 		super(props);
+		this.toggleUpvote = this
+			.toggleUpvote
+			.bind(this);
+		this.toggleDownvote = this
+			.toggleDownvote
+			.bind(this);
 	}
 
 	componentDidMount() {
@@ -27,15 +33,24 @@ class PostDetail extends React.Component {
 		}
 	}
 
+	toggleUpvote() {
+		console.log('it upvoted');
+	}
+
+	toggleDownvote() {
+		console.log('it downvoted');
+	}
+
 	render() {
+
 
 		let allPics;
 		if (this.props.post.images) {
-		allPics = this
-			.props
-			.post
-			.images
-			.map((image) => (<ImageShow key={image.id} image={image}/>));
+			allPics = this
+				.props
+				.post
+				.images
+				.map((image) => (<ImageShow key={image.id} image={image}/>));
 		} else {
 			allPics = null;
 		}
@@ -47,7 +62,7 @@ class PostDetail extends React.Component {
 						<span className='post-author-link'>
 							by
 							<Link
-								className='post-author-link'
+								className='post-author-link sm-spacer'
 								to={`/users/${this.props.post.author_id}`}>
 								{this.props.post.author_name}
 							</Link>
@@ -55,7 +70,17 @@ class PostDetail extends React.Component {
 					</div>
 					{allPics}
 					<div className='post-description'>
-						{this.props.post.description}
+						<div className='post-description-words'>
+							{this.props.post.description}
+						</div>
+						<div className="post-footer">
+							<div className="upvote-button" onClick={this.toggleUpvote}>
+								<i className="fa fa-arrow-up" aria-hidden="true"></i>
+							</div>
+							<div className="downvote-button spacer" onClick={this.toggleDownvote}>
+								<i className="fa fa-arrow-down" aria-hidden="true"></i>
+							</div>
+						</div>
 					</div>
 					<div className='post-comments-container'>
 						<NewComment parentId={this.props.post.id} parentType={'Post'}/> {this.props.comments
@@ -66,7 +91,7 @@ class PostDetail extends React.Component {
 				</section>
 				<div className='side-bar'>
 					<SideBar/>
-						<div className='bottom-fade'></div>
+					<div className='bottom-fade'></div>
 
 				</div>
 			</div>

@@ -5,9 +5,10 @@ import { uploadImage } from '../../actions/image_actions';
 import { createPost } from '../../actions/post_actions';
 import {clearModals} from '../../actions/modal_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ session }) => {
   return {
-    state
+    loggedIn: Boolean(session.currentUser),
+    errors: session.errors
   };
 };
 

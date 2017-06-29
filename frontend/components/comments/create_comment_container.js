@@ -2,20 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
 import NewComment from './create_comments';
+import {displayModal} from '../../actions/modal_actions';
 
 
-// const mapStateToProps = (stuff) => {
-//   
-//   return({
-//   parentId: stuff.id,
-//   commentType: stuff.type
-// })};
+const mapStateToProps = ({ session }) => {
+  return {
+    loggedIn: Boolean(session.currentUser),
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
-  createComment: (comment) => dispatch(createComment(comment))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  createComment: (comment) => dispatch(createComment(comment)),
+  displayModal: (component) => dispatch(displayModal(component)),
+  ownProps
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewComment);

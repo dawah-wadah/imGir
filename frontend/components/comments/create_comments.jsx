@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import SessionFormModal from '../session_form/session_form_modal';
 
 class NewComment extends React.Component {
 	constructor(props) {
@@ -9,7 +10,8 @@ class NewComment extends React.Component {
 				body: '',
 				parent_id: this.props.parentId,
 				parent_type: this.props.parentType,
-			charsLeft: 0
+				post_id: this.props.parentId,
+			charsLeft: 140
 		};
 		this.updateState = this
 			.updateState
@@ -27,23 +29,27 @@ class NewComment extends React.Component {
 	}
 
 	update(field) {
-		return e => this.setState({[field]: e.currentTarget.value});
+			return e => this.setState({[field]: e.currentTarget.value});
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
+		if (this.props.loggedIn) {
 		let commentData = {
 			comment: {
 				body: this.state.body,
 				parent_id: this.state.parent_id,
-				parent_type: this.state.parent_type
+				parent_type: this.state.parent_type,
+				post_id: this.state.post_id
 			}
 		};
-
 		this
 			.props
 			.createComment(commentData)
 			.then(() => this.setState({body: ''}));
+		} else {
+			this.props.displayModal(<SessionFormModal/>);
+		}
 	}
 
 	render() {
@@ -65,7 +71,7 @@ class NewComment extends React.Component {
 						id="submit-comment"
 						className="right btn btn-main"
 						disabled=""/>
-					<div className="counter right">140</div>
+					<div className="counter right">{140 - this.state.body.length}</div>
 				</div>
 			</form>
 		);

@@ -7,6 +7,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import UploadModalContent from '../upload_button/upload_button_container';
+import SessionFormModal from '../session_form/session_form_modal';
+
 
 class UploadButton extends React.Component {
   constructor(props){
@@ -16,6 +18,7 @@ class UploadButton extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleModal = this.handleModal.bind(this);
+    this.uploadButtonRender = this.uploadButtonRender.bind(this);
   }
 
   handleOpen() {
@@ -39,9 +42,17 @@ class UploadButton extends React.Component {
     this.props.displayModal(UploadModalContent());
   }
 
+  uploadButtonRender(){
+    if (this.props.loggedIn) {
+    return ( this.props.displayModal(<UploadModalContent />));
+  } else {
+    return this.props.displayModal(<SessionFormModal/>);
+  }
+  }
+
   render() {
     return (
-  <span className='upload-button-container' onClick={() => this.props.displayModal(<UploadModalContent/>)}>
+  <span className='upload-button-container' onClick={this.uploadButtonRender}>
     <div className='upload-button'>
       <div className='upload-icon'>
         <i className="fa fa-cloud-upload" aria-hidden="true"></i>
@@ -66,6 +77,7 @@ class UploadButton extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
+    loggedIn: Boolean(state.session.currentUser),
     visible: Boolean(state.dropdown.uploadDropdown),
     modal: Boolean(state.dropdown.uploadModal)
   };
