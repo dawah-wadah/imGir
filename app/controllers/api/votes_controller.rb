@@ -1,12 +1,13 @@
 class Api::VotesController < ApplicationController
   def create
+    debugger
     vote = Vote.new(vote_params)
     vote.voter_id = current_user.id
     if(vote.save)
-      if vote.votable_type == "Post"
-        @post = vote.votable
+      if vote.voteable_type == "Post"
+        @post = vote.voteable
       else
-        @post = vote.votable.post
+        @post = vote.voteable.post
       end
       render "api/posts/show"
     else
@@ -19,10 +20,10 @@ class Api::VotesController < ApplicationController
     vote = Vote.find(param[:id])
 
     if vote.update(vote_params)
-      if vote.votable_type == "Post"
-        @post = vote.votable
+      if vote.voteable_type == "Post"
+        @post = vote.voteable
       else
-        @post = vote.votable.post
+        @post = vote.voteable.post
       end
       render "api/posts/show"
     else
@@ -35,10 +36,10 @@ class Api::VotesController < ApplicationController
     vote = Vote.find(params[:id])
 
     if(vote.destroy)
-      if vote.votable_type == "Post"
-        @post = vote.votable
+      if vote.voteable_type == "Post"
+        @post = vote.voteable
       else
-        @post = vote.votable.post
+        @post = vote.voteable.post
       end
       render "api/posts/show"
     else
@@ -49,6 +50,6 @@ class Api::VotesController < ApplicationController
 
   private
   def vote_params
-    params.require(:vote).permit(:vote_type, :votable_id, :votable_type)
+    params.require(:vote).permit(:vote_type, :voteable_id, :voteable_type)
   end
 end

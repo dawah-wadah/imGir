@@ -34,6 +34,13 @@ class PostDetail extends React.Component {
 	}
 
 	toggleUpvote() {
+		this.props.createVote({
+			vote: {
+				voteable_type: "Post",
+				voteable_id: this.props.post.id,
+				vote_type: "Upvote"
+			}
+		});
 		console.log('it upvoted');
 	}
 
@@ -76,6 +83,7 @@ class PostDetail extends React.Component {
 						<div className="post-footer">
 							<div className="upvote-button" onClick={this.toggleUpvote}>
 								<i className="fa fa-arrow-up" aria-hidden="true"></i>
+								<p>UPVOTE</p>
 							</div>
 							<div className="downvote-button spacer" onClick={this.toggleDownvote}>
 								<i className="fa fa-arrow-down" aria-hidden="true"></i>
@@ -101,6 +109,7 @@ class PostDetail extends React.Component {
 import {displayModal} from '../../actions/modal_actions';
 import {requestAllComments} from '../../actions/comment_actions';
 import {selectAllComments} from '../../reducers/selectors';
+import { createVote } from '../../actions/vote_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -113,7 +122,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		displayModal: (component) => dispatch(displayModal(component)),
-		requestAllComments: (id) => dispatch(requestAllComments(id))
+		requestAllComments: (id) => dispatch(requestAllComments(id)),
+		createVote: (voteData) => dispatch(createVote(voteData))
 	};
 };
 
