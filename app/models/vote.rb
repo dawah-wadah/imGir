@@ -13,7 +13,7 @@
 
 class Vote < ActiveRecord::Base
   validates :vote_type, :voter_id, :voteable_type, presence: true
-  validates :user_id, uniqueness: { scope: %i[voteable_id voteable_type] }
+  validates :voter_id, uniqueness: { scope: %i[voteable_id voteable_type] }
 
   belongs_to :voter, class_name: 'User'
   belongs_to :voteable, polymorphic: true

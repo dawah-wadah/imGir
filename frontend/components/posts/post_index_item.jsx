@@ -39,7 +39,6 @@ class PostIndexItem extends React.Component {
 
 	mouseEnter() {
 		this.setState({visibleDetails: true});
-		console.log('here i come');
 	}
 
 	mouseLeave() {

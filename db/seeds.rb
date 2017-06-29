@@ -8,19 +8,17 @@ require 'faker'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-12.times do |num|
+15.times do |num|
   User.create({
   username: Faker::GameOfThrones.character,
   password: 'password'
   })
 end
   60.times do |num2|
-  b = Post.create({
+  post = Post.create({
     title: Faker::ChuckNorris.fact,
     description: Faker::ChuckNorris.fact,
-    author_id: User.all.sample.id,
-    upvotes: Faker::Number.between(0,1000),
-    downvotes: Faker::Number.between(0, 1000)
+    author_id: User.all.sample.id
     })
     Image.create({
       imageable_id: b.id,
@@ -28,25 +26,5 @@ end
       image: Faker::LoremPixel.image,
       main_image: true,
       description: Faker::ChuckNorris.fact
-      })
-  1.times do |num3|
-    Image.create({
-      imageable_id: b.id,
-      imageable_type: 'Post',
-      image: Faker::LoremPixel.image,
-      main_image: false,
-      description: Faker::ChuckNorris.fact
-      })
-    end
-    5.times do
-      post = Post.all.sample
-        Comment.create({
-        user_id: User.all.sample.id,
-        parent_id: post,
-        parent_type: 'Post',
-        post_id: post.id,
-        body: Faker::ChuckNorris.fact
-        })
-    end
-
-  end
+    })
+end

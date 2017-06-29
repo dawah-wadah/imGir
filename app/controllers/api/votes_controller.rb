@@ -1,6 +1,6 @@
 class Api::VotesController < ApplicationController
   def create
-    debugger
+
     vote = Vote.new(vote_params)
     vote.voter_id = current_user.id
     if(vote.save)
