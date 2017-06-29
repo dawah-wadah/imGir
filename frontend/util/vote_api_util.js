@@ -1,11 +1,12 @@
 
-export const editVote = vote => (
+export const editVote = vote => {
+  return (
   $.ajax({
     method: 'PATCH',
-    url: `/api/votes/${vote.id}`,
+    url: `/api/votes/${vote.vote.id}`,
     data: vote
   })
-);
+);};
 
 export const createVote = vote => (
   $.ajax({
@@ -15,9 +16,9 @@ export const createVote = vote => (
   })
 );
 
-export const deleteVote = () => (
+export const deleteVote = ({id}) => (
   $.ajax({
     method: 'DELETE',
-    url: '/api/votes'
+    url: `/api/votes/${id}`
   })
 );

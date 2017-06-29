@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: %i[index]
     end
-    resources :votes, only: [:create, :edit, :destroy]
+    resources :votes, only: [:create, :update, :destroy]
     resources :comments, only: %i[create edit destroy]
     resources :images
     resources :users, only: %i[create show] do

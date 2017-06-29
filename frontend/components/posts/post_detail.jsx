@@ -10,16 +10,18 @@ import CommentIndex from '../comments/comments_index';
 class PostDetail extends React.Component {
 	constructor(props) {
 		super(props);
-		this.toggleUpvote = this
-			.toggleUpvote
+		this.toggleVote = this
+			.toggleVote
 			.bind(this);
-		this.toggleDownvote = this
-			.toggleDownvote
+		this.nextPost = this
+			.nextPost
+			.bind(this);
+		this.prevPost = this
+			.prevPost
 			.bind(this);
 	}
 
 	componentDidMount() {
-
 		this
 			.props
 			.requestAllComments(this.props.post.id);
@@ -33,23 +35,51 @@ class PostDetail extends React.Component {
 		}
 	}
 
-	toggleUpvote() {
-		this.props.createVote({
-			vote: {
-				voteable_type: "Post",
-				voteable_id: this.props.post.id,
-				vote_type: "Upvote"
-			}
-		});
-		console.log('it upvoted');
+	prevPost() {
+		const id = this.props.match.params.postId - 1;
+		this
+			.props
+			.history
+			.push(`/posts/${id}`);
+	}
+	nextPost() {
+		const id = parseInt(this.props.match.params.postId) + 1;
+		this
+			.props
+			.history
+			.push(`/posts/${id}`);
 	}
 
-	toggleDownvote() {
-		console.log('it downvoted');
+	toggleVote(type) {
+		if (this.props.voted) {
+			debugger
+			if (this.props.post.vote.vote_type !== type) {
+
+				return (this.props.editVote({
+					vote: {
+						id: this.props.post.vote.id,
+						voteable_type: 'Post',
+						voteable_id: this.props.post.id,
+						vote_type: type
+					}
+				}));
+			} else {
+				return (this.props.deleteVote({id: this.props.post.vote.id}));
+			}
+		} else {
+			this
+				.props
+				.createVote({
+					vote: {
+						voteable_type: "Post",
+						voteable_id: this.props.post.id,
+						vote_type: type
+					}
+				});
+		}
 	}
 
 	render() {
-
 
 		let allPics;
 		if (this.props.post.images) {
@@ -81,14 +111,21 @@ class PostDetail extends React.Component {
 							{this.props.post.description}
 						</div>
 						<div className="post-footer">
-							<div className="upvote-button" onClick={this.toggleUpvote}>
-								<i className="fa fa-arrow-up" aria-hidden="true"></i>
+							<div
+								className="upvote-button"
+								onClick={() => this.toggleVote('Upvote')}>
+								<img src={window.images.upvote} className="post-actions-action"></img>
 								<p>UPVOTE</p>
 							</div>
-							<div className="downvote-button spacer" onClick={this.toggleDownvote}>
-								<i className="fa fa-arrow-down" aria-hidden="true"></i>
+							<div
+								className="downvote-button spacer"
+								onClick={() => this.toggleVote('Downvote')}>
+								<img src={window.images.downvote} className="post-actions-action"></img>
+								<p>DOWNVOTE</p>
 							</div>
 						</div>
+						<div>{this.props.post.totalvotes}
+							points</div>
 					</div>
 					<div className='post-comments-container'>
 						<NewComment parentId={this.props.post.id} parentType={'Post'}/> {this.props.comments
@@ -109,10 +146,11 @@ class PostDetail extends React.Component {
 import {displayModal} from '../../actions/modal_actions';
 import {requestAllComments} from '../../actions/comment_actions';
 import {selectAllComments} from '../../reducers/selectors';
-import { createVote } from '../../actions/vote_actions';
+import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
+		voted: Boolean(ownProps.post.vote),
 		modal: Boolean(state.dropdown.uploadModal),
 		comments: selectAllComments(state.comment.entities),
 		postId: ownProps.post.id
@@ -123,7 +161,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		displayModal: (component) => dispatch(displayModal(component)),
 		requestAllComments: (id) => dispatch(requestAllComments(id)),
-		createVote: (voteData) => dispatch(createVote(voteData))
+		createVote: (voteData) => dispatch(createVote(voteData)),
+		editVote: (voteData) => dispatch(editVote(voteData)),
+		deleteVote: (id) => dispatch(deleteVote(id))
 	};
 };
 

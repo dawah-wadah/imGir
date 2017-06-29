@@ -4,8 +4,6 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string           not null
-#  upvotes     :integer          default(0), not null
-#  downvotes   :integer          default(0), not null
 #  description :text
 #  author_id   :integer          not null
 #  created_at  :datetime         not null

@@ -17,7 +17,7 @@ class Api::VotesController < ApplicationController
   end
 
   def update
-    vote = Vote.find(param[:id])
+    vote = Vote.find(params[:id])
 
     if vote.update(vote_params)
       if vote.voteable_type == "Post"
@@ -50,6 +50,6 @@ class Api::VotesController < ApplicationController
 
   private
   def vote_params
-    params.require(:vote).permit(:vote_type, :voteable_id, :voteable_type)
+    params.require(:vote).permit(:id, :voter_id, :vote_type, :voteable_id, :voteable_type)
   end
 end

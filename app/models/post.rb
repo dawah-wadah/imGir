@@ -4,8 +4,6 @@
 #
 #  id          :integer          not null, primary key
 #  title       :string           not null
-#  upvotes     :integer          default(0), not null
-#  downvotes   :integer          default(0), not null
 #  description :text
 #  author_id   :integer          not null
 #  created_at  :datetime         not null
@@ -27,5 +25,12 @@ class Post < ActiveRecord::Base
   has_many :downvotes, -> { where vote_type: 'Downvote' }, as: :voteable, class_name: "Vote"
   has_many :comments, as: :parent, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
-  has_many :album, as: :imageable, dependent: :destroy
+
+
+  def downvote_count
+    Vote.where(voteable_id: self.id, voteable_type: 'Post', vote_type: 'Downvote').count
+  end
+  def upvote_count
+    Vote.where(voteable_id: self.id, voteable_type: 'Post', vote_type: 'Upvote').count
+  end
 end

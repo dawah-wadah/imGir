@@ -4,7 +4,6 @@
 #
 #  id                 :integer          not null, primary key
 #  description        :text
-#  title              :string           not null
 #  main_image         :boolean          default(TRUE), not null
 #  imageable_id       :integer
 #  imageable_type     :string

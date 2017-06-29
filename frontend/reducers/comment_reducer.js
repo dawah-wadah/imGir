@@ -14,16 +14,16 @@ const defaultState = Object.freeze({
   currentComment: null
 });
 
+// case RECEIVE_ONE_POST:
+// debugger
+// return merge({}, {
+//   entities: action.post.comments
+// });
 const CommentReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case RECEIVE_ONE_POST:
-
-    return merge({}, {
-      entities: action.post.comments
-    });
     case RECEIVE_ALL_COMMENTS:
-    
+
       return merge({}, {
         entities: action.comments
       });

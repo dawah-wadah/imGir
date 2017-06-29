@@ -11,7 +11,6 @@ class UploadModalContent extends React.Component {
 			postTitle: 'Default Post Title',
 			imageFile: null,
 			imageUrl: null,
-			title: 'Working Title',
 			description: 'Working Description',
 			main_image: true
 		};
@@ -60,7 +59,6 @@ class UploadModalContent extends React.Component {
 			}
 		};
 		let imageData = new FormData();
-		imageData.append("image[title]", this.state.title);
 		imageData.append("image[description]", this.state.description);
 		imageData.append("image[main_image]", this.state.main_image);
 		imageData.append("image[image]", this.state.imageFile);

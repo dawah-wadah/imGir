@@ -1,6 +1,13 @@
 json.title post.title
 json.id post.id
 json.description post.description
+if current_user
+  vote = Vote.where('voter_id = :id and voteable_id = :post and voteable_type = :type', {id: current_user.id, post: post.id, type: 'Post'})
+
+  json.vote vote[0] ? vote[0] : nil
+ else
+  json.voted false
+end
 json.author_id post.author.id
 json.author_name post.author.username
 json.upvotes post.upvotes.count
@@ -14,9 +21,9 @@ if post.images
     end
   end
 end
-if post.comments
+if comments
   json.set! :comments do
-    post.comments.each do |comment|
+    comments.each do |comment|
       json.set! comment.id do
         json.partial! 'api/comments/comment', comment: comment
       end
