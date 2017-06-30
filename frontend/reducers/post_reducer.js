@@ -5,6 +5,9 @@ import {
   RECEIVE_ALL_POSTS
 } from '../actions/post_actions';
 
+import { RECEIVE_SEARCH } from '../actions/search_actions';
+
+
 const defaultState = () => ({
   entities: {},
 });
@@ -18,6 +21,10 @@ const PostReducer = (state = defaultState(), action) => {
       const post = action.post;
       return merge({}, state, {
         entities: { [post.id]: post },
+      });
+    case RECEIVE_SEARCH:
+      return merge({}, {
+        entities: action.results.results,
       });
     default:
       return state;

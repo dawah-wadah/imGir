@@ -3,7 +3,7 @@ import React from 'react';
 const SocialButtons = () => (
   <div className="social-wrap">
     <button className="loginBtn loginBtn--facebook">
-       Login with Facebook
+       Login with Wenbook
     </button>
 
     <button className="loginBtn loginBtn--google">
