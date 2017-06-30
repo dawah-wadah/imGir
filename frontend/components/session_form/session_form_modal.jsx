@@ -34,7 +34,7 @@ class SessionFormModal extends React.Component {
 
 		this
 			.props
-			.processForm({user});
+			.login({user}).then( () => this.props.clearModals(), (err) => receiveErrors(err));
 
 	}
 
