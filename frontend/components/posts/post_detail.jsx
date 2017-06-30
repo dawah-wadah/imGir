@@ -19,6 +19,8 @@ class PostDetail extends React.Component {
 		this.prevPost = this
 			.prevPost
 			.bind(this);
+		this.upvote = this.upvote.bind(this);
+		this.downvote = this.downvote.bind(this);
 	}
 
 	componentDidMount() {
@@ -52,7 +54,6 @@ class PostDetail extends React.Component {
 
 	toggleVote(type) {
 		if (this.props.voted) {
-			debugger
 			if (this.props.post.vote.vote_type !== type) {
 
 				return (this.props.editVote({
@@ -78,6 +79,50 @@ class PostDetail extends React.Component {
 				});
 		}
 	}
+
+upvote() {
+	if (this.props.voted) {
+		if (this.props.post.vote.vote_type === 'Upvote') {
+			return (
+				<img src={window.images.upvote_after} className="post-actions-action"></img>
+			);
+		} else {
+			return (
+				<img
+					src={window.images.upvote_before}
+					className="post-actions-action"></img>
+			);
+		}
+	} else {
+		return (
+			<img
+				src={window.images.upvote_before}
+				className="post-actions-action"></img>
+		);
+	}
+}
+downvote() {
+	if (this.props.voted) {
+		if (this.props.post.vote.vote_type === 'Downvote') {
+			return (
+				<img src={window.images.downvote_after} className="post-actions-action"></img>
+			);
+		} else {
+			return (
+				<img
+					src={window.images.downvote_before}
+					className="post-actions-action"></img>
+			);
+		}
+	} else {
+		return (
+			<img
+				src={window.images.downvote_before}
+				className="post-actions-action"></img>
+		);
+	}
+}
+
 
 	render() {
 
@@ -114,13 +159,13 @@ class PostDetail extends React.Component {
 							<div
 								className="upvote-button"
 								onClick={() => this.toggleVote('Upvote')}>
-								<img src={window.images.upvote} className="post-actions-action"></img>
+								{this.upvote()}
 								<p>UPVOTE</p>
 							</div>
 							<div
 								className="downvote-button spacer"
 								onClick={() => this.toggleVote('Downvote')}>
-								<img src={window.images.downvote} className="post-actions-action"></img>
+								{this.downvote()}
 								<p>DOWNVOTE</p>
 							</div>
 						</div>

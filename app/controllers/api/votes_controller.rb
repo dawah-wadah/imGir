@@ -35,7 +35,7 @@ class Api::VotesController < ApplicationController
   def destroy
     vote = Vote.find(params[:id])
 
-    if(vote.destroy)
+    if vote.destroy
       if vote.voteable_type == "Post"
         @post = vote.voteable
       else
@@ -49,6 +49,7 @@ class Api::VotesController < ApplicationController
   end
 
   private
+
   def vote_params
     params.require(:vote).permit(:id, :voter_id, :vote_type, :voteable_id, :voteable_type)
   end
