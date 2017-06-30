@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SessionFormModal from '../session_form/session_form_modal';
 
-const PostDetail = ({post, createVote, editVote, deleteVote}) => {
-
+const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayModal}) => {
   const _voted = (obj) => {
     return Boolean(obj.vote);
   };
@@ -33,16 +33,22 @@ const PostDetail = ({post, createVote, editVote, deleteVote}) => {
     }
   };
 
-
+  const _actionTodo = (type) => {
+    if (loggedIn) {
+      _toggleVote(type);
+    } else {
+      displayModal(<SessionFormModal/>);
+    }
+  };
 
 
 	return (
 		<div className='post-info'>
 			<div className='post-info-votes'>
-				<div title="like" className="arrows" onClick={() => _toggleVote('Upvote')}>
+				<div title="like" className="arrows" onClick={() => _actionTodo('Upvote')}>
 					<i className="fa fa-arrow-up fa-2" aria-hidden="true">UP</i>
 				</div>
-				<div title='dislike' className='arrows' onClick={() => _toggleVote('Downvote')}>
+				<div title='dislike' className='arrows' onClick={() => _actionTodo('Downvote')}>
 					<i className="fa fa-arrow-down fa-2" aria-hidden="true">DW</i>
 				</div>
 				<p onMouseOver={console.log(_voted(post))}>{post.totalvotes}
@@ -52,14 +58,15 @@ const PostDetail = ({post, createVote, editVote, deleteVote}) => {
 				<p>{post.title}</p>
 			</div>
 			<div className='post-info-tags'>
-				<p>Tags</p>
-				<p>Views Count</p>
+				<p>Tags: Album</p>
+				<p>{Math.floor(Math.random() * 90) + 123 + ' views'}</p>
 			</div>
 		</div>
 	);
 };
 
 import {createVote , editVote, deleteVote} from '../../actions/vote_actions';
+import {displayModal} from '../../actions/modal_actions';
 
 const mapStateToProps = ({session}) => ({
   loggedIn: Boolean(session.currentUser),
@@ -70,7 +77,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		createVote: (voteData) => dispatch(createVote(voteData)),
 		editVote: (voteData) => dispatch(editVote(voteData)),
-		deleteVote: (id) => dispatch(deleteVote(id))
+		deleteVote: (id) => dispatch(deleteVote(id)),
+    displayModal: (comp) => dispatch(displayModal(comp))
 	};
 };
 
@@ -81,5 +89,5 @@ const mapDispatchToProps = (dispatch) => {
 // });
 
 export default connect(
-  null, mapDispatchToProps
+  mapStateToProps, mapDispatchToProps
 )(PostDetail);
