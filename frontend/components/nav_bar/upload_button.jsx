@@ -12,19 +12,19 @@ class UploadButton extends React.Component {
     super(props);
     this.state = {open: false};
     this.handleClick = this.handleClick.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    // this.handleOpen = this.handleOpen.bind(this);
+    // this.handleClose = this.handleClose.bind(this);
     this.handleModal = this.handleModal.bind(this);
     this.uploadButtonRender = this.uploadButtonRender.bind(this);
   }
 
-  handleOpen() {
-    this.setState({open: true});
-  }
-
-  handleClose() {
-    this.setState({open: false});
-  }
+  // handleOpen() {
+  //   this.setState({open: true});
+  // }
+  //
+  // handleClose() {
+  //   this.setState({open: false});
+  // }
 
 
   handleClick(e) {
