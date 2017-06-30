@@ -46,10 +46,10 @@ const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayMo
 		<div className='post-info'>
 			<div className='post-info-votes'>
 				<div title="like" className="arrows" onClick={() => _actionTodo('Upvote')}>
-					<i className="fa fa-arrow-up fa-2" aria-hidden="true">UP</i>
+					<i className="fa fa-arrow-up fa-2" aria-hidden="true"></i>
 				</div>
 				<div title='dislike' className='arrows' onClick={() => _actionTodo('Downvote')}>
-					<i className="fa fa-arrow-down fa-2" aria-hidden="true">DW</i>
+					<i className="fa fa-arrow-down fa-2" aria-hidden="true"></i>
 				</div>
 				<p onMouseOver={console.log(_voted(post))}>{post.totalvotes}
 					points</p>
