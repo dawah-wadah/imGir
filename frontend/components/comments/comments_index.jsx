@@ -7,9 +7,9 @@ class CommentIndex extends React.Component{
   }
 
   render(){
-    
+
     const allComments = this.props.comments.map((comment) => (
-      <CommentIndexItem comment={comment}/>
+      <CommentIndexItem key={comment.id} comment={comment}/>
     ));
     return(
       <div>

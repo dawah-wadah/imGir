@@ -10,9 +10,9 @@ if current_user
 end
 json.author_id post.author.id
 json.author_name post.author.username
-json.upvotes post.upvotes.count
-json.downvotes post.downvotes.count
-json.totalvotes post.upvotes.count - post.downvotes.count
+json.upvotes post.upvote_count
+json.downvotes post.downvote_count
+json.totalvotes post.upvote_count - post.downvote_count
 if post.images
   post.images.each do |_image|
     json.main_image asset_path(post.main_image.image.url)
@@ -30,5 +30,3 @@ if comments
     end
   end
 end
-
-json.set! :time_since, (post.created_at.to_f * 1000).floor

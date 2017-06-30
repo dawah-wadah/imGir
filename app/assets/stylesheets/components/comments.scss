@@ -16,18 +16,38 @@
 }
 
 .comment:hover .comment-reply-icon {
+  font-family: 'Open sans', sans-serif;
   display: block;
   position: relative;
   top: 0;
   right: 0;
   width: 51px;
+  color: #a8a8a2;
   height: 65px;
+  font-size: 14px;
   box-sizing: border-box;
   padding: auto;
-  border-radius: 0px 6px 6px 0;
-  background: #4a4c51;
+  border-radius: 5px;
   text-align: center;
   cursor: pointer;
+  background-color: #595a5b;
+  font-weight: bold;
+}
+
+.new-comment-form {
+  display: flex;
+  flex-direction: column;
+  width: 694px;
+  height: 68px;
+  padding: 15px;
+  background: #2C2F34;
+  position: relative;
+  padding: 15px;
+  border: 2px solid #53555b;
+  border-radius: 4px;
+  cursor: text;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .author {
@@ -50,27 +70,24 @@
   height           : 22px;
   height           : 22px;
   margin-bottom    : 10px;
-  padding          : 5px 10px;
   padding          : 0;
   color            : #f2f2f2;
   overflow         : hidden;
-  overflow-y       : hidden;
   border           : none;
-  border           : 1px solid transparent;
   border-radius    : 4px;
   background       : 0 0;
   background-color : #2C2F34;
   outline          : 0;
   box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
-  box-shadow       : none;
   font-family      : inherit;
   font-size        : 15px;
-  font-size        : .9em;
   line-height      : 1.5em;
   letter-spacing   : .02em;
   resize           : none;
-  resize           : none;
+  box-shadow: none;
+  font-weight: bolder;
 }
+
 
 .summary {
   height      : 36px;
@@ -79,34 +96,34 @@
   line-height : 60px;
 }
 
-form.caption-create {
-  position      : relative;
-  padding       : 15px;
-  border        : 2px solid #53555b;
-  border-radius : 4px;
-  background    : #2C2F34;
-  cursor        : text;
-}
+// form.caption-create {
+//   position      : relative;
+//   padding       : 15px;
+//   border        : 2px solid #53555b;
+//   border-radius : 4px;
+//   background    : #2C2F34;
+//   cursor        : text;
+// }
+//
+// form.caption-create .summary #submit-comment {
+//   width       : inherit;
+//   margin-left : 10px;
+//   font-weight : 700;
+// }
 
-form.caption-create .summary #submit-comment {
-  width       : inherit;
-  margin-left : 10px;
-  font-weight : 700;
-}
+// form.caption-create input[type=submit] {
+//   height       : auto;
+//   color        : #ddddd1;
+//   border-width : 2px;
+// }
 
-form.caption-create input[type=submit] {
-  height       : auto;
-  color        : #ddddd1;
-  border-width : 2px;
-}
-
-button,
-input[type=button],
-input[type=submit] {
-  border-right : 0;
-  border-left  : 0;
-  cursor       : pointer;
-}
+// button,
+// input[type=button],
+// input[type=submit] {
+//   border-right : 0;
+//   border-left  : 0;
+//   cursor       : pointer;
+// }
 
 .right {
   float : right;
@@ -137,28 +154,28 @@ input[type=submit] {
   cursor              : pointer;
 }
 
-input[type=email],
-input[type=password],
-input[type=text],
-textarea {
-  box-sizing       : border-box;
-  margin-bottom    : 10px;
-  padding          : 5px 10px;
-  color            : #f2f2f2;
-  border           : 1px solid transparent;
-  background-color : #191919;
-  outline          : 0;
-  box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
-  font-family      : inherit;
-  font-size        : .9em;
-  line-height      : 1.5em;
-  letter-spacing   : .02em;
-  resize           : none;
-}
+// input[type=email],
+// input[type=password],
+// input[type=text],
+// textarea {
+//   box-sizing       : border-box;
+//   margin-bottom    : 10px;
+//   padding          : 5px 10px;
+//   color            : #f2f2f2;
+//   border           : 1px solid transparent;
+//   background-color : #191919;
+//   outline          : 0;
+//   box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
+//   font-family      : inherit;
+//   font-size        : .9em;
+//   line-height      : 1.5em;
+//   letter-spacing   : .02em;
+//   resize           : none;
+// }
 
-.root-caption-container>form.caption-create {
-  margin : 0;
-}
+// .root-caption-container>form.caption-create {
+//   margin : 0;
+// }
 
 form.caption-create {
   position      : relative;

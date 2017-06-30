@@ -1,10 +1,17 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {Switch, Route, withRouter } from 'react-router-dom';
 import Header from './nav_bar/header';
 import Modal from './modal';
 import Main from './main_container';
+import UploadModalContent from './upload_button/upload_button_container';
 
-const App = () => {
+const App = (props) => {
+
+	// window.ondrop = (e) => {
+	// 	console.log('dragging');
+	// 	props.displayModal(<UploadModalContent />);
+	// };
 	window.onscroll = function() {
 		scrollFunction();
 	};
@@ -23,7 +30,6 @@ const App = () => {
 		}
 	}
 
-	// When the user clicks on the button, scroll to the top of the document
 	function topFunction() {
 		document.body.scrollTop = 0; // For Chrome, Safari and Opera
 		document.documentElement.scrollTop = 0; // For IE and Firefox
@@ -36,4 +42,18 @@ const App = () => {
   </div>);
 };
 
-export default App;
+import { displayModal } from '../actions/modal_actions';
+
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: Boolean(state.session.currentUser),
+    visible: Boolean(state.dropdown.uploadDropdown),
+    modal: Boolean(state.dropdown.uploadModal)
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+	displayModal: (content) => dispatch(displayModal(content))
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

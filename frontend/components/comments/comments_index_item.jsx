@@ -23,7 +23,7 @@ class CommentIndexItem extends React.Component {
 				.map((reply) => (<CommentIndexItem key={reply.id} comment={reply}/>));
 		}
 		return (
-			<div className='child'>
+			<div className='child' key={this.props.comment.id}>
 
 				<div className='comment'>
 					<div className='comment-info'>

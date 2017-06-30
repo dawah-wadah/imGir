@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import MenuDropdownContents from './menu_dropdown_contents.jsx';
-import { displayDropdown, clearDropdowns } from '../../actions/dropdown_actions';
+import { displayDropdown, clearDropdowns }
+  from '../../actions/dropdown_actions';
 
 
 class MenuDrop extends React.Component {
@@ -15,7 +16,7 @@ class MenuDrop extends React.Component {
   handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.displayDropdown();
+    this.props.displayDropdown({menuDropDown: !this.props.visible});
   }
 
   render() {
@@ -43,7 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayDropdown: () => dispatch(displayDropdown({ menuDropDown: true })),
+    displayDropdown: (obj) => dispatch(displayDropdown(obj)),
     clearDropdowns: () => dispatch(clearDropdowns())
   };
 };

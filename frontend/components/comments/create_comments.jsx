@@ -13,9 +13,6 @@ class NewComment extends React.Component {
 				post_id: this.props.parentId,
 			charsLeft: 140
 		};
-		this.updateState = this
-			.updateState
-			.bind(this);
 		this.update = this
 			.update
 			.bind(this);
@@ -24,9 +21,6 @@ class NewComment extends React.Component {
 			.bind(this);
 	}
 
-	updateState(stuff) {
-		this.setState({body: stuff.body, parent_id: this.props.parent_id, parent_type: this.props.parent_type});
-	}
 
 	update(field) {
 			return e => this.setState({[field]: e.currentTarget.value});
@@ -53,29 +47,21 @@ class NewComment extends React.Component {
 	}
 
 	render() {
-
-		// <textarea placeholder="Write a comment" className='create-comment-box'></textarea>
 		return (
-			<form onSubmit={this.handleSubmit} className="caption-create">
-				<span className="icon-x right pointer"></span>
-				<textarea
-					placeholder="Write a comment"
-					onChange={this.update('body')}
-					value={this.state.body}
-					className='create-comment-box2'></textarea>
+				<label htmlFor='comment_box'>
 
-				<div className="summary">
-					<input
-						type="submit"
-						value="Post"
-						id="submit-comment"
-						className="right btn btn-main"
-						disabled=""/>
-					<div className="counter right">{140 - this.state.body.length}</div>
-				</div>
-			</form>
+	<form className="caption-create" >
+			<textarea id='comment_box' type="text" className="create-comment-box2" placeholder="Write a comment" onChange={this.update('body')} value={this.state.body}></textarea>
+			<input type="hidden" className="comment-input" value={this.state.body}></input>
+		<div className="summary">
+					<button onClick={this.handleSubmit} className="right btn btn-main spacer">Post</button>
+					<div className="couter right ">{140 - this.state.body.length}</div>
+		</div>
+	</form>
+</label>
 		);
 	}
+
 }
 
 export default NewComment;

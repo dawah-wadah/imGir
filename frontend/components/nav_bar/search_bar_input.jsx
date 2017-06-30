@@ -7,12 +7,3 @@ const SearchBarInput = () => (
 </div>
 );
 export default SearchBarInput;
-
-
-
-// <div id="mySearchBar" className="search-bar-content">
-//   <input className="search-input" type='text' name='name'></input>
-//   <form className='search-form' method='get' action='imgur.com/search'>
-//     <div className="search-input search-bar-addition">SEARCH SYNTAX</div>
-//   </form>
-// </div>
