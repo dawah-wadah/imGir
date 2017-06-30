@@ -123,7 +123,6 @@ downvote() {
 	}
 }
 
-
 	render() {
 
 		let allPics;
@@ -137,7 +136,7 @@ downvote() {
 			allPics = null;
 		}
 		return (
-			<div className='show-page'>
+			<div className='show-page' onKeyDown={this.handleKeyPress}>
 				<section className='post-container'>
 					<div className='post-header'>
 						<h1 className='post-title'>{this.props.post.title}</h1>

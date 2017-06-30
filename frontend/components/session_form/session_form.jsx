@@ -35,6 +35,10 @@ class SessionForm extends React.Component {
 		}
 	}
 
+	demoLogin(e) {
+	this.setState({username: 'Wadah',password: 'password'});
+	}
+
 	update(field) {
 		return e => this.setState({[field]: e.currentTarget.value});
 	}
@@ -145,8 +149,14 @@ class SessionForm extends React.Component {
 							<div className='signin-button'>
 								<input type="submit" value="Submit" className='submit-button right'/>
 								<div className="right signin-register-link text-shadow">
-									{this.navLink()}
-								</div>
+								<span className='signin-button'>
+                <button className='submit-button right' onClick = {() => this.setState({username: 'Wadah', password: 'password'})}>
+                  <span className='signin-button-text'><i className="fa fa-facebook-official fa-lg" aria-hidden="true">
+                  </i> Log in with Demo Account</span>
+                </button>
+              </span>
+						</div>
+						{this.navLink()}
 							</div>
 						</form>
 					</div>

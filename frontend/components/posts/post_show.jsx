@@ -18,6 +18,7 @@ class PostShow extends React.Component {
     }
   }
 
+
   render(){
 
     const {post, id} = this.props;
