@@ -40,14 +40,22 @@
   display : none;
 }
 
+.draggable{
+  box-sizing: border-box;
+  padding: 50px;
+}
 .drag-and-drop-box {
   position      : relative;
-  width         : 150px;
-  height        : 100px;
+  width         : 500px;
+  height        : 300px;
   margin        : 0 auto;
-  border        : 2px dotted #bbb;
   border-radius : 5px;
   align-self    : center;
+  text-align: center;
+}
+
+.draggable p{
+  font-size: xx-large;
 }
 
 .upload-form {

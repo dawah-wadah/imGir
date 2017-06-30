@@ -22,6 +22,10 @@ class SessionForm extends React.Component {
 			.bind(this);
 	}
 
+	componentDidMount() {
+    this.props.receiveCurrentUser(this.props.user);
+  }
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.loggedIn) {
 			this
@@ -55,11 +59,15 @@ class SessionForm extends React.Component {
 		}
 	}
 
+	clearErrors(){
+		this.props.clearErrors();
+	}
+
 	navLink() {
 		if (this.props.formType === 'login') {
-			return <Link to="/signup">need an account?</Link>;
+			return <Link to="/signup" onClick={this.props.clearErrors}>need an account?</Link>;
 		} else {
-			return <Link to="/login">log in instead</Link>;
+			return <Link to="/login" onClick={this.props.clearErrors}>log in instead</Link>;
 		}
 	}
 

@@ -34,7 +34,7 @@ class SessionFormModal extends React.Component {
 
 		this
 			.props
-			.login({user}).then( () => this.props.clearModals(), (err) => receiveErrors(err));
+			.login({user}).then(() => this.props.clearModals(), (err) => receiveErrors(err));
 
 	}
 
@@ -68,8 +68,8 @@ class SessionFormModal extends React.Component {
 						<form onSubmit={this.handleSubmit} className="signin-form">
 							<br/>
 							<span className="fade-break"></span>
-							<p className="formtype-text text-center inline">Sign In Please</p>
-							<span className="fade-break fade-break-flip"></span>
+							<p className="formtype-text text-center">Sign In Please</p>
+							<span className="fade-break fade-break-flip right"></span>
 							{this.renderErrors()}
 							<div className="signin-imGir core-dark core-shadow br5">
 								<br/>
