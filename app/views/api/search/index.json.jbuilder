@@ -1,6 +1,3 @@
-
-
-json.results do
   @posts.each do |post|
     json.set! post.id do
       json.title post.title
@@ -10,4 +7,3 @@ json.results do
       json.main_image asset_path(post.main_image.image.url)
     end
   end
-end
