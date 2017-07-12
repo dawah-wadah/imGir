@@ -1,6 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
-import NewComment from './create_comment_container';
+import ReplyForm from './reply_form';
 import {Link} from 'react-router-dom';
 
 class CommentIndexItem extends React.Component {
@@ -21,7 +21,7 @@ class CommentIndexItem extends React.Component {
 	}
 
 	replyForm() {
-		return (<NewComment parentId={this.props.comment.id} parentType={'Comment'}/>);
+		return (<ReplyForm parentId={this.props.comment.id} parentType={'Comment'}/>);
 	}
 
 	toggleReplies() {

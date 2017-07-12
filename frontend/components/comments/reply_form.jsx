@@ -1,29 +1,38 @@
 import React from 'react';
 import { createComment } from '../../actions/comment_actions';
 
-class NewCommentReplyForm extends React.Component{
+class ReplyForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      body: '',
-    };
+				body: '',
+				parent_id: this.props.CommentId,
+				parent_type: 'Comment',
+				post_id: this.props.CommentId,
+			charsLeft: 140
+		};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    if(this.props.loggedIn) {
-      const comment = { body: this.state.body,
-        commenter_id: this.props.currentaccountId,
-        commentable_id: this.props.commentableId,
-        commentable_type: this.props.commentableType,
-        post_id: this.props.currentPost,
-      };
-      this.props.createComment(comment);
-    } else {
-      this.props.history.push('/login');
-    }
-  }
+		e.preventDefault();
+		if (this.props.loggedIn) {
+		let commentData = {
+			comment: {
+				body: this.state.body,
+				parent_id: this.state.parent_id,
+				parent_type: this.state.parent_type,
+				post_id: this.state.post_id
+			}
+		};
+		this
+			.props
+			.createComment(commentData)
+			.then(() => this.setState({body: ''}));
+		} else {
+			this.props.displayModal(<SessionFormModal/>);
+		}
+	}
 
   update(field) {
     return e => this.setState({
@@ -34,12 +43,12 @@ class NewCommentReplyForm extends React.Component{
   render() {
     return (
       <div>
-        <form className="new-comment-form">
+        <form className="caption-create">
           <div >
-            <input type="text" className="comment-input" placeholder="Post a Reply" onChange={this.update('body')} value={this.state.body}></input>
-            <div className="comment-details-container">
-                <div className="char-counter">140</div>
-                <button onClick={this.handleSubmit} className="comment-button">Reply</button>
+            <input type="text" className="create-comment-box2" placeholder="Post a Reply" onChange={this.update('body')} value={this.state.body}></input>
+            <div className="summary">
+                <button onClick={this.handleSubmit} className="right btn btn-main spacer">Reply</button>
+                <div className="counter right">{140 - this.state.body.length}</div>
             </div>
           </div>
         </form>
@@ -53,9 +62,9 @@ class NewCommentReplyForm extends React.Component{
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = ({ session }, ownProps) => {
+const mapStateToProps = ({ session }, {parentId}) => {
   return {
-    currentPost: ownProps.match.location.params.id,
+    CommentId: parentId,
     loggedIn: Boolean(session.currentUser),
   };
 };
@@ -67,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewCommentReplyForm));
+)(ReplyForm));
