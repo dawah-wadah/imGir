@@ -2,13 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .reply-icon {
+  display: block;
+  text-align: center;
   font-size: 11px;
   font-weight: 700;
-  margin: 3px 0 14px 15px;
+  margin: auto;
   color: #bbb;
   position: relative;
   top: 4px;
-  display: block;
 }
 
 

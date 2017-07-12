@@ -10,6 +10,72 @@ class CommentIndexItem extends React.Component {
 			openReply: false,
 			showReplies: false
 		};
+		this.toggleReply = this.toggleReply.bind(this);
+		this.replyForm = this.replyForm.bind(this);
+	}
+
+	toggleReply() {
+		this.setState({
+			openReply: !this.state.openReply
+		});
+	}
+
+	replyForm() {
+		return (<NewComment parentId={this.props.comment.id} parentType={'Comment'}/>);
+	}
+
+	toggleReplies() {
+		this.setState({
+			showReplies: !this.state.showReplies
+		});
+	}
+
+	repliesCount() {
+		if (this.props.comment.replies) {
+			return (this.props.comment.replies.length + ' replies');
+		} else {
+			return 'Collapse';
+		}
+	}
+
+	replyButton() {
+		let button;
+		this.state.openReply
+			? button = 'Close Reply'
+			: button = 'Reply Button';
+		return (
+			<div className="comment-reply-icon" onClick={() => this.toggleReply()}>
+				<div className='reply-icon'>
+					{button}
+				</div>
+			</div>
+		);
+	}
+
+	commentInfo() {
+		return (
+			<div className='comment-info'>
+				<div className='author'>
+					<div className='comment-user-name cf'>
+						<Link
+							className="comment-username"
+							to={`/users/${this.props.comment.user_id}`}>
+							{this.props.comment.author_name}
+						</Link>
+					</div>
+					<div className='time-since-posted spacer'>
+						<Moment fromNow>
+							{this.props.comment.time_since}
+						</Moment>
+					</div>
+				</div>
+				<div className='body'>
+					<span className='comment-body'>
+						{this.props.comment.body}
+					</span>
+				</div>
+			</div>
+		);
 	}
 
 	render() {
@@ -24,58 +90,18 @@ class CommentIndexItem extends React.Component {
 		}
 		return (
 			<div className='child' key={this.props.comment.id}>
-
 				<div className='comment'>
-					<div className='comment-info'>
+					{this.commentInfo()}
+					{this.replyButton()}
 
-						<div className='author'>
-							<div className='comment-user-name cf'>
-								<Link
-									className="comment-username"
-									to={`/users/${this.props.comment.user_id}`}>
-									{this.props.comment.author_name}
-								</Link>
-							</div>
-							<div className='time-since-posted spacer'>
-								<Moment fromNow>
-									{this.props.comment.time_since}
-								</Moment>
-							</div>
-						</div>
-						<div className='body'>
-							<span className='comment-body'>
-								{this.props.comment.body}
-							</span>
-						</div>
-					</div>
-					<div className="comment-reply-icon">
-						{this.state.openReply
-							? <div
-								className='reply-icon'
-								onClick={() => this.setState({openReply: false})}>Reply Button
-							</div>
-
-							: <div
-								className='reply-icon'
-								onClick={() => this.setState({openReply: true})}>Reply Button
-							</div>}
-					</div>
 				</div>
 				{this.state.openReply
-					? <NewComment parentId={this.props.comment.id} parentType={'Comment'}/>
+					? this.replyForm()
 
-				: null}
-				<p
-					className='reply-icon'
-					onClick={() => {
-						this.setState({
-							showReplies: !this.state.showReplies
-						});
-					}}>
-					{this.props.comment.replies
-						? this.props.comment.replies.length + ' replies'
-						: 'Collapse'}
-					</p>
+					: null}
+				<p className='replies-icon' onClick={() => this.toggleReplies()}>
+					{this.repliesCount()}
+				</p>
 				<div className='comment-replies'>
 					{this.state.showReplies
 						? allReplies
@@ -87,6 +113,5 @@ class CommentIndexItem extends React.Component {
 	}
 
 }
-
 
 export default CommentIndexItem;

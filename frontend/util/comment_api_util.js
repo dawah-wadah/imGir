@@ -26,7 +26,7 @@ export const fetchComment = (id) => (
 );
 
 export const createComment = (props) => {
-  
+
   return (
   $.ajax({
     method: 'POST',

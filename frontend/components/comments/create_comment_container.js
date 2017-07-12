@@ -11,10 +11,9 @@ const mapStateToProps = ({ session }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   createComment: (comment) => dispatch(createComment(comment)),
   displayModal: (component) => dispatch(displayModal(component)),
-  ownProps
 });
 
 export default connect(

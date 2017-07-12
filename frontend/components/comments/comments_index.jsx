@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentIndexItem from './comments_index_item';
+import CommentIndexItem from './comments_index_item_container';
 
 class CommentIndex extends React.Component{
   constructor(props) {
