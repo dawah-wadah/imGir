@@ -50,7 +50,10 @@ class CommentIndexItem extends React.Component {
 					</div>
 					<div className="comment-reply-icon">
 						{this.state.openReply
-							? <NewComment parentId={this.props.comment.id} parentType={'Comment'}/>
+							? <div
+								className='reply-icon'
+								onClick={() => this.setState({openReply: false})}>Reply Button
+							</div>
 
 							: <div
 								className='reply-icon'
@@ -58,6 +61,10 @@ class CommentIndexItem extends React.Component {
 							</div>}
 					</div>
 				</div>
+				{this.state.openReply
+					? <NewComment parentId={this.props.comment.id} parentType={'Comment'}/>
+
+				: null}
 				<p
 					className='reply-icon'
 					onClick={() => {
