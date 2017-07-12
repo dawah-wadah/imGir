@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { displayDropdown } from '../../actions/dropdown_actions';
-import { fetchSearch} from '../../actions/search_actions';
+import { fetchSearch } from '../../actions/search_actions';
 import SearchBarInput from './search_bar_input';
+import { selectAllResults } from '../../reducers/selectors';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -31,6 +33,14 @@ class SearchBar extends React.Component {
    this.props.fetchSearch();
  }
 
+ componentDidUpdate(nextProps){
+  if(this.state.search !== '') {
+    if (this.props.history.location.pathname !== '/'){
+      this.props.history.push('/');
+    }
+  }
+}
+
   render() {
 
     return (
@@ -44,7 +54,10 @@ class SearchBar extends React.Component {
              placeholder = 'Start typing...'
              value = {this.state.search}
              ></input>
-           <div className="search-bar search-bar-addition">SEARCH SYNTAX</div>
+           {this.props.results.length ?
+             <div> WE HAVE RESULTS</div>
+             : <div className="search-bar search-bar-addition">SEARCH SYNTAX</div>
+           }
          </div>
          : null }
      </div>
@@ -53,8 +66,9 @@ class SearchBar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  visible: Boolean(state.dropdown.searchBar)
+const mapStateToProps = (state, ownProps) => ({
+  results: selectAllResults(state.search.search),
+  visible: Boolean(state.dropdown.searchBar),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -64,7 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchBar);
+)(SearchBar));

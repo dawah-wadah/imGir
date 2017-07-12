@@ -6,3 +6,6 @@ export const selectAllPosts = (posts) => (
 export const selectAllComments = (comments) => (
   values(comments).sort((a,b) => (b.id - a.id))
 );
+export const selectAllResults = (results) => (
+  values(results)
+);

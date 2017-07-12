@@ -14,7 +14,7 @@ const SearchReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_SEARCH:
       return merge({}, state, {
-        search: action.results
+        results: action.results
       });
     default:
       return state;
