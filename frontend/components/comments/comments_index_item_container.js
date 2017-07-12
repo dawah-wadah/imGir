@@ -4,7 +4,7 @@ import { createComment } from '../../actions/comment_actions';
 import NewComment from './create_comments';
 import CommentIndexItem from '../comments/comments_index_item';
 import {displayModal} from '../../actions/modal_actions';
-import {requestAllComments} from '../../actions/comment_actions';
+import {requestAllComments, requestOneComment} from '../../actions/comment_actions';
 import {selectAllComments} from '../../reducers/selectors';
 // import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
 
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   createComment: (comment) => dispatch(createComment(comment)),
   displayModal: (component) => dispatch(displayModal(component)),
   requestAllComments: (id) => dispatch(requestAllComments(id)),
+  requestOneComment: (id) => dispatch(requestOneComment(id)),
 });
 
 export default connect(

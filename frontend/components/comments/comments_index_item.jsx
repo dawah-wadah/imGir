@@ -2,6 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import ReplyForm from './reply_form';
 import {Link} from 'react-router-dom';
+import Comment from './comments_index_item_container';
 
 class CommentIndexItem extends React.Component {
 	constructor(props) {
@@ -12,6 +13,10 @@ class CommentIndexItem extends React.Component {
 		};
 		this.toggleReply = this.toggleReply.bind(this);
 		this.replyForm = this.replyForm.bind(this);
+	}
+
+	componentDidMount(){
+		this.props.requestOneComment(this.props.comment.id);
 	}
 
 	toggleReply() {
@@ -86,7 +91,7 @@ class CommentIndexItem extends React.Component {
 				.props
 				.comment
 				.replies
-				.map((reply) => (<CommentIndexItem key={reply.id} comment={reply}/>));
+				.map((reply) => (<Comment key={reply.id} comment={reply}/>));
 		}
 		return (
 			<div className='child' key={this.props.comment.id}>

@@ -30,7 +30,7 @@ export const requestAllComments = (id) => (dispatch) => {
     .then(comments => dispatch(receiveAllComments(comments)));
 };
 
-export const requestSingleComment = (id) => (dispatch) => {
+export const requestOneComment = (id) => (dispatch) => {
   return CommentUtil.fetchComment(id).then(comment => {
     dispatch(receiveOneComment(comment));
     return comment;

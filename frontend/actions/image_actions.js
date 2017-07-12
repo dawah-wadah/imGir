@@ -25,7 +25,7 @@ export const requestAllImages = () => (dispatch) => {
     .then(images => dispatch(receiveAllImages(images)));
 };
 
-export const requestSingleImage = (id) => (dispatch) => {
+export const requestOneImage = (id) => (dispatch) => {
   return ImageUtil.fetchImage(id).then(image => {
     dispatch(receiveOneImage(image));
     return image;

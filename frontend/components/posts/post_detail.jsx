@@ -26,7 +26,7 @@ class PostDetail extends React.Component {
 	componentDidMount() {
 		this
 			.props
-			.requestAllComments(this.props.post.id);
+			.requestOnePost(this.props.post.id);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -188,7 +188,7 @@ downvote() {
 	}
 }
 import {displayModal} from '../../actions/modal_actions';
-import {requestAllComments} from '../../actions/comment_actions';
+import {requestOnePost} from '../../actions/post_actions';
 import {selectAllComments} from '../../reducers/selectors';
 import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
 
@@ -204,7 +204,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		displayModal: (component) => dispatch(displayModal(component)),
-		requestAllComments: (id) => dispatch(requestAllComments(id)),
+		requestOnePost: (id) => dispatch(requestOnePost(id)),
 		createVote: (voteData) => dispatch(createVote(voteData)),
 		editVote: (voteData) => dispatch(editVote(voteData)),
 		deleteVote: (id) => dispatch(deleteVote(id))
