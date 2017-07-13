@@ -23,12 +23,11 @@ const CommentReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         entities: comments
       });
-      // case RECEIVE_ALL_COMMENTS:
-      //   return merge({}, {
-      //     entities: action.comments
-      //   });
+      case RECEIVE_ALL_COMMENTS:
+        return merge({}, {
+          entities: action.comments
+        });
     case RECEIVE_ONE_COMMENT:
-    debugger
       const comment = action.comment;
       const commentableType = comment.commentable_type;
       let newState = merge({}, state, {

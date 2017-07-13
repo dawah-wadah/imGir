@@ -21,12 +21,12 @@ if post.images
     end
   end
 end
-if comments
-  json.set! :comments do
-    comments.each do |comment|
-      json.set! comment.id do
-        json.partial! 'api/comments/comment', comment: comment
-      end
-    end
-  end
-end
+# if comments
+#   json.set! :comments do
+#     comments.each do |comment|
+#       json.set! comment.id do
+#         json.partial! 'api/comments/comment', comment: comment
+#       end
+#     end
+#   end
+# end

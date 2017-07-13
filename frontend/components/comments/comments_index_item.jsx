@@ -15,9 +15,9 @@ class CommentIndexItem extends React.Component {
 		this.replyForm = this.replyForm.bind(this);
 	}
 
-	componentDidMount(){
-		this.props.requestOneComment(this.props.comment.id);
-	}
+	// componentDidMount(){
+	// 	this.props.requestOneComment(this.props.comment.id);
+	// }
 
 	toggleReply() {
 		this.setState({

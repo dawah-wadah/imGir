@@ -6,6 +6,11 @@ class CommentIndex extends React.Component{
     super(props);
   }
 
+  componentDidMount(){
+
+    this.props.requestAllComments(this.props.postId);
+  }
+
   render(){
 
     const allComments = this.props.comments.map((comment) => (
@@ -20,21 +25,23 @@ class CommentIndex extends React.Component{
 }
 
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-// import {requestAllComments} from '../../actions/comment_actions';
-// import { selectAllComments } from '../../reducers/selectors';
-//
-// const mapStateToProps = ({comment}) => ({
-//   comments: selectAllComments(comment.entities)
-// });
+import { requestAllComments } from '../../actions/comment_actions';
+import { selectAllComments } from '../../reducers/selectors';
 
-// const mapDispatchToProps = dispatch => ({
-//   requestAllComments: () => dispatch(requestAllComments())
-// });
+const mapStateToProps = ({comment}, ownProps) => ({
+  postId: parseInt(ownProps.match.params.id),
+  comments: selectAllComments(comment.entities)
+});
 
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(CommentIndex);
+const mapDispatchToProps = dispatch => ({
+  requestAllComments: (id) => dispatch(requestAllComments(id))
+});
 
-export default CommentIndex;
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CommentIndex));
+
+// export default CommentIndex;

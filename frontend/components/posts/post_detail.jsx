@@ -190,6 +190,7 @@ downvote() {
 import {displayModal} from '../../actions/modal_actions';
 import {requestOnePost} from '../../actions/post_actions';
 import {selectAllComments} from '../../reducers/selectors';
+import { requestAllComments } from '../../actions/comment_actions';
 import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
 
 const mapStateToProps = (state, ownProps) => {

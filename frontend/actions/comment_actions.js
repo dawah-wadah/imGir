@@ -25,7 +25,7 @@ export const receiveCommentErrors = errors => ({
 });
 
 
-export const requestAllComments = (id) => (dispatch) => {
+export const requestAllComments = id => dispatch => {
   return CommentUtil.fetchComments(id)
     .then(comments => dispatch(receiveAllComments(comments)));
 };
