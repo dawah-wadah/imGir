@@ -26,7 +26,7 @@ class CommentIndexItem extends React.Component {
 	}
 
 	replyForm() {
-		return (<ReplyForm parentId={this.props.comment.id} parentType={'Comment'}/>);
+		return (<ReplyForm parentId={this.props.comment.id} parentType={'Comment'} />);
 	}
 
 	toggleReplies() {

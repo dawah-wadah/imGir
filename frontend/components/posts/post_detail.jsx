@@ -23,19 +23,19 @@ class PostDetail extends React.Component {
 		this.downvote = this.downvote.bind(this);
 	}
 
-	componentDidMount() {
-		this
-			.props
-			.requestOnePost(this.props.post.id);
-	}
+	// componentDidMount() {
+	// 	this
+	// 		.props
+	// 		.requestOnePost(this.props.post.id);
+	// }
 
-	componentWillReceiveProps(nextProps) {
-		if (this.props.postId !== nextProps.postId) {
-			this
-				.props
-				.requestAllComments(nextProps.postId);
-		}
-	}
+	// componentWillReceiveProps(nextProps) {
+	// 	if (this.props.postId !== nextProps.postId) {
+	// 		this
+	// 			.props
+	// 			.requestAllComments(nextProps.postId);
+	// 	}
+	// }
 
 	prevPost() {
 		const id = this.props.match.params.postId - 1;
@@ -206,6 +206,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		displayModal: (component) => dispatch(displayModal(component)),
 		requestOnePost: (id) => dispatch(requestOnePost(id)),
+		requestAllComments: (id) => dispatch(requestAllComments(id)),
 		createVote: (voteData) => dispatch(createVote(voteData)),
 		editVote: (voteData) => dispatch(editVote(voteData)),
 		deleteVote: (id) => dispatch(deleteVote(id))

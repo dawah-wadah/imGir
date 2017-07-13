@@ -7,12 +7,19 @@ class CommentIndex extends React.Component{
   }
 
   componentDidMount(){
-
     this.props.requestAllComments(this.props.postId);
   }
 
-  render(){
+  componentWillReceiveProps(nextProps) {
+    if (this.props.postId !== nextProps.postId) {
+      this
+        .props
+        .requestAllComments(nextProps.postId);
+    }
+  }
 
+  render(){
+    debugger;
     const allComments = this.props.comments.map((comment) => (
       <CommentIndexItem key={comment.id} comment={comment}/>
     ));

@@ -29,13 +29,13 @@ const CommentReducer = (state = defaultState, action) => {
         });
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
-      const commentableType = comment.commentable_type;
+      const parent_type = comment.parent_type;
       let newState = merge({}, state, {
         entities: {}
       });
-      if (commentableType === 'Comment') {
+      if (parent_type === 'Comment') {
 
-        newState.entities[comment.commentable_id].comment_ids.push(comment.id);
+        newState.entities[comment.parent_id].replies.push(comment.id);
       }
       newState.entities[comment.id] = comment;
 
