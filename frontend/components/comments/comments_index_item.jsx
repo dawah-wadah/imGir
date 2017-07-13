@@ -1,122 +1,154 @@
 import React from 'react';
+import NewCommentReplyFormContainer from './reply_form';
+import {
+	Link
+} from 'react-router-dom';
+import CommentsIndexContainer from './comments_index_container';
 import Moment from 'react-moment';
-import ReplyForm from './reply_form';
-import {Link} from 'react-router-dom';
-import Comment from './comments_index_item_container';
 
-class CommentIndexItem extends React.Component {
-	constructor(props) {
-		super(props);
+class CommentsIndexItem extends React.Component {
+	constructor( props ) {
+		super( props );
 		this.state = {
-			openReply: false,
-			showReplies: false
+			hideForm: true,
+			hidechild: true,
+
 		};
-		this.toggleReply = this.toggleReply.bind(this);
-		this.replyForm = this.replyForm.bind(this);
+		this.toggle = this.toggle.bind( this );
+		this.toggleChild = this.toggleChild.bind( this );
+		this.repliesCount = this.repliesCount.bind( this );
+		this.vote = this.vote.bind( this );
+		this.handleSubmitUpvote = this.handleSubmitUpvote.bind( this );
+		this.handleSubmitDownvote = this.handleSubmitDownvote.bind( this );
+		this.toggle = this.toggle.bind( this );
+		this.toggleChild = this.toggleChild.bind( this );
+		this.revealVotes = this.revealVotes.bind( this );
 	}
 
-	// componentDidMount(){
-	// 	this.props.requestOneComment(this.props.comment.id);
-	// }
-
-	toggleReply() {
-		this.setState({
-			openReply: !this.state.openReply
-		});
+	toggle() {
+		this.setState( {
+			hideForm: !this.state.hideForm
+		} );
 	}
-
-	replyForm() {
-		return (<ReplyForm parentId={this.props.comment.id} parentType={'Comment'} />);
+	toggleChild() {
+		this.setState( {
+			hidechild: !this.state.hidechild
+		} );
 	}
-
-	toggleReplies() {
-		this.setState({
-			showReplies: !this.state.showReplies
-		});
+	form() {
+		return this.state.hideForm ? null :
+			<NewCommentReplyFormContainer
+        parentId={this.props.commentId}
+        parentType='Comment' /> ;
 	}
-
+	childComments() {
+		return this.state.hidechild ? <div></div> :
+			<CommentsIndexContainer commentIds={this.props.commentIds} />
+	}
 	repliesCount() {
-		if (this.props.comment.replies) {
-			return (this.props.comment.replies.length + ' replies');
+		if ( this.props.commentIds.length > 0 ) {
+			return <div>{this.state.hidechild ? "+ " : "- "}{this.props.commentIds.length} replies</div>
+		}
+	}
+	revealVotes() {
+		if ( this.props.voted ) {
+			if ( this.props.vote.vote_type === 'Upvote' ) {
+				return (
+					<div className="comment-votes">
+            <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_after} className="vote-arrow" ></img>
+            <img onClick={this.handleSubmitDownvote} src={window.images.downvote_before} className="vote-arrow"></img>
+              </div>
+				)
+			} else {
+				return (
+					<div className="comment-votes">
+            <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
+            <img onClick={this.handleSubmitDownvote} src={window.images.downvote_after} className="vote-arrow"></img>
+              </div>
+				)
+			}
 		} else {
-			return 'Collapse';
+			return (
+				<div className="comment-votes">
+          <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
+          <img onClick={this.handleSubmitDownvote} src={window.images.downvote_before} className="vote-arrow"></img>
+            </div>
+			)
 		}
 	}
 
-	replyButton() {
-		let button;
-		this.state.openReply
-			? button = 'Close Reply'
-			: button = 'Reply Button';
-		return (
-			<div className="comment-reply-icon" onClick={() => this.toggleReply()}>
-				<div className='reply-icon'>
-					{button}
-				</div>
-			</div>
-		);
+	vote( upOrDown ) {
+		if ( this.props.voted ) {
+			return this.props.vote;
+		} else {
+			const vote = {
+				voter_id: this.props.accountId,
+				votable_id: this.props.commentId,
+				votable_type: 'Comment',
+				vote_type: `${upOrDown}`,
+			};
+			return vote;
+		}
 	}
-
-	commentInfo() {
-		return (
-			<div className='comment-info'>
-				<div className='author'>
-					<div className='comment-user-name cf'>
-						<Link
-							className="comment-username"
-							to={`/users/${this.props.comment.user_id}`}>
-							{this.props.comment.author_name}
-						</Link>
-					</div>
-					<div className='time-since-posted spacer'>
-						<Moment fromNow>
-							{this.props.comment.time_since}
-						</Moment>
-					</div>
-				</div>
-				<div className='body'>
-					<span className='comment-body'>
-						{this.props.comment.body}
-					</span>
-				</div>
-			</div>
-		);
+	handleSubmitUpvote( e ) {
+		e.preventDefault();
+		if ( this.props.loggedIn ) {
+			this.props.toggleUpvote( this.vote( 'Upvote' ), this.props.voted );
+		} else {
+			this.props.history.push( '/login' );
+		}
 	}
-
+	handleSubmitDownvote( e ) {
+		e.preventDefault();
+		if ( this.props.loggedIn ) {
+			this.props.toggleDownvote( this.vote( 'Downvote' ), this.props.voted );
+		} else {
+			this.props.history.push( '/login' );
+		}
+	}
 	render() {
-		let allReplies;
-		if (this.props.comment.replies) {
+		if ( this.props.commentId ) {
+			return (
+				<div className='child' key={this.props.commentId}>
+        <div className="comment">
 
-			allReplies = this
-				.props
-				.comment
-				.replies
-				.map((reply) => (<Comment key={reply.id} comment={reply}/>));
+          <div className="comment-info">
+            <div className="author">
+              <div className="comment-user-name cf">
+                <div className="comment-username">{this.props.username}</div>
+                <div className="comment-username spacer">{this.props.points} pts</div>
+              </div>
+              <div className='time-since-posted spacer'>
+                <Moment fromNow>
+                  {this.props.createdAt}
+                </Moment>
+              </div>
+            </div>
+            <div className="body">
+              <span className='comment-body'>
+                {this.props.body}
+              </span>
+            </div>
+          </div>
+            <div className="comment-reply-icon" onClick={this.toggle}>
+  						{this.state.hideForm
+  							? <div className='reply-icon' >Reply </div>
+  							: <div className='reply-icon' >Close Form </div>}
+  					</div>
+        </div>
+        {this.form()}
+        <p className='reply-icon' onClick={this.toggleChild}>
+          {this.repliesCount()}
+        </p>
+        {this.childComments()}
+      </div>
+			);
+		} else {
+			return null;
 		}
-		return (
-			<div className='child' key={this.props.comment.id}>
-				<div className='comment'>
-					{this.commentInfo()}
-					{this.replyButton()}
-
-				</div>
-				{this.state.openReply
-					? this.replyForm()
-
-					: null}
-				<p className='replies-icon' onClick={() => this.toggleReplies()}>
-					{this.repliesCount()}
-				</p>
-				<div className='comment-replies'>
-					{this.state.showReplies
-						? allReplies
-						: null
-}
-				</div>
-			</div>
-		);
 	}
 
 }
 
-export default CommentIndexItem;
+
+export default CommentsIndexItem;

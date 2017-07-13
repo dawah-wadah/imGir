@@ -1,3 +1,27 @@
+.create-comment-box2 {
+  display          : block;
+  box-sizing       : border-box;
+  width            : 100%;
+  height           : 22px;
+  height           : 22px;
+  margin-bottom    : 10px;
+  padding          : 0;
+  color            : #f2f2f2;
+  overflow         : hidden;
+  border           : none;
+  border-radius    : 4px;
+  background       : 0 0;
+  background-color : #2C2F34;
+  outline          : 0;
+  box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
+  font-family      : inherit;
+  font-size        : 15px;
+  line-height      : 1.5em;
+  letter-spacing   : .02em;
+  resize           : none;
+  box-shadow: none;
+  font-weight: bolder;
+}
 .create-comment-box {
   position        : absolute;
   top             : 0px;
@@ -17,13 +41,13 @@
 
 .child:hover .comment-reply-icon {
   font-family: 'Open sans', sans-serif;
-  display: block;
+  display: flex;
   align-content: center;
   justify-content: center;
   position: relative;
   top: 0;
   right: 0;
-  width: 51px;
+  width: 70px;
   color: #a8a8a2;
   height: inherit;
   font-size: 14px;
@@ -63,30 +87,6 @@
   margin-top : 20px;
 }
 
-.create-comment-box2 {
-  display          : block;
-  box-sizing       : border-box;
-  width            : 100%;
-  height           : 22px;
-  height           : 22px;
-  margin-bottom    : 10px;
-  padding          : 0;
-  color            : #f2f2f2;
-  overflow         : hidden;
-  border           : none;
-  border-radius    : 4px;
-  background       : 0 0;
-  background-color : #2C2F34;
-  outline          : 0;
-  box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
-  font-family      : inherit;
-  font-size        : 15px;
-  line-height      : 1.5em;
-  letter-spacing   : .02em;
-  resize           : none;
-  box-shadow: none;
-  font-weight: bolder;
-}
 
 
 .summary {
@@ -96,34 +96,7 @@
   line-height : 60px;
 }
 
-// form.caption-create {
-//   position      : relative;
-//   padding       : 15px;
-//   border        : 2px solid #53555b;
-//   border-radius : 4px;
-//   background    : #2C2F34;
-//   cursor        : text;
-// }
-//
-// form.caption-create .summary #submit-comment {
-//   width       : inherit;
-//   margin-left : 10px;
-//   font-weight : 700;
-// }
 
-// form.caption-create input[type=submit] {
-//   height       : auto;
-//   color        : #ddddd1;
-//   border-width : 2px;
-// }
-
-// button,
-// input[type=button],
-// input[type=submit] {
-//   border-right : 0;
-//   border-left  : 0;
-//   cursor       : pointer;
-// }
 
 .right {
   float : right;
@@ -135,6 +108,25 @@
 
 .btn {
   padding : 10px 25px;
+}
+
+
+.post-button{
+  padding : 10px 25px;
+  display             : inline-block;
+  color               : #F2F2F2;
+  border              : none;
+  border-radius       : 2px;
+  outline             : 0;
+  text-decoration     : none;
+  font-family         : 'Open Sans',
+                        sans-serif;
+  font-size           : 14px;
+  -webkit-user-select : none;
+  user-select         : none;
+  cursor              : pointer;
+  background : #1bb76e;
+
 }
 
 .btn,
@@ -306,7 +298,7 @@ a {
 }
 
 .comment {
-  margin: 8px;
+  margin: 3px;
   padding: 7px 7px 7px 17px;
   border-radius: 5px;
   background: #2c2F34;
@@ -330,13 +322,13 @@ a {
 
 .reply-icon {
   display: block;
-  text-align: center;
+  text-align: left;
   font-size: 11px;
   font-weight: 700;
   margin: auto;
   color: #bbb;
   position: relative;
-  top: 4px;
+  top: 2px;
 }
 
 

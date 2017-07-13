@@ -2,10 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import NewComment from '../comments/create_comment_container';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PostZoom from './post_zoom';
 import SideBar from './side_bar';
 import ImageShow from './image_show';
-import CommentIndex from '../comments/comments_index';
+import CommentIndex from '../comments/comments_index_container';
 
 class PostDetail extends React.Component {
 	constructor(props) {
@@ -23,29 +24,23 @@ class PostDetail extends React.Component {
 		this.downvote = this.downvote.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	this
-	// 		.props
-	// 		.requestOnePost(this.props.post.id);
-	// }
-
-	// componentWillReceiveProps(nextProps) {
-	// 	if (this.props.postId !== nextProps.postId) {
-	// 		this
-	// 			.props
-	// 			.requestAllComments(nextProps.postId);
-	// 	}
-	// }
+	componentWillReceiveProps(nextProps) {
+		if (this.props.postId !== nextProps.postId) {
+			this
+				.props
+				.requestAllComments(nextProps.postId);
+		}
+	}
 
 	prevPost() {
-		const id = this.props.match.params.postId - 1;
+		const id = parseInt(this.props.match.params.id) - 1;
 		this
 			.props
 			.history
 			.push(`/posts/${id}`);
 	}
 	nextPost() {
-		const id = parseInt(this.props.match.params.postId) + 1;
+		const id = parseInt(this.props.match.params.id) + 1;
 		this
 			.props
 			.history
@@ -124,7 +119,7 @@ downvote() {
 }
 
 	render() {
-
+		debugger
 		let allPics;
 		if (this.props.post.images) {
 			allPics = this
@@ -148,6 +143,12 @@ downvote() {
 								{this.props.post.author_name}
 							</Link>
 						</span>
+						<div className='prev-next' onClick={this.nextPost}>
+							<div className='text'>
+								Next Post
+							</div>
+						</div>
+
 					</div>
 					{allPics}
 					<div className='post-description'>
@@ -172,10 +173,9 @@ downvote() {
 							points</div>
 					</div>
 					<div className='post-comments-container'>
-						<NewComment parentId={this.props.post.id} parentType={'Post'}/> {this.props.comments
-							? <CommentIndex comments={this.props.comments}/>
-							: null
-}
+						<NewComment parentId={this.props.post.id} parentType={'Post'}/>
+						<CommentIndex commentIds={this.props.post.comment_ids}/>
+
 					</div>
 				</section>
 				<div className='side-bar'>
@@ -189,7 +189,6 @@ downvote() {
 }
 import {displayModal} from '../../actions/modal_actions';
 import {requestOnePost} from '../../actions/post_actions';
-import {selectAllComments} from '../../reducers/selectors';
 import { requestAllComments } from '../../actions/comment_actions';
 import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
 
@@ -197,7 +196,6 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		voted: Boolean(ownProps.post.vote),
 		modal: Boolean(state.dropdown.uploadModal),
-		comments: selectAllComments(state.comment.entities),
 		postId: ownProps.post.id
 	};
 };
@@ -213,4 +211,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetail);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostDetail));

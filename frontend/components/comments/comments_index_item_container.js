@@ -1,30 +1,25 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { createComment } from '../../actions/comment_actions';
-import NewComment from './create_comments';
-import CommentIndexItem from '../comments/comments_index_item';
-import {displayModal} from '../../actions/modal_actions';
-import {requestAllComments, requestOneComment} from '../../actions/comment_actions';
-import {selectAllComments} from '../../reducers/selectors';
-// import {editVote, createVote, deleteVote } from '../../actions/vote_actions';
+import { withRouter } from 'react-router-dom';
+import CommentsIndexItem from './comments_index_item';
+import { toggleUpvote, toggleDownvote } from '../../actions/vote_actions';
 
+const mapStateToProps = ({ session }) => {
 
-const mapStateToProps = (state, { session }) => {
   return {
-    // loggedIn: Boolean(session.currentUser),
-    comments: selectAllComments(state.comment.entities),
-
+    loggedIn: Boolean(session.currentUser),
+    accountId: session.currentUser ? session.currentUser.id : null
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  createComment: (comment) => dispatch(createComment(comment)),
-  displayModal: (component) => dispatch(displayModal(component)),
-  requestAllComments: (id) => dispatch(requestAllComments(id)),
-  requestOneComment: (id) => dispatch(requestOneComment(id)),
-});
+const mapDispatchToProps = dispatch => {
 
-export default connect(
+  return {
+    toggleUpvote: (vote, voted) => dispatch(toggleUpvote(vote, voted)),
+    toggleDownvote: (vote, voted) => dispatch(toggleDownvote(vote, voted)),
+  };
+};
+
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(CommentIndexItem);
+)(CommentsIndexItem));

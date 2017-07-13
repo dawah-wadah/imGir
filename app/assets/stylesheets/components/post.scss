@@ -1,4 +1,4 @@
- // .post-index-container {
+// .post-index-container {
 // top: 90px;
 // width: 70%;
 // border-radius: 15px;
@@ -15,6 +15,28 @@
   height: 50px;
   width: 50px;
   object-fit: cover;
+}
+// .vote-arrow {
+//   height: 20px;
+//   width: 20px;
+//   object-fit: cover;
+// }
+// .comment-votes {
+// display: flex;
+// flex-direction: column;
+// }
+
+.prev-next {
+  padding: 10px 25px;
+  background: #5c69ff;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  padding-left: 15px;
+  height: 36px;
+  box-sizing: border-box;
+  float: right;
+  padding-right: 15px;
 }
 
 .gridList {

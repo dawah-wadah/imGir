@@ -6,8 +6,8 @@ class ReplyForm extends React.Component{
     super(props);
     this.state = {
 				body: '',
-				parent_id: this.props.CommentId,
-				parent_type: 'Comment',
+				parent_id: this.props.parentId,
+				parent_type: this.props.parentType,
 				post_id: this.props.CommentId,
 			charsLeft: 140
 		};
@@ -29,6 +29,8 @@ class ReplyForm extends React.Component{
 			.props
 			.createComment(commentData)
 			.then(() => this.setState({body: ''}));
+      this.props.toggle();
+      this.props.toggleChild();
 		} else {
 			this.props.displayModal(<SessionFormModal/>);
 		}

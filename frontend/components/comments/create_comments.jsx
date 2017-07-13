@@ -54,7 +54,7 @@ class NewComment extends React.Component {
 			<textarea id='comment_box' type="text" className="create-comment-box2" placeholder="Write a comment" onChange={this.update('body')} value={this.state.body}></textarea>
 			<input type="hidden" className="comment-input" value={this.state.body}></input>
 		<div className="summary">
-					<button onClick={this.handleSubmit} className="right btn btn-main spacer">Post</button>
+					<button onClick={this.handleSubmit} className="right post-button spacer">Post</button>
 					<div className="couter right ">{140 - this.state.body.length}</div>
 		</div>
 	</form>
