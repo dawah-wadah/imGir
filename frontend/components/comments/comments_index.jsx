@@ -1,40 +1,37 @@
 import React from 'react';
-import CommentIndexItem from './comments_index_item';
+import Comment from './comments_index_item_container';
 
-class CommentIndex extends React.Component{
-  constructor(props) {
+
+class CommentsIndex extends React.Component{
+  constructor(props){
     super(props);
   }
 
   render(){
+    const comments = this.props.comments;
+    if (comments) {
 
-    const allComments = this.props.comments.map((comment) => (
-      <CommentIndexItem key={comment.id} comment={comment}/>
-    ));
-    return(
-      <div>
-        {allComments}
-      </div>
-    );
+        return (
+          <div className="comment-index-container">
+            <div className="comment-index">
+              <ul>
+                {comments.map( (comment) => {
+                  if(comment) {
+                    return (
+                  <Comment key={comment.id} body={comment.body} comment={comment}
+                    commentId={comment.id} username={comment.username} commenterId={comment.commenter_id}
+                    commentIds={comment.comment_ids} points={comment.points} voted={comment.voted} vote={comment.vote} createdAt={comment.created_at}/>)
+                  }
+                }
+                )}
+             </ul>
+            </div>
+          </div>
+        )
+      } else {
+        return null;
+      }
+    }
   }
-}
 
-import { connect } from 'react-redux';
-
-// import {requestAllComments} from '../../actions/comment_actions';
-// import { selectAllComments } from '../../reducers/selectors';
-//
-// const mapStateToProps = ({comment}) => ({
-//   comments: selectAllComments(comment.entities)
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   requestAllComments: () => dispatch(requestAllComments())
-// });
-
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(CommentIndex);
-
-export default CommentIndex;
+export default CommentsIndex;

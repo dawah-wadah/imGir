@@ -9,12 +9,12 @@ class PostShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.requestSinglePost(this.props.id);
+    this.props.requestOnePost(this.props.id);
   }
 
   componentWillReceiveProps(nextProps) {
   if (this.props.match.params.id !== nextProps.match.params.id) {
-    this.props.requestSinglePost(nextProps.match.params.id);
+    this.props.requestOnePost(nextProps.match.params.id);
     }
   }
 

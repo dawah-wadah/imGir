@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
-import { requestAllPosts, requestSinglePost } from '../../actions/post_actions';
+import { requestAllPosts, requestOnePost } from '../../actions/post_actions';
 import { selectAllPosts } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     requestAllPosts: () => dispatch(requestAllPosts()),
-    requestSinglePost: (id) => dispatch(requestSinglePost(id))
+    requestOnePost: (id) => dispatch(requestOnePost(id))
   };
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PostShow from './post_show';
 import {connect} from 'react-redux';
-import { requestSinglePost } from '../../actions/post_actions';
+import { requestOnePost } from '../../actions/post_actions';
 
 const mapStateToProps = (state, {match}) => {
   return({
@@ -10,7 +10,7 @@ const mapStateToProps = (state, {match}) => {
 });};
 
 const mapDispatchToProps = dispatch => ({
-  requestSinglePost: (id) => dispatch(requestSinglePost(id))
+  requestOnePost: (id) => dispatch(requestOnePost(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostShow);

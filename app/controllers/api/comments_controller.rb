@@ -1,11 +1,12 @@
 class Api::CommentsController < ApplicationController
   def index
-    @post = Post.find(params[:post_id])
-    @comments = @post.comments.order(created_at: :desc)
+    post = Post.find(params[:post_id])
+    @comments = post.comments.order(created_at: :desc)
   end
 
   def show
-    @comment = Comment.find(params[:id])
+
+    @comment = Comment.includes(:replies).find(params[:id])
   end
 
   def create

@@ -79,12 +79,9 @@ class UploadModalContent extends React.Component {
 				}));
 			});
 	}
-// </div> < div className = 'paste-url' > <input id="paste-url-input"
-// placeholder="Paste Image or URL"/> < /div>
-// <div className='misc'>
 
 	render() {
-		const thingsToShow = [ < div className = 'upload-actions' >
+		const thingsToShow = [ <div className = 'upload-actions'>
 		<div className='drag-and-drop-text'>
 			<div className='drag-and-drop-box'>
 				<Dropzone
@@ -99,13 +96,8 @@ class UploadModalContent extends React.Component {
 				<img className='upload-pointer'
 					src={window.images.upload_pointer}></img>
 			</div>
-      </div > </div>, < span className = "upload-modal-terms" >
-			By creating a post,
-			you agree to Imgur 's
- < a href = "//imgur.com/tos" > Terms of Service < /a>
-      and
-      <a href="//imgur.com/privacy ">Privacy Policy</a>
- < /span>
+      </div>
+		</div>
 
   ];
 
@@ -135,7 +127,7 @@ class UploadModalContent extends React.Component {
       gottenPhoto
       :thingsToShow
     }
-  </div >);
+  </div>);
 		}
 	}
 

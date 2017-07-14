@@ -4,19 +4,6 @@ export const fetchComments = (id) => (
     url: `/api/posts/${id}/comments`,
   })
 );
-// export const fetchComments = () => (
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/comments',
-//   })
-// );
-
-// export const fetchPostComments = (id) => (
-//   $.ajax({
-//     method: 'GET',
-//     url: `/api/posts/${id}/comments`,
-//   })
-// );
 
 export const fetchComment = (id) => (
   $.ajax({
@@ -26,11 +13,11 @@ export const fetchComment = (id) => (
 );
 
 export const createComment = (props) => {
-  
+
   return (
   $.ajax({
     method: 'POST',
     url: 'api/comments/',
     data: props,
   })
-)};
+);};

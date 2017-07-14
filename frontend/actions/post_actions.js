@@ -25,7 +25,7 @@ export const requestAllPosts = () => (dispatch) => {
     .then(posts => dispatch(receiveAllPosts(posts)));
 };
 
-export const requestSinglePost = (id) => (dispatch) => {
+export const requestOnePost = (id) => (dispatch) => {
   return PostUtil.fetchPost(id).then(post => {
     dispatch(receiveOnePost(post));
     return post;

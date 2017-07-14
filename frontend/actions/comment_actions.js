@@ -25,12 +25,12 @@ export const receiveCommentErrors = errors => ({
 });
 
 
-export const requestAllComments = (id) => (dispatch) => {
+export const requestAllComments = id => dispatch => {
   return CommentUtil.fetchComments(id)
     .then(comments => dispatch(receiveAllComments(comments)));
 };
 
-export const requestSingleComment = (id) => (dispatch) => {
+export const requestOneComment = (id) => (dispatch) => {
   return CommentUtil.fetchComment(id).then(comment => {
     dispatch(receiveOneComment(comment));
     return comment;
