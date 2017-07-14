@@ -7,21 +7,7 @@ class CommentsIndex extends React.Component{
     super(props);
   }
 
-  componentDidMount(){
-    this.props.requestAllComments(this.props.postId);
-  }
-
-  componentWillReceiveProps(oldProps, nextProps) {
-    debugger
-    if (oldProps.commentIds.length !== nextProps.commentIds.length) {
-      this
-        .props
-        .requestAllComments(nextProps.postId);
-    }
-  }
-
   render(){
-
     const comments = this.props.comments;
     if (comments) {
 

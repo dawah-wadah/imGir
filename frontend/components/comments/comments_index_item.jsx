@@ -31,6 +31,9 @@ class CommentsIndexItem extends React.Component {
 		} );
 	}
 	toggleChild() {
+		this.props.commentIds.forEach((id) => {
+			this.props.requestOneComment(id);
+		});
 		this.setState( {
 			hidechild: !this.state.hidechild
 		} );
@@ -41,7 +44,10 @@ class CommentsIndexItem extends React.Component {
         parentId={this.props.commentId}
         parentType='Comment' /> ;
 	}
+
+
 	childComments() {
+
 		return this.state.hidechild ? <div></div> :
 			<CommentsIndexContainer commentIds={this.props.commentIds} />
 	}

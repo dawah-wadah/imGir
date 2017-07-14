@@ -25,8 +25,7 @@ class PostDetail extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		debugger
-		if (this.props.post.comment_ids.length !== nextProps.post.comment_ids.length) {
+		if (this.props.postId !== nextProps.post.postId) {
 			this
 				.props
 				.requestAllComments(nextProps.postId);

@@ -28,9 +28,9 @@ const CommentReducer = (state = defaultState, action) => {
       let newState = merge({}, state, {
         entities: {}
       });
-      if (parentType === 'Comment') {
+      if (parentType === 'Comment' && !newState.entities[comment.parent_id].comment_ids.includes(comment.id) ) {
 
-        newState.entities[comment.parent_id].replies.push(comment.id);
+        newState.entities[comment.parent_id].comment_ids.push(comment.id);
       }
       newState.entities[comment.id] = comment;
 
