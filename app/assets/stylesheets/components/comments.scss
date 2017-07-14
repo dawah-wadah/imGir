@@ -146,28 +146,7 @@
   cursor              : pointer;
 }
 
-// input[type=email],
-// input[type=password],
-// input[type=text],
-// textarea {
-//   box-sizing       : border-box;
-//   margin-bottom    : 10px;
-//   padding          : 5px 10px;
-//   color            : #f2f2f2;
-//   border           : 1px solid transparent;
-//   background-color : #191919;
-//   outline          : 0;
-//   box-shadow       : inset 0 1px 1px rgba(0,0,0,.1);
-//   font-family      : inherit;
-//   font-size        : .9em;
-//   line-height      : 1.5em;
-//   letter-spacing   : .02em;
-//   resize           : none;
-// }
 
-// .root-caption-container>form.caption-create {
-//   margin : 0;
-// }
 
 form.caption-create {
   position      : relative;
@@ -350,14 +329,4 @@ display: block;
 .post-footer {
   display: flex;
   margin-top: 20px;
-}
-
-.upvote-button {
-
-}
-
-
-
-.downvote-button {
-
 }

@@ -25,7 +25,8 @@ class PostDetail extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (this.props.postId !== nextProps.postId) {
+		debugger
+		if (this.props.post.comment_ids.length !== nextProps.post.comment_ids.length) {
 			this
 				.props
 				.requestAllComments(nextProps.postId);
@@ -119,7 +120,6 @@ downvote() {
 }
 
 	render() {
-		debugger
 		let allPics;
 		if (this.props.post.images) {
 			allPics = this
