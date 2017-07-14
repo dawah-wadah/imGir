@@ -12,13 +12,14 @@ class NewCommentForm extends React.Component{
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     if(this.props.loggedIn) {
       const comment = { body: this.state.body,
         commenter_id: this.props.currentaccountId,
         commentable_id: this.props.commentableId,
         commentable_type: this.props.commentableType,
-        post_id: this.props.currentPost,
+        post_id: this.props.match.params.id,
       };
       this.props.createComment(comment);
     } else {

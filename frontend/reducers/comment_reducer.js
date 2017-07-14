@@ -11,7 +11,6 @@ import {
 
 const defaultState = Object.freeze({
   entities: {},
-  currentComment: null
 });
 
 const CommentReducer = (state = defaultState, action) => {
@@ -19,13 +18,17 @@ const CommentReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_ONE_POST:
       const comments = action.post.comments;
-      return Object.assign({}, state, {
-        entities: comments
+      let newState = merge({}, state, {
+        entities: {}
       });
+      // return Object.merge({}, state, {
+      //   entities: comments
+      // });
+      return newState;
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
       const parentType = comment.parent_type;
-      let newState = merge({}, state, {
+      newState = merge({}, state, {
         entities: {}
       });
       if (parentType === 'Comment' && !newState.entities[comment.parent_id].comment_ids.includes(comment.id) ) {

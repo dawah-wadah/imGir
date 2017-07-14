@@ -35,13 +35,13 @@ User.create!(username: 'NathanNathan', password: 'password')
 User.create!(username: 'Nathan', password: 'password')
 User.create!(username: 'Tommy_Pickles', password: 'password')
 
-15.times do |num|
-  User.create({
-    username: Faker::GameOfThrones.character,
-    password: 'password'
-  })
-end
-  60.times do
+# 15.times do |num|
+#   User.create({
+#     username: Faker::GameOfThrones.character,
+#     password: 'password'
+#   })
+# end
+  10.times do
   post = Post.create({
     title: Faker::Friends.quote,
     description: Faker::Friends.quote,

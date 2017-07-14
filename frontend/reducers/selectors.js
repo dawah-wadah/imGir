@@ -5,9 +5,9 @@ export const selectAllPosts = (posts) => (
 );
 
 export const selectAllComments = ({ comment }, commentIds ) => {
-    if(Object.keys(comment.entities).length && commentIds) {
+    if( comment.entities && values(comment.entities).length && commentIds) {
       return commentIds.map( id => comment.entities[id]);
-    }
+    } else { return null ;}
 };
 
 export const selectAllResults = (results) => (

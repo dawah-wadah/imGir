@@ -3,7 +3,6 @@ json.id post.id
 json.description post.description
 if current_user
   vote = Vote.where('voter_id = :id and voteable_id = :post and voteable_type = :type', id: current_user.id, post: post.id, type: 'Post')
-
   json.vote vote[0] ? vote[0] : nil
 else
   json.voted false
@@ -22,21 +21,16 @@ if post.images
   end
 end
 
-json.comment_ids comments.map(&:id)
-
-json.comments do
-  @post.comments.map do |comment|
-    json.set! comment.id do
-      json.partial! 'api/comments/show', comment: comment
+if comments
+  json.comment_ids comments.map(&:id)
+  json.comments do
+    @post.comments.map do |comment|
+      json.set! comment.id do
+        json.partial! 'api/comments/show', comment: comment
+      end
     end
   end
+
+else
+  json.comment_ids []
 end
-# if comments
-#   json.set! :comments do
-#     comments.each do |comment|
-#       json.set! comment.id do
-#         json.partial! 'api/comments/comment', comment: comment
-#       end
-#     end
-#   end
-# end
