@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import CommentsIndexItem from './comments_index_item';
-import { requestOneComment } from '../../actions/comment_actions'
+import { requestOneComment } from '../../actions/comment_actions';
+import { displayModal } from '../../actions/modal_actions';
 import { toggleUpvote, toggleDownvote } from '../../actions/vote_actions';
 
 const mapStateToProps = ({ session }) => {
@@ -15,6 +16,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = dispatch => {
 
   return {
+    displayModal: (component) => dispatch(displayModal(component)),
     requestOneComment: (id) => dispatch(requestOneComment(id)),
     toggleUpvote: (vote, voted) => dispatch(toggleUpvote(vote, voted)),
     toggleDownvote: (vote, voted) => dispatch(toggleDownvote(vote, voted)),

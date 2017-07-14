@@ -10,8 +10,8 @@ class CommentsIndexItem extends React.Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			hideForm: true,
-			hidechild: true,
+			hideReplyForm: true,
+			hideReplies: true,
 
 		};
 		this.toggle = this.toggle.bind( this );
@@ -27,7 +27,7 @@ class CommentsIndexItem extends React.Component {
 
 	toggle() {
 		this.setState( {
-			hideForm: !this.state.hideForm
+			hideReplyForm: !this.state.hideReplyForm
 		} );
 	}
 	toggleChild() {
@@ -35,25 +35,25 @@ class CommentsIndexItem extends React.Component {
 			this.props.requestOneComment(id);
 		});
 		this.setState( {
-			hidechild: !this.state.hidechild
+			hideReplies: !this.state.hideReplies
 		} );
 	}
-	form() {
-		return this.state.hideForm ? null :
+	replyForm() {
+		return this.state.hideReplyForm ? null :
 			<NewCommentReplyFormContainer
         parentId={this.props.commentId}
         parentType='Comment' /> ;
 	}
 
 
-	childComments() {
+	replies() {
 
-		return this.state.hidechild ? <div></div> :
+		return this.state.hideReplies ? <div></div> :
 			<CommentsIndexContainer commentIds={this.props.commentIds} />
 	}
 	repliesCount() {
 		if ( this.props.commentIds.length > 0 ) {
-			return <div>{this.state.hidechild ? "+ " : "- "}{this.props.commentIds.length} replies</div>
+			return <div>{this.state.hideReplies ? "+ " : "- "}{this.props.commentIds.length} replies</div>
 		}
 	}
 	revealVotes() {
@@ -71,7 +71,7 @@ class CommentsIndexItem extends React.Component {
             <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
             <img onClick={this.handleSubmitDownvote} src={window.images.downvote_after} className="vote-arrow"></img>
               </div>
-				)
+				);
 			}
 		} else {
 			return (
@@ -79,7 +79,7 @@ class CommentsIndexItem extends React.Component {
           <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
           <img onClick={this.handleSubmitDownvote} src={window.images.downvote_before} className="vote-arrow"></img>
             </div>
-			)
+			);
 		}
 	}
 
@@ -113,40 +113,40 @@ class CommentsIndexItem extends React.Component {
 		}
 	}
 	render() {
-		if ( this.props.commentId ) {
+		if ( this.props.comment.id ) {
 			return (
-				<div className='child' key={this.props.commentId}>
+				<div className='child' key={this.props.comment.id}>
         <div className="comment">
 
           <div className="comment-info">
             <div className="author">
               <div className="comment-user-name cf">
-                <div className="comment-username">{this.props.username}</div>
-                <div className="comment-username spacer">{this.props.points} pts</div>
+                <div className="comment-username">{this.props.comment.username}</div>
+                <div className="comment-username spacer">{this.props.comment.points} pts</div>
               </div>
               <div className='time-since-posted spacer'>
                 <Moment fromNow>
-                  {this.props.createdAt}
+                  {this.props.comment.created_at}
                 </Moment>
               </div>
             </div>
             <div className="body">
               <span className='comment-body'>
-                {this.props.body}
+                {this.props.comment.body}
               </span>
             </div>
           </div>
             <div className="comment-reply-icon" onClick={this.toggle}>
-  						{this.state.hideForm
+  						{this.state.hideReplyForm
   							? <div className='reply-icon' >Reply </div>
   							: <div className='reply-icon' >Close Form </div>}
   					</div>
         </div>
-        {this.form()}
+        {this.replyForm()}
         <p className='reply-icon' onClick={this.toggleChild}>
           {this.repliesCount()}
         </p>
-        {this.childComments()}
+        {this.replies()}
       </div>
 			);
 		} else {

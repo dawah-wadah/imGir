@@ -1,5 +1,6 @@
 import React from 'react';
 import { createComment } from '../../actions/comment_actions';
+import SessionFormModal from '../session_form/session_form_modal';
 
 class ReplyForm extends React.Component{
   constructor(props){
@@ -63,6 +64,7 @@ class ReplyForm extends React.Component{
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { displayModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({ session }, {parentId}) => {
   return {
@@ -72,6 +74,7 @@ const mapStateToProps = ({ session }, {parentId}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  displayModal: (component) => dispatch(displayModal(component)),
   createComment: (comment) => dispatch(createComment(comment))
 });
 
