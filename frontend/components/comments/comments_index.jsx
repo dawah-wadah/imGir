@@ -8,8 +8,8 @@ class CommentsIndex extends React.Component{
   }
 
   render(){
-    const comments = this.props.comments;
-    if (comments) {
+    if (this.props.comments) {
+      const comments = this.props.comments.sort((a, b) => (b.id - a.id));
         return (
           <div className="comment-index-container">
             <div className="comment-index">

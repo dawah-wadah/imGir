@@ -28,7 +28,7 @@ class PostShow extends React.Component {
         <PostDetail post={post[id]}/>
       );
     } else {
-      return (<section className='post-show-page' contentEditable={true} onKeyDown={this.handleKeyPress}>
+      return (<section className='post-show-page'>
         <h1>Nothing to Show</h1>
       </section>);
 

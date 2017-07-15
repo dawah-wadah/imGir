@@ -70,8 +70,8 @@ class CommentsIndexItem extends React.Component {
 	}
 	repliesCount() {
 		if ( this.props.commentIds.length > 0 ) {
-			return (<div>{this.state.hideReplies ? "+ " : "- "}
-				{this.props.commentIds.length} replies</div>);
+			return (<div className='replies-count'>{this.state.hideReplies ?
+				`+ ${this.props.commentIds.length} replies`  : 'Collapse'}</div>);
 		}
 	}
 	revealVotes() {
@@ -147,12 +147,12 @@ class CommentsIndexItem extends React.Component {
 			return (
 				<div className='child' key={this.props.comment.id}
 					>
-        <div className="comment" onMouseEnter={(e) => this.showIcon(e)}
+        <div className="comment" onClick={this.toggleChild} onMouseEnter={(e) => this.showIcon(e)}
 				onMouseLeave={(e) => this.hideIcon(e)}>
 
           <div className="comment-info">
             <div className="author">
-              <div className="comment-user-name cf">
+							<div className="comment-user-name cf">
                 <div className="comment-username">{this.props.comment.username}</div>
                 <div className="comment-username spacer">{this.props.comment.points} pts</div>
               </div>
