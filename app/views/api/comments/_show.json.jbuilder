@@ -1,5 +1,6 @@
 json.extract! comment, :id, :body, :user_id, :parent_type, :parent_id, :created_at
 json.username comment.user.username
+json.points comment.upvotes.count - comment.downvotes.count
 json.comment_ids comment.replies.map { |child_comment| child_comment.id }
 
 
