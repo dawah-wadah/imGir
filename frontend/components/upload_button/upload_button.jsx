@@ -47,7 +47,10 @@ class UploadModalContent extends React.Component {
 		if (file) {
 			fileReader.readAsDataURL(file);
 		}
-	});
+
+	}
+);
+	// this.props.history.push(`/posts/new`);
 
 	}
 
@@ -91,7 +94,6 @@ class UploadModalContent extends React.Component {
 	}
 
 	render() {
-		debugger
 		const thingsToShow = [ <div className = 'upload-actions'>
 		<div className='drag-and-drop-text'>
 			<div className='drag-and-drop-box'>

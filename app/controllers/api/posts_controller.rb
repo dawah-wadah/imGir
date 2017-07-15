@@ -6,10 +6,14 @@ class Api::PostsController < ApplicationController
 
   def show
     @post = Post.includes(:author, :images).find(params[:id])
-    @comments = @post.comments.includes(:replies)
+    @comments = @post.comments.includes(:replies, :user)
   end
 
   # vote = Vote.find_by(voter_id: current_user.id, voteable_type: 'Post', voteable_id: @post.id)
+  def new
+
+  end
+
   def create
 
     @post = Post.new(post_params)
