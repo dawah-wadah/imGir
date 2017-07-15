@@ -65,12 +65,13 @@ class CommentsIndexItem extends React.Component {
 
 	replies() {
 
-		return this.state.hideReplies ? <div></div> :
-			<CommentsIndexContainer commentIds={this.props.commentIds} />
+		return (this.state.hideReplies ? <div></div> :
+			<CommentsIndexContainer commentIds={this.props.commentIds} />);
 	}
 	repliesCount() {
 		if ( this.props.commentIds.length > 0 ) {
-			return <div>{this.state.hideReplies ? "+ " : "- "}{this.props.commentIds.length} replies</div>
+			return (<div>{this.state.hideReplies ? "+ " : "- "}
+				{this.props.commentIds.length} replies</div>);
 		}
 	}
 	revealVotes() {
@@ -78,23 +79,35 @@ class CommentsIndexItem extends React.Component {
 			if ( this.props.vote.vote_type === 'Upvote' ) {
 				return (
 					<div className="comment-votes">
-            <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_after} className="vote-arrow" ></img>
-            <img onClick={this.handleSubmitDownvote} src={window.images.downvote_before} className="vote-arrow"></img>
+            <img onClick={ this.handleSubmitUpvote }
+							src={window.images.upvote_after}
+							className="vote-arrow" ></img>
+            <img onClick={this.handleSubmitDownvote}
+							src={window.images.downvote_before}
+							className="vote-arrow"></img>
               </div>
-				)
+				);
 			} else {
 				return (
 					<div className="comment-votes">
-            <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
-            <img onClick={this.handleSubmitDownvote} src={window.images.downvote_after} className="vote-arrow"></img>
+            <img onClick={ this.handleSubmitUpvote }
+							src={window.images.upvote_before}
+							className="vote-arrow" ></img>
+            <img onClick={this.handleSubmitDownvote}
+							src={window.images.downvote_after}
+							className="vote-arrow"></img>
               </div>
 				);
 			}
 		} else {
 			return (
 				<div className="comment-votes">
-          <img onClick={ this.handleSubmitUpvote } src={window.images.upvote_before} className="vote-arrow" ></img>
-          <img onClick={this.handleSubmitDownvote} src={window.images.downvote_before} className="vote-arrow"></img>
+          <img onClick={ this.handleSubmitUpvote }
+						src={window.images.upvote_before}
+						className="vote-arrow" ></img>
+          <img onClick={this.handleSubmitDownvote}
+						src={window.images.downvote_before}
+						className="vote-arrow"></img>
             </div>
 			);
 		}

@@ -8,6 +8,7 @@ class PostShow extends React.Component {
     super(props);
   }
 
+
   componentDidMount(){
     this.props.requestOnePost(this.props.id);
   }
@@ -27,7 +28,7 @@ class PostShow extends React.Component {
         <PostDetail post={post[id]}/>
       );
     } else {
-      return (<section className='post-show-page'>
+      return (<section className='post-show-page' contentEditable={true} onKeyDown={this.handleKeyPress}>
         <h1>Nothing to Show</h1>
       </section>);
 

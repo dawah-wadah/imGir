@@ -22,14 +22,7 @@ class PostDetail extends React.Component {
 			.bind(this);
 		this.upvote = this.upvote.bind(this);
 		this.downvote = this.downvote.bind(this);
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (this.props.postId !== nextProps.post.postId) {
-			this
-				.props
-				.requestAllComments(nextProps.postId);
-		}
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
 
 	prevPost() {
@@ -73,6 +66,32 @@ class PostDetail extends React.Component {
 					}
 				});
 		}
+	}
+
+	componentWillMount(){
+		document.addEventListener('keydown', this.handleKeyPress);
+	}
+	componentWillUnmount(){
+		document.addEventListener('keydown', this.handleKeyPress);
+	}
+
+	handleKeyPress(e) {
+		switch (e.keyCode) {
+			case 39:
+				this.prevPost();
+				break;
+			case 37:
+				this.nextPost();
+				break;
+			case 48:
+			//this would be where you would like if you pressed '0'
+			console.log('like something manually');
+				break;
+			default:
+
+		}
+
+		console.log(e.keyCode);
 	}
 
 upvote() {
@@ -130,7 +149,7 @@ downvote() {
 			allPics = null;
 		}
 		return (
-			<div className='show-page' onKeyDown={this.handleKeyPress}>
+			<div className='show-page' onKeyPress={this.handleKeyPress}>
 				<section className='post-container'>
 					<div className='post-header'>
 						<h1 className='post-title'>{this.props.post.title}</h1>

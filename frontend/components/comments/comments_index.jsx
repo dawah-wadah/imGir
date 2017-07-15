@@ -6,11 +6,6 @@ class CommentsIndex extends React.Component{
   constructor(props){
     super(props);
   }
-  // 
-  // commentId={comment.id} username={comment.username} commenterId={comment.commenter_id}
-  // points={comment.points} voted={comment.voted} vote={comment.vote}
-  // body={comment.body} createdAt={comment.created_at}
-
 
   render(){
     const comments = this.props.comments;
@@ -23,14 +18,14 @@ class CommentsIndex extends React.Component{
                   if(comment) {
                     return (
                   <Comment key={comment.id} comment={comment}
-                    commentIds={comment.comment_ids} />)
+                    commentIds={comment.comment_ids} />);
                   }
                 }
                 )}
              </ul>
             </div>
           </div>
-        )
+        );
       } else {
         return null;
       }
