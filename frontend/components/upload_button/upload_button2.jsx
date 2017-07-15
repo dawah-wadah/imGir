@@ -35,20 +35,38 @@ class UploadModalContent extends React.Component {
 	}
 
 	updateFile(e) {
-		e.forEach((image) => {
+		let file;
+		let fileReader;
+		if (e.length > 1){
+			e.forEach((event) => {
+				file = event;
+				fileReader = new FileReader();
+				if (file) {
+					fileReader.readAsDataURL(file);
+				}
+				fileReader.onloadend = function() {
+					this.setState({
+						images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
+						});
+						debugger;
+					}.bind(this);
 
-		let file = image;
-		let fileReader = new FileReader();
-		fileReader.onloadend = function() {
-			this.setState({
-				images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
-				});
-		}.bind(this);
-		if (file) {
-			fileReader.readAsDataURL(file);
+
+			});
+		} else {
+			file = e[0];
+			fileReader = new FileReader();
+			fileReader.onloadend = function() {
+				this.setState({
+					images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
+					});
+					debugger;
+			}.bind(this);
+			if (file) {
+				fileReader.readAsDataURL(file);
+			}
+
 		}
-	});
-
 	}
 
 	update(field) {
@@ -84,14 +102,8 @@ class UploadModalContent extends React.Component {
 				}));
 			});
 	}
-	imagePreviews() {
-		return this.state.images.map((image => (
-			<img className='image-preview' src={image.imageUrl} />
-		)));
-	}
 
 	render() {
-		debugger
 		const thingsToShow = [ <div className = 'upload-actions'>
 		<div className='drag-and-drop-text'>
 			<div className='drag-and-drop-box'>
@@ -112,10 +124,12 @@ class UploadModalContent extends React.Component {
 
   ];
 
-
   const gottenPhoto = [
     <div className='uploadForm'>
-			{this.imagePreviews()}
+			{this.state.images.map((image) => {
+				debugger
+				return(<img className='image-preview' src={image.imageUrl} />);
+			})}
         <input type="text"
           value={this.state.postTitle}
           onChange={this.update('postTitle')}
@@ -135,7 +149,7 @@ class UploadModalContent extends React.Component {
 
   return(
   <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
-    { this.state.images.length > 0 ?
+    { this.state.imageUrl ?
       gottenPhoto
       :thingsToShow
     }
