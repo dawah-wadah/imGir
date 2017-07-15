@@ -37,7 +37,10 @@ const PostReducer = (state = defaultState(), action) => {
         },
         currentPost: post.id
       });
-
+      case RECEIVE_SEARCH:
+      return Object.assign({}, state, {
+        entities: action.results,
+      });
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
       const parentType = comment.parent_type;
