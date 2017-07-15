@@ -4,10 +4,6 @@ class Api::ImagesController < ApplicationController
     @image = Image.new(image_params)
     klass = image_params[:imageable_type] == "Post" ? Post : Comment
     @imageable_item = klass.find(image_params[:imageable_id])
-    # @post = image_params[:imageable_type].find(image_params[:imageable_id])
-    # @image = @post.id
-    # render /api/posts/show
-    # image_params[:imageable_type].find(imageable_id)/
 
     if @image.save
     instance_variable_set("@#{klass}".downcase, @imageable_item)

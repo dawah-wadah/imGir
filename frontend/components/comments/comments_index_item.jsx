@@ -41,7 +41,8 @@ class CommentsIndexItem extends React.Component {
 		} );
 	}
 
-	toggle() {
+	toggle(e) {
+		e.stopPropagation();
 		this.setState( {
 			hideReplyForm: !this.state.hideReplyForm
 		} );
@@ -58,7 +59,10 @@ class CommentsIndexItem extends React.Component {
 		return this.state.hideReplyForm ? null :
 			<ReplyForm
         parentId={this.props.comment.id}
-				 toggle={this.toggle} toggleChild={this.toggleChild}t
+				 toggle={this.toggle}
+				 toggleChild={this.toggleChild}
+				 replies={this.replies}
+				 open={this.state.hideReplies}
         parentType='Comment' /> ;
 	}
 

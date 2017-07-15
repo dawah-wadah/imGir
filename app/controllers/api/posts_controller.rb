@@ -1,15 +1,19 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.includes(:author, :upvotes, :downvotes, :main_image, :comments)
+    @posts = Post.includes(:author,:main_image)
 
   end
 
   def show
-    @post = Post.includes(:author, :downvotes, :upvotes, :images).find(params[:id])
-    @comments = @post.comments.includes(:replies)
+    @post = Post.includes(:author, :images).find(params[:id])
+    @comments = @post.comments.includes(:replies, :user)
   end
 
   # vote = Vote.find_by(voter_id: current_user.id, voteable_type: 'Post', voteable_id: @post.id)
+  def new
+
+  end
+
   def create
 
     @post = Post.new(post_params)

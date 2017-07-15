@@ -9,6 +9,18 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.after_initialize do
+  Bullet.enable = true
+  Bullet.alert = true
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.rails_logger = true
+  Bullet.add_footer = true
+  Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
+end
+# Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
+# Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware' ]
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

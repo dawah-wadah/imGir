@@ -30,8 +30,11 @@ class ReplyForm extends React.Component{
 			.props
 			.createComment(commentData)
 			.then(() => this.setState({body: ''}));
-      this.props.toggle();
-      this.props.toggleChild();
+      this.props.toggle(e);
+      this.props.toggleChild(e);
+      if (this.props.open) {
+        this.props.replies(e);
+      }
 		} else {
 			this.props.displayModal(<SessionFormModal/>);
 		}

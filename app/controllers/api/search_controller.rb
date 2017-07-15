@@ -1,12 +1,10 @@
 class Api::SearchController < ApplicationController
-
   def index
-    if params[:query].present?
-      @posts = Post.includes(:author).where('lower(title) LIKE (?)', "%#{params[:query].downcase}%")
-    else
-      @posts = Post.all
-    end
+    @posts = if params[:query].present?
+               Post.includes(:author, :main_image)
+                   .where('lower(title) LIKE (?)', "%#{params[:query].downcase}%")
+             else
+               Post.includes(:author, :main_image).all
+             end
   end
-
-
 end

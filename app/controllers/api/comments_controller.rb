@@ -6,7 +6,7 @@ class Api::CommentsController < ApplicationController
 
   def show
 
-    @comment = Comment.includes(:replies).find(params[:id])
+    @comment = Comment.includes(:replies, :user).find(params[:id])
   end
 
   def create
