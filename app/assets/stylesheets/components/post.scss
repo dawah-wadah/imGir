@@ -1,4 +1,12 @@
+.replies-count{
+  font-size: 11px;
+}
 
+.post-show-page{
+  display: flex;
+justify-content: center;
+align-content: center;
+}
 
 .post-actions-action{
 height: 50px;
@@ -94,7 +102,6 @@ margin-bottom: 27px;
 }
 
 .post-container{
-  margin: 0 auto;
   padding-top: 0px;
   width: 728px;
   border-radius: 5px;
@@ -162,16 +169,9 @@ margin-bottom: 27px;
 
 .show-page{
   display: flex;
-  width: 80%;
+  justify-content: center;
 }
 
-.post-comments-container{
-
-}
-
-.pointer{
-
-}
 .arrows{
   margin: auto 0;
 }

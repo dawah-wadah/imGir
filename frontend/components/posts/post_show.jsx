@@ -8,6 +8,7 @@ class PostShow extends React.Component {
     super(props);
   }
 
+
   componentDidMount(){
     this.props.requestOnePost(this.props.id);
   }
@@ -28,7 +29,7 @@ class PostShow extends React.Component {
       );
     } else {
       return (<section className='post-show-page'>
-        <h1>Nothing to Show</h1>
+        <img src={window.images.loading}/>
       </section>);
 
     }
