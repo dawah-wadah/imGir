@@ -33,6 +33,16 @@ html * {
   background-color: #141518;
 }
 
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 15px;
+}
+
 // .full-width {
 //  background-size: cover;
 //  background-position: center center;
