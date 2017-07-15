@@ -1,11 +1,11 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.includes(:author, :upvotes, :downvotes, :main_image, :comments)
+    @posts = Post.includes(:author,:main_image)
 
   end
 
   def show
-    @post = Post.includes(:author, :downvotes, :upvotes, :images).find(params[:id])
+    @post = Post.includes(:author, :images).find(params[:id])
     @comments = @post.comments.includes(:replies)
   end
 

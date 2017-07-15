@@ -51,6 +51,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
+    bullet (5.5.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     climate_control (0.2.0)
     cocaine (0.5.8)
@@ -154,6 +157,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    slack-notifier (2.2.2)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -171,6 +175,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.10.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -184,6 +189,7 @@ DEPENDENCIES
   annotate
   aws-sdk (>= 2.0)
   bcrypt (~> 3.1.7)
+  bullet
   byebug
   coffee-rails (~> 4.1.0)
   faker
@@ -197,6 +203,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  slack-notifier
   spring
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
