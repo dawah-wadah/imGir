@@ -35,11 +35,12 @@
   resize          : none;
 }
 
-.comment-reply-icon {
-  display : none;
-}
+// .comment-reply-icon {
+//   display : none;
+// }
+// .child:hover .comment-reply-icon {
 
-.child:hover .comment-reply-icon {
+.comment-reply-icon {
   font-family: 'Open sans', sans-serif;
   display: flex;
   align-content: center;

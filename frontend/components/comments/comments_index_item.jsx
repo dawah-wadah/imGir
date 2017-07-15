@@ -1,5 +1,5 @@
 import React from 'react';
-import NewCommentReplyFormContainer from './reply_form';
+import ReplyForm from './reply_form';
 import {
 	Link
 } from 'react-router-dom';
@@ -12,6 +12,7 @@ class CommentsIndexItem extends React.Component {
 		this.state = {
 			hideReplyForm: true,
 			hideReplies: true,
+			hideReplyIcon: true,
 
 		};
 		this.toggle = this.toggle.bind( this );
@@ -23,6 +24,21 @@ class CommentsIndexItem extends React.Component {
 		this.toggle = this.toggle.bind( this );
 		this.toggleChild = this.toggleChild.bind( this );
 		this.revealVotes = this.revealVotes.bind( this );
+		this.showIcon = this.showIcon.bind(this);
+		this.hideIcon = this.hideIcon.bind(this);
+	}
+
+	showIcon(e){
+		e.stopPropagation();
+		this.setState({
+			hideReplyIcon: false
+		});
+	}
+	hideIcon(e){
+		e.stopPropagation();
+		this.setState({
+			hideReplyIcon: true
+		});
 	}
 
 	toggle() {
@@ -40,8 +56,9 @@ class CommentsIndexItem extends React.Component {
 	}
 	replyForm() {
 		return this.state.hideReplyForm ? null :
-			<NewCommentReplyFormContainer
-        parentId={this.props.commentId}
+			<ReplyForm
+        parentId={this.props.comment.id}
+				 toggle={this.toggle} toggleChild={this.toggleChild}t
         parentType='Comment' /> ;
 	}
 
@@ -115,8 +132,10 @@ class CommentsIndexItem extends React.Component {
 	render() {
 		if ( this.props.comment.id ) {
 			return (
-				<div className='child' key={this.props.comment.id}>
-        <div className="comment">
+				<div className='child' key={this.props.comment.id}
+					>
+        <div className="comment" onMouseEnter={(e) => this.showIcon(e)}
+				onMouseLeave={(e) => this.hideIcon(e)}>
 
           <div className="comment-info">
             <div className="author">
@@ -136,11 +155,14 @@ class CommentsIndexItem extends React.Component {
               </span>
             </div>
           </div>
-            <div className="comment-reply-icon" onClick={this.toggle}>
+            {!this.state.hideReplyIcon ?
+
+							<div className="comment-reply-icon" onClick={this.toggle}>
   						{this.state.hideReplyForm
   							? <div className='reply-icon' >Reply </div>
   							: <div className='reply-icon' >Close Form </div>}
   					</div>
+					: null}
         </div>
         {this.replyForm()}
         <p className='reply-icon' onClick={this.toggleChild}>

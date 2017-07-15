@@ -69,11 +69,13 @@
   color           : black;
   flex-direction  : column;
   justify-content : center;
+  border-radius: 7px;
 }
 
 .uploadForm img{
-  height: 700px;
+  height: 400px;
   width: auto;
+  object-fit: cover;
 }
 
 .uploadModal {
