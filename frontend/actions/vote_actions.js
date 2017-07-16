@@ -32,7 +32,7 @@ export const createVote = voteData => dispatch => {
 
 export const editVote = voteData => dispatch => {
   let action;
-  debugger
+  
   voteData.vote.voteable_type === 'Post' ?
   action = receiveOnePost :
   action = receiveOneComment;
