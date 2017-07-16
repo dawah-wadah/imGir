@@ -178,13 +178,11 @@ downvote() {
 								className="upvote-button"
 								onClick={() => this.toggleVote('Upvote')}>
 								{this.upvote()}
-								<p>UPVOTE</p>
 							</div>
 							<div
 								className="downvote-button spacer"
 								onClick={() => this.toggleVote('Downvote')}>
 								{this.downvote()}
-								<p>DOWNVOTE</p>
 							</div>
 						</div>
 						<div>{this.props.post.totalvotes}
