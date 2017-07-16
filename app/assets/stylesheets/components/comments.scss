@@ -22,6 +22,24 @@
   box-shadow: none;
   font-weight: bolder;
 }
+
+.comment-votes {
+  display: flex;
+  position: absolute;
+  padding: 0 10px;
+  justify-content: center;
+  flex-direction: column;
+  left: -25px;
+}
+// position : relative;
+// top      : 0;
+// left     : -55px;
+// padding  : 3px 20px 20px 10px;
+
+.vote-arrow{
+  height: 30px;
+  width: 30px;
+}
 .child{
   margin: 9px 0;
 }
@@ -184,9 +202,7 @@ form.caption-create {
   max-height : 999px;
 }
 
-.caption,
-.comment-votes.touch,
-.comment-votes:hover {
+.caption{
   opacity : 1;
 }
 
@@ -245,21 +261,13 @@ form.caption-create {
   display : table;
 }
 
-.comment-votes {
-  position : absolute;
-  top      : 0;
-  left     : -55px;
-  padding  : 3px 20px 20px 10px;
-  opacity  : 0;
-}
+
 
 .caption {
   max-height : 999px;
 }
 
-.caption,
-.comment-votes.touch,
-.comment-votes:hover {
+.caption {
   opacity : 1;
 }
 

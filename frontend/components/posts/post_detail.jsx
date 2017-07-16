@@ -53,7 +53,7 @@ class PostDetail extends React.Component {
 					}
 				}));
 			} else {
-				return (this.props.deleteVote({id: this.props.post.vote.id}));
+				return (this.props.deleteVote({id: this.props.post.vote.id, voteable_type: 'Post'}));
 			}
 		} else {
 			this

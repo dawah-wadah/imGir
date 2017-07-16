@@ -2,9 +2,9 @@
   display          : inline-block;
   box-sizing       : border-box;
   position         : relative;
-  width            : 160px;
-  height           : 160px;
-  margin           : 4px 2px;
+  width            : 200px;
+  height           : 200px;
+  margin           : 8px 4px;
   background-color : #181817;
   line-height      : 0;
 }
@@ -15,8 +15,8 @@
 }
 
 .image-list-link {
-  width          : 160px;
-  height         : 160px;
+  width          : 200px;
+  height         : 200px;
   object-fit: fill;
   overflow       : hidden;
   outline        : #121211 solid 1px;
@@ -26,7 +26,7 @@
 
 .post-index-container {
   top: 90px;
-  width: 50%;
+  width: 70%;
   border-radius: 15px;
   padding: 10px;
   background-color: #34373c;

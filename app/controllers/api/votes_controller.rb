@@ -3,13 +3,12 @@ class Api::VotesController < ApplicationController
 
     vote = Vote.new(vote_params)
     vote.voter_id = current_user.id
+    klass = vote_params[:voteable_type] == "Post" ? Post : Comment
+    @voteable_item = klass.find(vote_params[:voteable_id])
+
     if(vote.save)
-      if vote.voteable_type == "Post"
-        @post = vote.voteable
-      else
-        @post = vote.voteable.post
-      end
-      render "api/posts/show"
+      instance_variable_set("@#{klass}".downcase, @voteable_item)
+      render "/api/#{"#{klass}".downcase}s/show"
     else
       @errors = vote.errors.full_messages
       render json: @errors, status: 422
@@ -18,14 +17,11 @@ class Api::VotesController < ApplicationController
 
   def update
     vote = Vote.find(params[:id])
-
     if vote.update(vote_params)
-      if vote.voteable_type == "Post"
-        @post = vote.voteable
-      else
-        @post = vote.voteable.post
-      end
-      render "api/posts/show"
+      klass = vote_params[:voteable_type] == "Post" ? Post : Comment
+      @voteable_item = klass.find(vote_params[:voteable_id])
+      instance_variable_set("@#{klass}".downcase, @voteable_item)
+      render "/api/#{"#{klass}".downcase}s/show"
     else
       @errors = vote.errors.full_messages
       render json: @errors, status: 422
@@ -34,14 +30,11 @@ class Api::VotesController < ApplicationController
 
   def destroy
     vote = Vote.find(params[:id])
-
     if vote.destroy
-      if vote.voteable_type == "Post"
-        @post = vote.voteable
-      else
-        @post = vote.voteable.post
-      end
-      render "api/posts/show"
+      klass = vote[:voteable_type] == "Post" ? Post : Comment
+      @voteable_item = klass.find(vote[:voteable_id])
+      instance_variable_set("@#{klass}".downcase, @voteable_item)
+      render "/api/#{"#{klass}".downcase}s/show"
     else
       @errors = vote.errors.full_messages
       render json: @errors, status: 422

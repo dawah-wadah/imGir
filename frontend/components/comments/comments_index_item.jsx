@@ -13,14 +13,13 @@ class CommentsIndexItem extends React.Component {
 			hideReplyForm: true,
 			hideReplies: true,
 			hideReplyIcon: true,
+			hideVoteIcon: true
 
 		};
 		this.toggle = this.toggle.bind( this );
 		this.toggleChild = this.toggleChild.bind( this );
 		this.repliesCount = this.repliesCount.bind( this );
-		this.vote = this.vote.bind( this );
-		this.handleSubmitUpvote = this.handleSubmitUpvote.bind( this );
-		this.handleSubmitDownvote = this.handleSubmitDownvote.bind( this );
+		this.toggleVote = this.toggleVote.bind( this );
 		this.toggle = this.toggle.bind( this );
 		this.toggleChild = this.toggleChild.bind( this );
 		this.revealVotes = this.revealVotes.bind( this );
@@ -28,16 +27,22 @@ class CommentsIndexItem extends React.Component {
 		this.hideIcon = this.hideIcon.bind( this );
 	}
 
+
+
 	showIcon( e ) {
 		e.stopPropagation();
 		this.setState( {
-			hideReplyIcon: false
+			hideReplyIcon: false,
+			hideVoteIcon: false
+
+
 		} );
 	}
 	hideIcon( e ) {
 		e.stopPropagation();
 		this.setState( {
-			hideReplyIcon: true
+			hideReplyIcon: true,
+			hideVoteIcon: true
 		} );
 	}
 
@@ -91,72 +96,72 @@ repliesCount() {
 		);
 	}
 }
+
 revealVotes() {
-	if ( this.props.voted ) {
-		if ( this.props.vote.vote_type === 'Upvote' ) {
-			return (
-				<div className="comment-votes">
-            <img onClick={ this.handleSubmitUpvote }
+	if ( this.props.comment.vote ) {
+		if ( this.props.comment.vote.vote_type === 'Upvote' ) {
+			return ([
+
+            <img onClick={ () => this.toggleVote('Upvote') }
 							src={window.images.upvote_after}
-							className="vote-arrow" ></img>
-            <img onClick={this.handleSubmitDownvote}
+							className="vote-arrow" ></img>,
+            <img onClick={() => this.toggleVote('Downvote')}
 							src={window.images.downvote_before}
 							className="vote-arrow"></img>
-              </div>
+					]
 			);
 		} else {
-			return (
-				<div className="comment-votes">
-            <img onClick={ this.handleSubmitUpvote }
+			return ([
+
+            <img onClick={ () => this.toggleVote('Upvote') }
 							src={window.images.upvote_before}
-							className="vote-arrow" ></img>
-            <img onClick={this.handleSubmitDownvote}
+							className="vote-arrow" ></img>,
+            <img onClick={() => this.toggleVote('Downvote')}
 							src={window.images.downvote_after}
 							className="vote-arrow"></img>
-              </div>
+					]
 			);
 		}
 	} else {
-		return (
-			<div className="comment-votes">
-          <img onClick={ this.handleSubmitUpvote }
+		return ( [
+
+          <img onClick={ () => this.toggleVote('Upvote') }
 						src={window.images.upvote_before}
-						className="vote-arrow" ></img>
-          <img onClick={this.handleSubmitDownvote}
+						className="vote-arrow" ></img>,
+          <img onClick={() => this.toggleVote('Downvote')}
 						src={window.images.downvote_before}
 						className="vote-arrow"></img>
-            </div>
+				]
 		);
 	}
 }
 
-vote( upOrDown ) {
-	if ( this.props.voted ) {
-		return this.props.vote;
+
+toggleVote(type) {
+	if (this.props.comment.vote) {
+		if (this.props.comment.vote.vote_type !== type) {
+
+			return (this.props.editVote({
+				vote: {
+					id: this.props.comment.vote.id,
+					voteable_type: 'Comment',
+					voteable_id: this.props.comment.id,
+					vote_type: type
+				}
+			}));
+		} else {
+			return (this.props.deleteVote({id: this.props.comment.vote.id}, "Comment"));
+		}
 	} else {
-		const vote = {
-			voter_id: this.props.accountId,
-			votable_id: this.props.commentId,
-			votable_type: 'Comment',
-			vote_type: `${upOrDown}`,
-		};
-		return vote;
-	}
-}
-handleSubmitUpvote( e ) {
-	e.preventDefault();
-	if ( this.props.loggedIn ) {
-		this.props.toggleUpvote( this.vote( 'Upvote' ), this.props.voted );
-	} else {
-		this.props.history.push( '/login' );
-	}
-}
-handleSubmitDownvote( e ) {
-	e.preventDefault();
-	if ( this.props.loggedIn ) {
-		this.props.toggleDownvote( this.vote( 'Downvote' ), this.props.voted );
-	} else {
-		this.props.history.push( '/login' );
+		this
+			.props
+			.createVote({
+				vote: {
+					voteable_type: "Comment",
+					voteable_id: this.props.comment.id,
+					vote_type: type
+				}
+			});
 	}
 }
 render() {
@@ -166,6 +171,12 @@ render() {
 					>
         <div className="comment" onClick={this.toggleChild} onMouseEnter={(e) => this.showIcon(e)}
 				onMouseLeave={(e) => this.hideIcon(e)}>
+				<div className='comment-votes'>
+					{this.state.hideVoteIcon ? null :
+						this.revealVotes()
+
+					}
+				</div>
 
           <div className="comment-info">
             <div className="author">

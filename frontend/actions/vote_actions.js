@@ -1,5 +1,10 @@
 import * as VoteUtil from '../util/vote_api_util';
-import { receiveOnePost } from './post_actions';
+import {
+  receiveOnePost
+} from './post_actions';
+import {
+  receiveOneComment
+} from './comment_actions';
 
 
 export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
@@ -13,22 +18,38 @@ export const receiveErrors = errors => ({
   errors
 });
 
-export const createVote = voteData => dispatch => (
-  VoteUtil.createVote(voteData).then(post => {
-    dispatch(receiveOnePost(post));
-    return post;
-  })
-);
+export const createVote = voteData => dispatch => {
+  let action;
+  voteData.vote.voteable_type === 'Post' ?
+  action = receiveOnePost :
+  action = receiveOneComment;
 
-export const editVote = voteData => dispatch => (
-  VoteUtil.editVote(voteData).then(post => {
-    dispatch(receiveOnePost(post));
-    return post;
-  })
-);
-export const deleteVote = id => dispatch => (
-  VoteUtil.deleteVote(id).then(post => {
-    dispatch(receiveOnePost(post));
-    return post;
-  })
-);
+    return VoteUtil.createVote(voteData).then(votedItem => {
+      dispatch(action(votedItem));
+      return votedItem;
+    });
+};
+
+export const editVote = voteData => dispatch => {
+  let action;
+  debugger
+  voteData.vote.voteable_type === 'Post' ?
+  action = receiveOnePost :
+  action = receiveOneComment;
+
+  VoteUtil.editVote(voteData).then(votedItem => {
+    dispatch(action(votedItem));
+    return votedItem;
+  });
+};
+export const deleteVote = (params) => dispatch => {
+  let action;
+  params.voteable_type === 'Post' ?
+  action = receiveOnePost :
+  action = receiveOneComment;
+
+  VoteUtil.deleteVote(params).then(votedItem => {
+    dispatch(action(votedItem));
+    return votedItem;
+  });
+};
