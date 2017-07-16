@@ -6,5 +6,6 @@ class Api::SearchController < ApplicationController
              else
                Post.includes(:author, :main_image).all
              end
+    render 'api/posts/index'
   end
 end

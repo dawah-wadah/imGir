@@ -48,7 +48,7 @@ class UploadModalContent extends React.Component {
 					this.setState({
 						images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
 						});
-						debugger;
+						
 					}.bind(this);
 
 
@@ -60,7 +60,7 @@ class UploadModalContent extends React.Component {
 				this.setState({
 					images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
 					});
-					debugger;
+					
 			}.bind(this);
 			if (file) {
 				fileReader.readAsDataURL(file);
@@ -127,7 +127,7 @@ class UploadModalContent extends React.Component {
   const gottenPhoto = [
     <div className='uploadForm'>
 			{this.state.images.map((image) => {
-				debugger
+				
 				return(<img className='image-preview' src={image.imageUrl} />);
 			})}
         <input type="text"

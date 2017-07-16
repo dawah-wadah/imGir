@@ -14,6 +14,7 @@ class PostIndexItem extends React.Component {
 		this.mouseLeave = this
 			.mouseLeave
 			.bind(this);
+		this.style = this.style.bind(this);
 	}
 
 	mouseEnter() {
@@ -24,7 +25,35 @@ class PostIndexItem extends React.Component {
 		this.setState({visibleDetails: false});
 	}
 
+	style(){
+		if(this.props.post.vote){
+
+		switch (this.props.post.vote.vote_type) {
+			case 'Upvote':
+			return ({
+				border: '#1BB76E 4px solid'
+			});
+			case 'Downvote':
+			return ({
+				border: '#DB3535 4px solid'
+			});
+			default:
+			return ({
+				border: '#121211 4px solid'
+			});
+
+		}
+	} else {
+		return ({
+			border: '#121211 4px solid'
+		});
+
+	}
+
+	}
+
 	render() {
+
 		return (
 
 			<div
@@ -34,7 +63,8 @@ class PostIndexItem extends React.Component {
 				onMouseLeave={() => this.mouseLeave()}>
 				<div className='index-no-overflow'>
 					<Link to={`/posts/${this.props.post.id}`}>
-						<img className='image-list-link' src={this.props.post.main_image}></img>
+						<img className='image-list-link' style={this.style()}
+src={this.props.post.main_image}></img>
 					</Link>
 				</div>
 				{this.state.visibleDetails

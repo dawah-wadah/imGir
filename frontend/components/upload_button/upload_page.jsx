@@ -17,7 +17,7 @@ handleSubmit(e) {
 
 
   render(){
-    debugger
+    
     console.log('something')
     return(
       // {this.props.images.length}

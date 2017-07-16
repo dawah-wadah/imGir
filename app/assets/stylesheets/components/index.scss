@@ -2,17 +2,21 @@
   display          : inline-block;
   box-sizing       : border-box;
   position         : relative;
-  width            : 180px;
-  height           : 180px;
+  width            : 160px;
+  height           : 160px;
   margin           : 4px 2px;
-  padding          : 2px;
   background-color : #181817;
   line-height      : 0;
 }
 
+.index-no-overflow {
+  height: inherit;
+  width: inherit;
+}
+
 .image-list-link {
-  width          : 180px;
-  height         : 180px;
+  width          : 160px;
+  height         : 160px;
   object-fit: fill;
   overflow       : hidden;
   outline        : #121211 solid 1px;
