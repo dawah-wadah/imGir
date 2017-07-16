@@ -85,13 +85,11 @@ class PostDetail extends React.Component {
 				break;
 			case 48:
 			//this would be where you would like if you pressed '0'
-			console.log('like something manually');
 				break;
 			default:
 
 		}
 
-		console.log(e.keyCode);
 	}
 
 upvote() {
@@ -144,7 +142,7 @@ downvote() {
 				.props
 				.post
 				.images
-				.map((image) => (<ImageShow key={image.id} image={image}/>));
+				.map((image) => (<ImageShow key={Math.floor(Math.random() * 300)} image={image}/>));
 		} else {
 			allPics = null;
 		}

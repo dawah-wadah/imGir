@@ -7,11 +7,6 @@ import Main from './main_container';
 import UploadModalContent from './upload_button/upload_button_container';
 
 const App = (props) => {
-
-	// window.ondrop = (e) => {
-	// 	console.log('dragging');
-	// 	props.displayModal(<UploadModalContent />);
-	// };
 	window.onscroll = function() {
 		scrollFunction();
 	};

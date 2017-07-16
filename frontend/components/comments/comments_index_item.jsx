@@ -75,7 +75,7 @@ class CommentsIndexItem extends React.Component {
 	replies() {
 
 		return (this.state.hideReplies ? <div></div> :
-			<CommentsIndexContainer commentIds={this.props.commentIds} />
+			<CommentsIndexContainer commentIds={this.props.commentIds}  />
 	);
 }
 repliesCount() {
@@ -100,7 +100,7 @@ repliesCount() {
 revealVotes() {
 	if ( this.props.comment.vote ) {
 		if ( this.props.comment.vote.vote_type === 'Upvote' ) {
-			return ([
+			return (
 					<div className='santeria'>
 
             <img onClick={ (e) => this.toggleVote(e,'Upvote') }
@@ -110,10 +110,10 @@ revealVotes() {
 							src={window.images.downvote_before}
 							className="vote-arrow"></img>
 					</div>
-					]
+
 			);
 		} else {
-			return ([
+			return (
 				<div className='santeria'>
 
             <img onClick={ (e) => this.toggleVote(e,'Upvote') }
@@ -123,11 +123,11 @@ revealVotes() {
 							src={window.images.downvote_after}
 							className="vote-arrow"></img>
 					</div>
-					]
+
 			);
 		}
 	} else {
-		return ( [
+		return (
 			<div className='santeria'>
 
           <img onClick={ (e) => this.toggleVote(e,'Upvote') }
@@ -137,7 +137,7 @@ revealVotes() {
 						src={window.images.downvote_before}
 						className="vote-arrow"></img>
 				</div>
-				]
+				
 		);
 	}
 }
@@ -210,9 +210,9 @@ render() {
 								</div>
 								: null}
         </div>
-        <p className='reply-icon' onClick={this.toggleChild}>
+        <div className='reply-icon' onClick={this.toggleChild}>
           {this.repliesCount()}
-        </p>
+        </div>
 				{this.replyForm()}
         {this.replies()}
       </div>

@@ -10,7 +10,6 @@ const mapStateToProps = ({ session }) => {
 
   return {
     loggedIn: Boolean(session.currentUser),
-    accountId: session.currentUser ? session.currentUser.id : null
   };
 };
 

@@ -51,7 +51,7 @@ const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayMo
 				<div title='dislike' className='arrows' onClick={() => _actionTodo('Downvote')}>
 					<i className="fa fa-arrow-down fa-2" aria-hidden="true"></i>
 				</div>
-				<p onMouseOver={console.log(_voted(post))}>{post.totalvotes}
+				<p>{post.totalvotes}
 					points</p>
 			</div>
 			<div className='post-info-details'>

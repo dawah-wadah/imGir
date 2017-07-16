@@ -9,6 +9,12 @@
   justify-content  : center;
 }
 
+.all-pictures {
+  color: black;
+display: flex;
+flex-wrap: wrap;
+}
+
 .modal-content {
   display          : flex;
   margin           : auto auto;
@@ -19,9 +25,8 @@
   align-content    : center;
 }
 
-.image-preview {
-  width  : 200px;
-  height : 300px;
+.image-preview-selected {
+  border: #1BB76E 4px solid;
 }
 
 .modal-content div {
@@ -59,23 +64,27 @@
 }
 
 .upload-form {
-  display         : flex;
-  margin-top      : 20px;
-  justify-content : center;
+  display: flex;
+  flex-direction: column;
+      justify-content: center;
+      border-radius: 7px;
+      max-width: 600px;
 }
 
 .uploadForm {
-  display         : flex;
-  color           : black;
-  flex-direction  : column;
-  justify-content : center;
-  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+      justify-content: center;
+      border-radius: 7px;
+      max-width: 600px;
 }
 
 .uploadForm img{
-  height: 400px;
-  width: auto;
-  object-fit: cover;
+  height: 120px;
+      width: auto;
+      margin: 5px;
+      object-fit: cover;
+
 }
 
 .uploadModal {

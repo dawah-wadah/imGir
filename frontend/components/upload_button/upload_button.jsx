@@ -13,7 +13,8 @@ class UploadModalContent extends React.Component {
 			imageFile: null,
 			imageUrl: null,
 			description: 'Working Description',
-			main_image: true
+			main_image: true,
+			main_image_index: 0,
 		};
 
 		this.updateFile = this
@@ -28,6 +29,7 @@ class UploadModalContent extends React.Component {
 		this.update = this
 			.update
 			.bind(this);
+			this.selectMainPhoto = this.selectMainPhoto.bind(this);
 
 	}
 
@@ -51,12 +53,15 @@ class UploadModalContent extends React.Component {
 
 	}
 );
-	// this.props.history.push(`/posts/new`);
-
 	}
+
 
 	update(field) {
 		return e => this.setState({[field]: e.currentTarget.value});
+	}
+
+	selectMainPhoto(obj){
+		this.setState({main_image_index: this.state.images.indexOf(obj)});
 	}
 
 	handleSubmit(e) {
@@ -75,7 +80,11 @@ class UploadModalContent extends React.Component {
 		values(this.state.images).forEach((image) => {
 		let imageData = new FormData();
 		imageData.append("image[description]", this.state.description);
-		imageData.append("image[main_image]", this.state.main_image);
+		this.state.main_image_index === this.state.images.indexOf(image)
+		? imageData.append("image[main_image]", true)
+		: imageData.append("image[main_image]", false);
+
+
 		imageData.append("image[image]", image.imageFile);
 		this.setState({main_image: false});
 				imageData.append("image[imageable_id]", post.id);
@@ -92,10 +101,19 @@ class UploadModalContent extends React.Component {
 			});
 		});
 	}
+
+
 	imagePreviews() {
-		return this.state.images.map((image => (
-			<img className='image-preview' src={image.imageUrl} />
-		)));
+		return this.state.images.map((image => {
+			let styleName;
+			this.state.images.indexOf(image) === this.state.main_image_index
+			? styleName = 'image-preview-selected'
+			: styleName = 'image-preview';
+			return (
+			<img className={styleName} src={image.imageUrl}
+				key={this.state.images.indexOf(image)}
+				onMouseDown={() => this.selectMainPhoto(image)} />
+		);}));
 	}
 
 	render() {
@@ -122,7 +140,9 @@ class UploadModalContent extends React.Component {
 
   const gottenPhoto = [
     <div className='uploadForm'>
-			{this.imagePreviews()}
+			<div className='all-pictures'>
+				{this.imagePreviews()}
+			</div>
         <input type="text"
           value={this.state.postTitle}
           onChange={this.update('postTitle')}

@@ -17,8 +17,7 @@ handleSubmit(e) {
 
 
   render(){
-    
-    console.log('something')
+
     return(
       // {this.props.images.length}
       // {this.state.postTitle}
