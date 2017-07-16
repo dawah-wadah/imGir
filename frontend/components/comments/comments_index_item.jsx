@@ -101,43 +101,50 @@ revealVotes() {
 	if ( this.props.comment.vote ) {
 		if ( this.props.comment.vote.vote_type === 'Upvote' ) {
 			return ([
+					<div className='santeria'>
 
-            <img onClick={ () => this.toggleVote('Upvote') }
+            <img onClick={ (e) => this.toggleVote(e,'Upvote') }
 							src={window.images.upvote_after}
-							className="vote-arrow" ></img>,
-            <img onClick={() => this.toggleVote('Downvote')}
+							className="vote-arrow" ></img>
+						<img onClick={(e) => this.toggleVote(e,'Downvote')}
 							src={window.images.downvote_before}
 							className="vote-arrow"></img>
+					</div>
 					]
 			);
 		} else {
 			return ([
+				<div className='santeria'>
 
-            <img onClick={ () => this.toggleVote('Upvote') }
+            <img onClick={ (e) => this.toggleVote(e,'Upvote') }
 							src={window.images.upvote_before}
-							className="vote-arrow" ></img>,
-            <img onClick={() => this.toggleVote('Downvote')}
+							className="vote-arrow" ></img>
+						<img onClick={(e) => this.toggleVote(e,'Downvote')}
 							src={window.images.downvote_after}
 							className="vote-arrow"></img>
+					</div>
 					]
 			);
 		}
 	} else {
 		return ( [
+			<div className='santeria'>
 
-          <img onClick={ () => this.toggleVote('Upvote') }
+          <img onClick={ (e) => this.toggleVote(e,'Upvote') }
 						src={window.images.upvote_before}
-						className="vote-arrow" ></img>,
-          <img onClick={() => this.toggleVote('Downvote')}
+						className="vote-arrow" ></img>
+					<img onClick={(e) => this.toggleVote(e,'Downvote')}
 						src={window.images.downvote_before}
 						className="vote-arrow"></img>
+				</div>
 				]
 		);
 	}
 }
 
 
-toggleVote(type) {
+toggleVote(evnt, type) {
+	evnt.stopPropagation();
 	if (this.props.comment.vote) {
 		if (this.props.comment.vote.vote_type !== type) {
 

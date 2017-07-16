@@ -23,14 +23,20 @@
   font-weight: bolder;
 }
 
+.santeria {
+  position: absolute;
+  left: -45px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .comment-votes {
   display: flex;
   position: absolute;
-  padding: 0 10px;
-  justify-content: center;
-  flex-direction: column;
-  left: -25px;
 }
+// left: -25px;
 // position : relative;
 // top      : 0;
 // left     : -55px;
