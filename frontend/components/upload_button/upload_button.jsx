@@ -144,15 +144,13 @@ class UploadModalContent extends React.Component {
 				{this.imagePreviews()}
 			</div>
         <input type="text"
-          value={this.state.postTitle}
           onChange={this.update('postTitle')}
-          className="br5 lightest-dark login-input"
+          className="new-post-text"
           placeholder='Write a title here'
         />
-        <input type="text"
-          value={this.state.description}
+			<textarea type="text"
           onChange={this.update('description')}
-          className="br5 lightest-dark login-input"
+          className="new-post-text bigger"
           placeholder='What is your description'
         />
       <button onClick={this.handleSubmit}>Upload</button>

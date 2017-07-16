@@ -27,9 +27,10 @@ pointer-events: none;
 
 }
 .side-bar-item-pic img{
-  margin: auto;
-  height: 80px;
-  width: 80px;
+  height: 90px;
+  width: 90px;
+  object-fit: cover;
+  overflow: hidden;
 
 }
 
