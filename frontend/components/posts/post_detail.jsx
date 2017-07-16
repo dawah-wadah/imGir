@@ -53,7 +53,7 @@ class PostDetail extends React.Component {
 					}
 				}));
 			} else {
-				return (this.props.deleteVote({id: this.props.post.vote.id}));
+				return (this.props.deleteVote({id: this.props.post.vote.id, voteable_type: 'Post'}));
 			}
 		} else {
 			this
@@ -178,13 +178,11 @@ downvote() {
 								className="upvote-button"
 								onClick={() => this.toggleVote('Upvote')}>
 								{this.upvote()}
-								<p>UPVOTE</p>
 							</div>
 							<div
 								className="downvote-button spacer"
 								onClick={() => this.toggleVote('Downvote')}>
 								{this.downvote()}
-								<p>DOWNVOTE</p>
 							</div>
 						</div>
 						<div>{this.props.post.totalvotes}

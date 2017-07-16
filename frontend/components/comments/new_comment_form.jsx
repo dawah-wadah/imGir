@@ -12,7 +12,7 @@ class NewCommentForm extends React.Component{
   }
 
   handleSubmit(e) {
-    debugger
+    
     e.preventDefault();
     if(this.props.loggedIn) {
       const comment = { body: this.state.body,

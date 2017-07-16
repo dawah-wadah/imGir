@@ -19,6 +19,8 @@ class Image < ActiveRecord::Base
   validates :imageable_id, :imageable_type, presence: true
   belongs_to :imageable, polymorphic: true
 
-  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'senante.jpg'
+  has_attached_file :image, styles: { medium: '300x300>',
+    thumb: { geometry: "280>", animated: false } },
+    default_url: 'senante.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 end

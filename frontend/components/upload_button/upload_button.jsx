@@ -2,6 +2,7 @@ import React from 'react';
 import {bindall} from 'lodash';
 import {Redirect} from 'react-router-dom';
 import Dropzone from 'react-dropzone';
+import values from 'lodash/values';
 
 class UploadModalContent extends React.Component {
 	constructor(props) {
@@ -66,14 +67,17 @@ class UploadModalContent extends React.Component {
 				description: this.state.description
 			}
 		};
+
+		this
+		.props
+		.createPost(postData)
+		.then(post => {
+		values(this.state.images).forEach((image) => {
 		let imageData = new FormData();
 		imageData.append("image[description]", this.state.description);
 		imageData.append("image[main_image]", this.state.main_image);
-		imageData.append("image[image]", this.state.imageFile);
-		this
-			.props
-			.createPost(postData)
-			.then(post => {
+		imageData.append("image[image]", image.imageFile);
+		this.setState({main_image: false});
 				imageData.append("image[imageable_id]", post.id);
 				imageData.append("image[imageable_type]", 'Post');
 				return (this.props.uploadImage(imageData).then(response => {
@@ -86,6 +90,7 @@ class UploadModalContent extends React.Component {
 						.push(`/posts/${response.id}`);
 				}));
 			});
+		});
 	}
 	imagePreviews() {
 		return this.state.images.map((image => (
