@@ -117,7 +117,7 @@ class PostDetail extends React.Component {
 		<a href="https://github.com/dawah-wadah">
 			<img src={window.images.github_icon} className="post-actions-social"></img>
 		</a>
-		<a href="https://docs.google.com/document/d/1DV9YqtN8VOqWAOu80XtD1xnhhQLAAmrQ4oRg-uPSlrw/edit?usp=sharing">
+		<a href="https://docs.google.com/document/d/14FvZGzVT8nwQaraJ572bfRoyXqFv0SWodHSshwuoi2s/edit?usp=sharing">
 			<img src={window.images.resume_icon} className="post-actions-social"></img>
 		</a>
 	</div>

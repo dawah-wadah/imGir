@@ -67,6 +67,27 @@ class SessionForm extends React.Component {
 		this.props.clearErrors();
 	}
 
+	demoButtons(userName){
+		let user;
+
+		if (userName === 'Yaakov') {
+			this.setState({username: 'Yaakov',
+				extraPassword: 'password',
+				password: 'password'});
+			user = {username: 'Yaakov',
+				extraPassword: 'password',
+				password: 'password'};
+		} else {
+			this.setState({username: 'MikeBoan',
+				extraPassword: 'password',
+				password: 'password'});
+				user = {username: 'MikeBoan',
+					extraPassword: 'password',
+					password: 'password'};
+		}
+		this.props.processForm({user});
+	}
+
 	navLink() {
 		if (this.props.formType === 'login') {
 			return <Link to="/signup" onClick={this.props.clearErrors}>need an account?</Link>;
@@ -118,7 +139,14 @@ class SessionForm extends React.Component {
 						<img src={window.images.logo}/>
 					</div>
 					<div className=" socialButtons core-dark core-shadow br5">
-						<SocialButtons/>
+						<div className="social-wrap">
+							<button className="loginBtn loginBtn--facebook" onClick = {() => this.demoButtons('Yaakov')}>
+								 Login as Yaakov
+							</button>
+							<button className="loginBtn loginBtn--google" onClick = {() => this.demoButtons('MikeBoan')}>
+								Login as Mike Boan
+							</button>
+						</div>
 					</div>
 					<div className="signin-box">
 						<form onSubmit={this.handleSubmit} className="signin-form">
@@ -149,12 +177,7 @@ class SessionForm extends React.Component {
 							<div className='signin-button'>
 								<input type="submit" value="Submit" className='submit-button right'/>
 								<div className="right signin-register-link text-shadow">
-								<span className='signin-button'>
-                <button className='submit-button right' onClick = {() => this.setState({username: 'Wadah', password: 'password'})}>
-                  <span className='signin-button-text'><i className="fa fa-facebook-official fa-lg" aria-hidden="true">
-                  </i> Log in with Demo Account</span>
-                </button>
-              </span>
+
 						</div>
 						{this.navLink()}
 							</div>
