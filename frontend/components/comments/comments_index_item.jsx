@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import CommentsIndexContainer from './comments_index_container';
 import Moment from 'react-moment';
+import SessionFormModal from '../session_form/session_form_modal.jsx';
 
 class CommentsIndexItem extends React.Component {
 	constructor( props ) {
@@ -137,7 +138,7 @@ revealVotes() {
 						src={window.images.downvote_before}
 						className="vote-arrow"></img>
 				</div>
-				
+
 		);
 	}
 }
@@ -145,6 +146,8 @@ revealVotes() {
 
 toggleVote(evnt, type) {
 	evnt.stopPropagation();
+	if (!this.props.loggedIn){this.props.displayModal(<SessionFormModal />);} else {
+
 	if (this.props.comment.vote) {
 		if (this.props.comment.vote.vote_type !== type) {
 
@@ -170,6 +173,7 @@ toggleVote(evnt, type) {
 				}
 			});
 	}
+}
 }
 render() {
 	if ( this.props.comment.id ) {

@@ -83,11 +83,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-
-// const mapDispatchToProps = dispatch => ({
-// 	createVote: (voteData) => dispatch(createVote(voteData))
-// });
-
 export default connect(
   mapStateToProps, mapDispatchToProps
 )(PostDetail);
