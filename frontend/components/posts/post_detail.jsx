@@ -55,7 +55,6 @@ class PostDetail extends React.Component {
 
 			if ( this.props.voted ) {
 				if ( this.props.post.vote.vote_type !== type ) {
-
 					return ( this.props.editVote( {
 						vote: {
 							id: this.props.post.vote.id,
@@ -214,8 +213,8 @@ class PostDetail extends React.Component {
 							<div
 								className="downvote-button spacer"
 								onClick={() => this.toggleVote('Downvote')}>
-							</div>
 								{this.downvote()}
+							</div>
 							</div>
 							{this.links()}
 						</div>
@@ -254,6 +253,7 @@ import {
 
 const mapStateToProps = ( state, ownProps ) => {
 	return {
+		loggedIn: Boolean(state.session.currentUser),
 		voted: Boolean( ownProps.post.vote ),
 		modal: Boolean( state.dropdown.uploadModal ),
 		postId: ownProps.post.id
