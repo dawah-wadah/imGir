@@ -45,8 +45,10 @@ background: #212121;
   align-content    : center;
 }
 
-.image-preview-selected {
+#image-preview-selected {
   border: #1BB76E 4px solid;
+  height: 350px;
+  width: auto;
 }
 
 .modal-content div {
@@ -100,12 +102,30 @@ background: #212121;
 }
 
 .uploadForm img{
-  height: 120px;
-      width: auto;
-      margin: 5px;
-      object-fit: cover;
-
+  margin: 5px;
+  object-fit: cover;
 }
+
+.uploadForm img:nth-of-type(n + 1){
+  height: 300px;
+  width: 300px;
+}
+.uploadForm img:nth-of-type(n + 2){
+  height: 270px;
+  width: 270px;
+}
+
+.uploadForm img:nth-of-type(n + 3){
+  height: 230px;
+  width: 230px;
+}
+
+.uploadForm img:nth-of-type(n + 4){
+  height: 180px;
+  width: 180px;
+}
+
+
 
 .uploadModal {
   display         : flex;

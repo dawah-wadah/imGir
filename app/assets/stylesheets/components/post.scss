@@ -103,6 +103,7 @@
   position: relative;
 }
 
+
 .post-description {
   box-sizing: border-box;
   width: 728px;
@@ -146,6 +147,11 @@
   border-radius: 0 0 4px 4px;
   margin: 5px 0;
   background-color: #2c2f34;
+}
+
+.post-image {
+  width: 70vw;
+  height: 70vh;
 }
 
 .post-images img {

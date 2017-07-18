@@ -110,7 +110,7 @@ class UploadModalContent extends React.Component {
 			? styleName = 'image-preview-selected'
 			: styleName = 'image-preview';
 			return (
-			<img className={styleName} src={image.imageUrl}
+			<img id={styleName} src={image.imageUrl}
 				key={this.state.images.indexOf(image)}
 				onMouseDown={() => this.selectMainPhoto(image)} />
 		);}));
