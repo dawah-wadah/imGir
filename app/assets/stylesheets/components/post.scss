@@ -146,6 +146,7 @@
 .post-images {
   border-radius: 0 0 4px 4px;
   margin: 5px 0;
+
   background-color: #2c2f34;
 }
 
@@ -156,6 +157,7 @@
 
 .post-images img {
   width: 100%;
+  height: inherit;
   cursor: zoom-in;
 }
 
