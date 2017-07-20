@@ -140,20 +140,20 @@ class UploadModalContent extends React.Component {
 
   const gottenPhoto = [
     <div className='uploadForm'>
-			<div className='all-pictures'>
-				{this.imagePreviews()}
-			</div>
         <input type="text"
           onChange={this.update('postTitle')}
           className="new-post-text"
           placeholder='Write a title here'
         />
+			<div className='all-pictures'>
+				{this.imagePreviews()}
+			</div>
 			<textarea type="text"
           onChange={this.update('description')}
           className="new-post-text bigger"
           placeholder='What is your description'
         />
-      <button onClick={this.handleSubmit}>Upload</button>
+			<button className='upload-btn' onClick={this.handleSubmit}>Upload</button>
     </div>
 
   ];

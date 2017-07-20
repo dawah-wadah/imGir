@@ -85,7 +85,7 @@ class SessionForm extends React.Component {
 					extraPassword: 'password',
 					password: 'password'};
 		}
-		this.props.processForm({user});
+		this.props.login({user});
 	}
 
 	navLink() {
@@ -138,13 +138,13 @@ class SessionForm extends React.Component {
 					<div className='signin-logo'>
 						<img src={window.images.logo}/>
 					</div>
-					<div className=" socialButtons core-dark core-shadow br5">
-						<div className="social-wrap">
+					<div className="social-wrap">
+						<div className="social-wrap socialButtons core-dark core-shadow br5">
 							<button className="loginBtn loginBtn--facebook" onClick = {() => this.demoButtons('Yaakov')}>
-								 Login as Yaakov
+								 Login Demo User #1
 							</button>
 							<button className="loginBtn loginBtn--google" onClick = {() => this.demoButtons('MikeBoan')}>
-								Login as Mike Boan
+								Login Demo User #2
 							</button>
 						</div>
 					</div>
