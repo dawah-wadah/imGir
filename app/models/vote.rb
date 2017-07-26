@@ -17,4 +17,6 @@ class Vote < ActiveRecord::Base
 
   belongs_to :voter, class_name: 'User'
   belongs_to :voteable, polymorphic: true
+
+  scope :upvotes, -> { where(vote_type: 'Upvote')}
 end

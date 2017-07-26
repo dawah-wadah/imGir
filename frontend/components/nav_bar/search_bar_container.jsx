@@ -23,10 +23,16 @@ class SearchBar extends React.Component {
    };
  }
 
+ handleClose() {
+   this.setState({search: ''});
+   this.props.fetchSearch();
+ }
+
   handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.displayDropdown({searchBar: !this.props.visible});
+    this.props.visible ?  null : this.handleClose();
   }
 
   componentDidMount() {
