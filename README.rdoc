@@ -1,28 +1,23 @@
-== README
+# ImGir
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[ImGir live](https://imgirrrrr.herokuapp.com/#/)
 
-Things you may want to cover:
+ImGir is a full-stack web application clone of the popular image sharing site imgur.com. ImGir is built with Ruby on Rails for the back-end, PostgreSQL for the database, and React.js/Redux for the front-end framework.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Features & Implementation
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### User Account Creation
+
+
+### Creating a Post
+
+
+### Commenting on Posts and Comments
+
+
+### Votes
+
+
+### Features to be implemented soon
+Users will be able to view all their own posts on a user home page, along with all the comments they've made on other posts/comments. Rankings will be listed for the user with the most points accumulated from votes on posts and comments.
