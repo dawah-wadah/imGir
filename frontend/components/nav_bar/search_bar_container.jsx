@@ -23,21 +23,22 @@ class SearchBar extends React.Component {
    };
  }
 
- handleClose() {
-   this.setState({search: ''});
-   this.props.fetchSearch();
- }
+ // handleClose() {
+ //   this.setState({search: ''});
+ //   this.props.fetchSearch();
+ // }
 
   handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.displayDropdown({searchBar: !this.props.visible});
-    this.props.visible ?  null : this.handleClose();
   }
 
-  componentDidMount() {
-   this.props.fetchSearch();
- }
+
+ componentWillReceiveProps(){
+  this.setState({['search']: ''});
+}
+
 
  componentDidUpdate(nextProps){
   if(this.state.search !== '') {
@@ -58,7 +59,6 @@ class SearchBar extends React.Component {
            <input className="search-bar"
              onChange = {this.handleChange('search')}
              placeholder = 'Start typing...'
-             value = {this.state.search}
              ></input>
            {this.props.results.length ?
              <div> WE HAVE RESULTS</div>
