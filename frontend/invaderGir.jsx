@@ -18,11 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  
-
-  window.createPost = PostActions.createPost;
-  window.requestAllPosts = PostActions.requestAllPosts;
-  window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -23,10 +23,6 @@ class SearchBar extends React.Component {
    };
  }
 
- // handleClose() {
- //   this.setState({search: ''});
- //   this.props.fetchSearch();
- // }
 
   handleClick(e) {
     e.preventDefault();

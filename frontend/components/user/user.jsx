@@ -9,7 +9,24 @@ class User extends React.Component {
   render(){
     return(
       <div className='user-page'>
-        
+        <div className='user-comments'>
+          <div className='panel-header-toolbox'>
+            <div className='user-info left-side'>
+              Info Type
+            </div>
+            <div className='user-info right-side'>
+              Options Stuff
+            </div>
+          </div>
+          <div className='user-info display'>
+
+          </div>
+
+        </div>
+        <div className='user-side-bar'>
+
+        </div>
+
       </div>
     );
   }

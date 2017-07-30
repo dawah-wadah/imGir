@@ -5,6 +5,7 @@ import SessionForm from './session_form/session_form_container';
 import PostIndex from './posts/post_index_container';
 import PostShow from './posts/post_show_container';
 import UploadPage from './upload_button/upload_page';
+import User from './user/user_container';
 
 
 const Main = ({clearDropdowns}) => (
@@ -13,6 +14,7 @@ const Main = ({clearDropdowns}) => (
       <Route exact path='/' component={PostIndex}/>
       <Route exact path="/posts" component={PostIndex}/>
       <Route exact path="/posts/:id" component={PostShow}/>
+      <Route exact path="/users/:id" component={User}/>
       <AuthRoute path="/login" component={SessionForm} />
       <AuthRoute exact path="/posts/new" component={UploadPage} />
       <AuthRoute path="/signup" component={SessionForm} />
