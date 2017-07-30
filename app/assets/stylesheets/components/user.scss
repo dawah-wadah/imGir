@@ -22,7 +22,7 @@
 .user-side-bar {
   top: 90px;
   border-radius: 15px;
-  background-color: #34373c;
+  // background-color: #34373c;
   height: 70vh;
   width: 25%;
 
@@ -47,5 +47,28 @@
 }
 
 .right-side {
+
+}
+
+.panel {
+  background-color: #34373c;
+  margin: 10px 0;
+  height: 30px;
+  min-height: 50px;
+}
+
+.user-info-picker {
+
+}
+
+.user-info-bio {
+
+}
+
+.user-info-Notoriety {
+
+}
+
+.user-info-trophy {
 
 }
