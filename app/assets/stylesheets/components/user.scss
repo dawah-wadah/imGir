@@ -19,6 +19,10 @@
   height: 70vh;
 }
 
+.selected{
+
+}
+
 .user-side-bar {
   top: 90px;
   border-radius: 15px;
@@ -53,11 +57,17 @@
 .panel {
   background-color: #34373c;
   margin: 10px 0;
-  height: 30px;
   min-height: 50px;
 }
 
+.textbox{
+  background-color: #141518;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
 .user-info-picker {
+  padding: 25px;
 
 }
 

@@ -25,10 +25,10 @@ class User extends React.Component {
         </div>
         <div className='user-side-bar'>
           <div className='panel user-info-picker'>
-            <div>Comments</div>
-            <div>Submitted Images</div>
-            <div>Favorites</div>
-            <div>Replies</div>
+            <div className='textbox'>Comments</div>
+            <div className='textbox'>Submitted Images</div>
+            <div className='textbox'>Favorites</div>
+            <div className='textbox'>Replies</div>
           </div>
           <div className='panel user-info-bio'></div>
           <div className='panel user-info-Notoriety'></div>
