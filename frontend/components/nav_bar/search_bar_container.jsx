@@ -27,6 +27,7 @@ class SearchBar extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind( this );
 		this.handleClick = this.handleClick.bind( this );
+    this.handleSearchClick = this.handleSearchClick.bind(this);
 	}
 
 	handleChange() {
@@ -54,21 +55,20 @@ class SearchBar extends React.Component {
 		} );
 	}
 
+  handleSearchClick(){
+    this.props.displayDropdown( {
+      searchBar: !this.props.visible
+    } );
 
-	componentDidUpdate( nextProps ) {
-		if ( this.state.search !== '' ) {
-			if ( this.props.history.location.pathname !== '/' ) {
-				this.props.history.push( '/' );
-			}
-		}
-	}
+  }
+
 
 	searchResults() {
 		if ( this.props.results.length ) {
 			return (
 				<div className="search-bar search-bar-addition">
       {this.props.results.map((post) => {
-      return (<Link to={`/posts/${post.id}`} key={post.id * 23}>
+      return (<Link to={`/posts/${post.id}`} key={post.id * 23} onClick={this.handleSearchClick}>
         <div className='search-item' >
           <div className='search-item-pic'>
             <img src={post.main_image}/>
@@ -86,13 +86,8 @@ class SearchBar extends React.Component {
 		}
 	}
 
-	// {this.props.results.length ?
-	//   <div> WE HAVE RESULTS</div>
-	//   : <div className="search-bar search-bar-addition">SEARCH SYNTAX</div>
-	// }
 
 	render() {
-		;
 
 		return (
 
