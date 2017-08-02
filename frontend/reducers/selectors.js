@@ -10,6 +10,8 @@ export const selectAllComments = ({ comment }, commentIds ) => {
     } else { return null ;}
 };
 
-export const selectAllResults = (results) => (
-  values(results)
-);
+export const selectAllResults = (search) => {
+  
+  return (
+  values(search)
+)};
