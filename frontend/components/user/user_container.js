@@ -1,7 +1,7 @@
 import User from './user';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router';
-import { requestOneUser } from '../../actions/user_actions';
+import { requestOneUser, requestUserPosts, requestUserComments } from '../../actions/user_actions';
 
 
 
@@ -10,7 +10,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestOneUser: (id) => dispatch(requestOneUser(id))
+  requestOneUser: (id) => dispatch(requestOneUser(id)),
+  requestUserComments: (id) => dispatch(requestUserComments(id)),
+  requestUserPosts: (id) => dispatch(requestUserPosts(id))
 });
 
 export default withRouter(connect(

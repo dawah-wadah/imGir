@@ -5,6 +5,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import * as SessionActions from './actions/session_actions';
 import * as PostActions from './actions/post_actions';
+import * as UserActions from './actions/user_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  // window.createPost = PostActions.createPost;
+  window.requestUserPosts = UserActions.requestUserPosts;
+  window.requestUserComments = UserActions.requestUserComments;
+  window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
