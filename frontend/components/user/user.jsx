@@ -6,8 +6,23 @@ import {
 class User extends React.Component {
 	constructor( props ) {
 		super( props );
-
+    this.headerType = this.headerType.bind(this);
 	}
+
+  headerType() {
+    switch (this.props.location.pathname.split('/')[3]) {
+      case 'comments':
+        return "Gallery Comments"
+      case 'submitted':
+        return 'Submitted Images'
+      case 'favorites':
+      return "Gallery Favorites"
+      case 'replies':
+        return 'Comment Replies'
+      default:
+      return "Gallery Comments"
+    }
+  }
 
 	render() {
     let userId = this.props.match.params.id
@@ -17,7 +32,7 @@ class User extends React.Component {
         <div className='user-comments'>
           <div className='panel-header-toolbox'>
             <div className='user-info left-side'>
-              Info Type
+              {this.headerType()}
             </div>
             <div className='user-info right-side'>
               Options Stuff
