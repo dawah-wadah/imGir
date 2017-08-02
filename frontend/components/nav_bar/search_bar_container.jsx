@@ -79,10 +79,11 @@ class SearchBar extends React.Component {
         </div>
       </Link>)
     })}
+		<div className='bottom-fade'></div>
   </div>
 			)
 		} else {
-			return <div className="search-bar search-bar-addition">SEARCH SYNTAX </div>
+			return <div className="search-bar search-bar-addition">SEARCH SYNTAX: TITLE </div>
 		}
 	}
 
