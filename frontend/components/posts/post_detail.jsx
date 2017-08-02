@@ -182,6 +182,8 @@ class PostDetail extends React.Component {
 			<div className='show-page' onKeyPress={this.handleKeyPress}>
 				<section className='post-container'>
 					<div className='post-header'>
+						<div className='header-left'>
+
 						<h1 className='post-title'>{this.props.post.title}</h1>
 						<span className='post-author-link'>
 							by
@@ -191,11 +193,15 @@ class PostDetail extends React.Component {
 								{this.props.post.author_name}
 							</Link>
 						</span>
-						<div className='prev-next' onClick={this.nextPost}>
-							<div className='text'>
+					</div>
+					<div className='header-right'>
+
+						<div className='prev-next' onClick={this.prevPost}>
+							<div className='next-post-btn-text'>
 								Next Post
 							</div>
 						</div>
+					</div>
 
 					</div>
 					{allPics}
