@@ -25,7 +25,6 @@
   // background-color: #34373c;
   height: 70vh;
   width: 25%;
-
 }
 
 .panel-header-toolbox {
@@ -36,21 +35,18 @@
   height: 15px;
   display: flex;
   justify-content: space-between;
-  }
+}
 
 .user-info {
   height: auto;
 }
 
-.left-side {
+.left-side {}
 
-}
-
-.right-side {
-
-}
+.right-side {}
 
 .panel {
+  padding: 25px;
   background-color: #34373c;
   margin: 10px 0;
   min-height: 50px;
@@ -66,32 +62,26 @@
 // width: 0;
 // }
 
-.textbox{
+.textbox {
   color: white;
   background-color: #141518;
-    padding: 10px;
-    margin-bottom: 5px;
+  padding: 10px;
+  margin: 4.5px;
 }
 
 .selected {
-
   color: #1bb76e;
 }
+
 .user-info-picker {
   padding: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
+.user-info-bio {}
 
-.user-info-bio {
+.user-info-Notoriety {}
 
-}
-
-.user-info-Notoriety {
-
-}
-
-.user-info-trophy {
-
-}
+.user-info-trophy {}

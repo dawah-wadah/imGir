@@ -2,10 +2,14 @@ import React from 'react';
 import {
 	NavLink
 } from 'react-router-dom';
+import Moment from 'react-moment';
+
 
 class User extends React.Component {
 	constructor( props ) {
 		super( props );
+    this.userId = this.props.match.params.id
+
     this.headerType = this.headerType.bind(this);
 	}
 
@@ -24,8 +28,12 @@ class User extends React.Component {
     }
   }
 
+componentDidMount() {
+  this.props.requestOneUser(this.userId)
+}
+
+
 	render() {
-    let userId = this.props.match.params.id
     debugger;
 		return (
 			<div className='user-page'>
@@ -45,12 +53,23 @@ class User extends React.Component {
         </div>
         <div className='user-side-bar'>
           <div className='panel user-info-picker'>
-            <NavLink to={`/users/${userId}/comments`} className='textbox'activeClassName="selected"> Comments </NavLink>
-            <NavLink to={`/users/${userId}/submitted`} className='textbox' activeClassName="selected">Submitted Images</NavLink>
-            <NavLink to={`/users/${userId}/favorites`} className='textbox' activeClassName="selected">Favorites</NavLink>
-            <NavLink to={`/users/${userId}/replies`} className='textbox' activeClassName="selected">Replies</NavLink>
+            <NavLink to={`/users/${this.userId}/comments`} className='textbox'activeClassName="selected"> Comments </NavLink>
+            <NavLink to={`/users/${this.userId}/submitted`} className='textbox' activeClassName="selected">Submitted Images</NavLink>
+            <NavLink to={`/users/${this.userId}/favorites`} className='textbox' activeClassName="selected">Favorites</NavLink>
+            <NavLink to={`/users/${this.userId}/replies`} className='textbox' activeClassName="selected">Replies</NavLink>
           </div>
-          <div className='panel user-info-bio'></div>
+          <div className='panel user-info-bio'>
+            <div className='textbox'>{this.props.user ?
+                <div style={{display: 'flex'}}>
+                  Member since
+                  <div className='spacer'></div>
+                  <Moment fromNow>
+                    {this.props.user.created_at}
+                  </Moment>
+                </div>
+                : null }
+              </div>
+          </div>
           <div className='panel user-info-Notoriety'></div>
           <div className='panel user-info-trophy'></div>
         </div>

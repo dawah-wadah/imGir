@@ -6,6 +6,7 @@ import modal from './modal_reducer';
 import image from './image_reducer';
 import comment from './comment_reducer';
 import search from './search_reducer';
+import user from './user_reducer';
 
 const RootReducer = combineReducers({
   session,
@@ -15,6 +16,7 @@ const RootReducer = combineReducers({
   image,
   comment,
   search,
+  user,
 });
 
 export default RootReducer;
