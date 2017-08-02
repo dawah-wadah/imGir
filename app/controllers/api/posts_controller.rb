@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
   def index
     @posts = if params[:author_id].present?
                Post.includes(:author, :main_image)
-                   .where('author_id =(?)', "#{params[:author_id]}")
+                   .where('author_id =(?)', params[:author_id])
              else
                Post.includes(:author, :main_image).all
              end

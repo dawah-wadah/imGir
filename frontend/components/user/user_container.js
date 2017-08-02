@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   requestOneUser: (id) => dispatch(requestOneUser(id)),
-  requestUserComments: (id) => dispatch(requestUserComments(id)),
+  requestUserComments: (id, parent_type) => dispatch(requestUserComments(id, parent_type)),
   requestUserPosts: (id) => dispatch(requestUserPosts(id))
 });
 

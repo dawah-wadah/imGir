@@ -14,13 +14,15 @@ export const fetchUserPosts = author_id => (
     data: { author_id }
   })
 );
-export const fetchUserComments = author_id => (
+export const fetchUserComments = (author_id, parent_type) => {
+  debugger
+  return(
   $.ajax({
     method: 'get',
     url: '/api/comments',
-    data: { author_id }
+    data: { author_id, parent_type }
   })
-);
+)};
 
 export const fetchComments = (id) => (
   $.ajax({
@@ -60,8 +62,8 @@ export const requestUserPosts = (id) => (dispatch) => {
     return posts;
   });
 };
-export const requestUserComments = (id) => (dispatch) => {
-  return fetchUserComments(id).then(comments => {
+export const requestUserComments = (id, parent_type) => (dispatch) => {
+  return fetchUserComments(id, parent_type).then(comments => {
     dispatch(receiveUserComments(comments));
     return comments;
   });

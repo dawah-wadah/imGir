@@ -8,33 +8,55 @@ import Moment from 'react-moment';
 class User extends React.Component {
 	constructor( props ) {
 		super( props );
-    this.userId = this.props.match.params.id
+		this.userId = this.props.match.params.id
 
-    this.headerType = this.headerType.bind(this);
+		this.headerType = this.headerType.bind( this );
 	}
 
-  headerType() {
-    switch (this.props.location.pathname.split('/')[3]) {
-      case 'comments':
-        return "Gallery Comments"
-      case 'submitted':
-        return 'Submitted Images'
-      case 'favorites':
-      return "Gallery Favorites"
-      case 'replies':
-        return 'Comment Replies'
-      default:
-      return "Gallery Comments"
-    }
-  }
+	headerType() {
+		switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
+		case 'comments':
+			return "Gallery Comments"
+		case 'submitted':
+			return 'Submitted Images'
+		case 'favorites':
+			return "Gallery Favorites"
+		case 'replies':
+			return 'Comment Replies'
+		default:
+			return "Gallery Comments"
+		}
+	}
 
-componentDidMount() {
-  this.props.requestOneUser(this.userId)
-}
+	componentDidMount() {
+		this.props.requestOneUser( this.userId )
+	}
 
+	componentWillReceiveProps( nextProps ) {
+		if ( this.props.match.params.id !== nextProps.match.params.id ) {
+			this.props.requestOneUser( nextProps.match.params.id );
+		} else if ( this.props.location.pathname.split( '/' )[ 3 ] !== nextProps.location
+			.pathname.split( '/' )[ 3 ] ) {
+			switch ( nextProps.location.pathname.split( '/' )[ 3 ] ) {
+			case 'comments':
+				this.props.requestUserComments( parseInt(this.userId), 'Post' )
+				break;
+			case 'submitted':
+				this.props.requestUserPosts( this.userId )
+				break;
+			case 'favorites':
+				return "Gallery Favorites"
+			case 'replies':
+				return 'Comment Replies'
+			default:
+			this.props.requestUserComments( this.userId )
+			break;
+			}
+
+		}
+	}
 
 	render() {
-    debugger;
 		return (
 			<div className='user-page'>
         <div className='user-comments'>

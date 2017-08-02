@@ -1,8 +1,7 @@
 class Api::CommentsController < ApplicationController
   def index
-  @comments = if params[:author_id].present?
-             Comment.includes(:user, :replies)
-                 .where('user_id =(?)', "#{params[:author_id]}")
+  @comments = if params[:author_id].present? && params[:parent_type].present?
+             Comment.includes(:user, :replies).where("user_id =(?) AND parent_type=(?)", params[:author_id], params[:parent_type])
            else
              post = Post.find(params[:post_id])
              @comments = post.comments.order(created_at: :desc)
