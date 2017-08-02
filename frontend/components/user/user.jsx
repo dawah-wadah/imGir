@@ -1,14 +1,19 @@
 import React from 'react';
+import {
+	NavLink
+} from 'react-router-dom';
 
 class User extends React.Component {
-  constructor(props){
-    super(props);
+	constructor( props ) {
+		super( props );
 
-  }
+	}
 
-  render(){
-    return(
-      <div className='user-page'>
+	render() {
+    let userId = this.props.match.params.id
+    debugger;
+		return (
+			<div className='user-page'>
         <div className='user-comments'>
           <div className='panel-header-toolbox'>
             <div className='user-info left-side'>
@@ -25,10 +30,10 @@ class User extends React.Component {
         </div>
         <div className='user-side-bar'>
           <div className='panel user-info-picker'>
-            <div className='textbox'>Comments</div>
-            <div className='textbox'>Submitted Images</div>
-            <div className='textbox'>Favorites</div>
-            <div className='textbox'>Replies</div>
+            <NavLink to={`/users/${userId}/comments`} className='textbox'activeClassName="selected"> Comments </NavLink>
+            <NavLink to={`/users/${userId}/submitted`} className='textbox' activeClassName="selected">Submitted Images</NavLink>
+            <NavLink to={`/users/${userId}/favorites`} className='textbox' activeClassName="selected">Favorites</NavLink>
+            <NavLink to={`/users/${userId}/replies`} className='textbox' activeClassName="selected">Replies</NavLink>
           </div>
           <div className='panel user-info-bio'></div>
           <div className='panel user-info-Notoriety'></div>
@@ -36,8 +41,8 @@ class User extends React.Component {
         </div>
 
       </div>
-    );
-  }
+		);
+	}
 }
 
 export default User;

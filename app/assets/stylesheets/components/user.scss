@@ -19,10 +19,6 @@
   height: 70vh;
 }
 
-.selected{
-
-}
-
 .user-side-bar {
   top: 90px;
   border-radius: 15px;
@@ -59,17 +55,34 @@
   margin: 10px 0;
   min-height: 50px;
 }
+// .selected{
+//   border-bottom: 18px solid transparent;
+// border-right: 14px solid #181817;
+// border-top: 18px solid transparent;
+// height: 0;
+// left: -14px;
+// position: absolute;
+// top: 0;
+// width: 0;
+// }
 
 .textbox{
+  color: white;
   background-color: #141518;
     padding: 10px;
     margin-bottom: 5px;
 }
 
+.selected {
+
+  color: #1bb76e;
+}
 .user-info-picker {
   padding: 25px;
-
+  display: flex;
+  flex-direction: column;
 }
+
 
 .user-info-bio {
 

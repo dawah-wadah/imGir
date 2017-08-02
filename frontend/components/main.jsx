@@ -14,7 +14,7 @@ const Main = ({clearDropdowns}) => (
       <Route exact path='/' component={PostIndex}/>
       <Route exact path="/posts" component={PostIndex}/>
       <Route exact path="/posts/:id" component={PostShow}/>
-      <Route exact path="/users/:id" component={User}/>
+      <Route path="/users/:id" component={User}/>
       <AuthRoute path="/login" component={SessionForm} />
       <AuthRoute exact path="/posts/new" component={UploadPage} />
       <AuthRoute path="/signup" component={SessionForm} />
