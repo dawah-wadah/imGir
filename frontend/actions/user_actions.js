@@ -15,7 +15,6 @@ export const fetchUserPosts = author_id => (
   })
 );
 export const fetchUserComments = (author_id, parent_type) => {
-  debugger
   return(
   $.ajax({
     method: 'get',

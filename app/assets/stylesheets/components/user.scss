@@ -1,17 +1,18 @@
 .user-page {
   top: 10px;
-  width: 70%;
+  width: 60%;
   border-radius: 15px;
   position: relative;
   display: flex;
   margin: 10px auto 0;
   min-height: 150px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .user-comments {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 70%;
   padding: 20px 5px;
   border-radius: 15px;
@@ -27,18 +28,51 @@
   width: 25%;
 }
 
+.user-info-item {
+  border-radius: 5px;
+  display: flex;
+  padding: 8px;
+  margin: 15px 0;
+  height: 80px;
+}
+
+.user-info-item img {
+  height: 80px;
+    width: 80px;
+    object-fit: cover;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.user-info-item-pic {
+
+}
+
+.user-info-item-info {
+  color: white;
+}
+
+
+
 .panel-header-toolbox {
+  margin: 0 auto;
   margin-bottom: 5px;
   background-color: #141518;
   padding: 10px;
   width: 90%;
-  height: 15px;
   display: flex;
   justify-content: space-between;
 }
 
 .user-info {
   height: auto;
+}
+.display {
+  margin: 0 auto;
+  overflow: auto;
+  height: 80%;
+  width: 90%;
+  padding: 10px;
 }
 
 .left-side {}

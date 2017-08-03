@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	NavLink
+	NavLink, Link
 } from 'react-router-dom';
 import Moment from 'react-moment';
 
@@ -11,6 +11,7 @@ class User extends React.Component {
 		this.userId = this.props.match.params.id
 
 		this.headerType = this.headerType.bind( this );
+		this.displayInfo = this.displayInfo.bind( this );
 	}
 
 	headerType() {
@@ -30,6 +31,23 @@ class User extends React.Component {
 
 	componentDidMount() {
 		this.props.requestOneUser( this.userId )
+		switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
+		case 'comments':
+			this.props.requestUserComments( parseInt( this.userId ), 'Post' )
+			break;
+		case 'submitted':
+			this.props.requestUserPosts( this.userId )
+			break;
+		case 'favorites':
+			return "Gallery Favorites"
+		case 'replies':
+			this.props.requestUserComments( parseInt( this.userId ), 'Comment' )
+			break
+		default:
+			this.props.requestUserComments( this.userId )
+			break;
+
+		}
 	}
 
 	componentWillReceiveProps( nextProps ) {
@@ -39,7 +57,7 @@ class User extends React.Component {
 			.pathname.split( '/' )[ 3 ] ) {
 			switch ( nextProps.location.pathname.split( '/' )[ 3 ] ) {
 			case 'comments':
-				this.props.requestUserComments( parseInt(this.userId), 'Post' )
+				this.props.requestUserComments( parseInt( this.userId ), 'Post' )
 				break;
 			case 'submitted':
 				this.props.requestUserPosts( this.userId )
@@ -47,13 +65,46 @@ class User extends React.Component {
 			case 'favorites':
 				return "Gallery Favorites"
 			case 'replies':
-				return 'Comment Replies'
+				this.props.requestUserComments( parseInt( this.userId ), 'Comment' )
+				break
 			default:
-			this.props.requestUserComments( this.userId )
-			break;
+				this.props.requestUserComments( this.userId )
+				break;
 			}
 
 		}
+	}
+
+	displayInfo() {
+		let param = this.props.location.pathname.split( '/' )[ 3 ];
+		if ( this.props[ param ] ) {
+			return this.props[ param ].map( ( el ) => {
+				return (
+					<Link to={`/posts/${el.post_id}`}>
+					  <div className='user-info-item'>
+					    <div className='user-info-item-pic'>
+					      <img src={el.main_image}/>
+					    </div>
+							<div className='user-info-item-info'>
+									<div className="author">
+											<div className="comment-username">{el.author_name}</div>
+											<div className="comment-username spacer">{el.points} pts</div>
+											<div className='time-since-posted spacer'>
+												<Moment fromNow>
+													{el.time_since}
+												</Moment>
+											</div>
+										</div>
+										<p>{el.body}</p>
+							</div>
+					  </div>
+					</Link>
+				)
+			} )
+		} else {
+			return <p>WE GOT NOTHING</p>
+		}
+
 	}
 
 	render() {
@@ -69,7 +120,7 @@ class User extends React.Component {
             </div>
           </div>
           <div className='user-info display'>
-
+						{this.displayInfo()}
           </div>
 
         </div>
