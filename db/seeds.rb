@@ -35,7 +35,96 @@ User.create!(username: 'NathanNathan', password: 'password')
 User.create!(username: 'Nathan', password: 'password')
 User.create!(username: 'Tommy_Pickles', password: 'password')
 
-  10.times do
+links = [
+  "https://i.imgur.com/HvFb6X8.gif",
+"https://i.imgur.com/gVRBlOD.gif",
+"https://i.imgur.com/0HzLDq1.gif",
+"https://i.imgur.com/cMbFuNE.gif",
+"https://i.imgur.com/EtGhzOb.gif",
+"https://i.imgur.com/PXae3AQ.gif",
+"https://i.imgur.com/AIl1zkm.gif",
+"https://i.imgur.com/bfxdauk.gif",
+"https://i.imgur.com/LoJLxP4.gif",
+"https://i.imgur.com/HxLfe73g.jpg",
+"https://i.imgur.com/GJGYcOJg.jpg",
+"https://i.imgur.com/QZQTN9xg.jpg",
+"https://i.imgur.com/HxLfe73.jpg",
+"https://i.imgur.com/GJGYcOJ.jpg",
+"https://i.imgur.com/QZQTN9x.jpg",
+"https://i.imgur.com/C7ZG5MJ.gif",
+"https://i.imgur.com/FQfaA2s.gif",
+"https://i.imgur.com/kCtEGp0.gif",
+"https://i.imgur.com/FYiQ0dF.png",
+"https://i.imgur.com/DKWsYqY.jpg",
+"https://i.imgur.com/5p2MCmN.gif",
+"https://i.imgur.com/ZyUSOpm.gif",
+"https://i.imgur.com/7fdK5Nk.gif",
+"https://i.imgur.com/pwM6Tx4.gif",
+"https://i.imgur.com/YE63Te2.gif",
+"https://i.imgur.com/24hOcqL.jpg",
+"https://i.imgur.com/KGaF23E.gif",
+"https://i.imgur.com/p5459Wr.gif",
+"https://i.imgur.com/kCvmGyk.gif",
+"https://i.imgur.com/dBppIgQ.gif",
+"https://i.imgur.com/ttWL8G6.gif",
+"https://i.imgur.com/DYmTNEZ.gif",
+"https://i.imgur.com/sn6phYQ.gif",
+"https://i.imgur.com/d6D6yK0.gif",
+"https://i.imgur.com/EVoUolV.gif",
+"https://i.imgur.com/lnV93yk.gif",
+"https://i.imgur.com/eTxQdmW.gif",
+"https://i.imgur.com/wOSWO0T.gif",
+"https://i.imgur.com/oYt0p5F.gif",
+"https://i.imgur.com/pm0xdSE.gif",
+"https://i.imgur.com/aL24Y3G.gif",
+"https://i.imgur.com/xtz7rGh.gif",
+"https://i.imgur.com/bQx5ttQ.gif",
+"https://i.imgur.com/rNauOZJ.png",
+"https://i.imgur.com/IxUdqiU.jpg",
+"http://33.media.tumblr.com/tumblr_lyd7bb9tzW1r6h95jo1_500.gif",
+"https://i.imgur.com/883eUED.gif",
+"https://i.imgur.com/aYCp7IP.gif",
+"https://i.imgur.com/MN0tBhJ.gif",
+"https://i.imgur.com/z0aLZLY.gif",
+"https://i.imgur.com/JSskEbb.gif",
+"https://i.imgur.com/czZCrRt.gif",
+"https://i.imgur.com/mSw31S0.gif",
+"https://i.imgur.com/Od8SlF0.gif",
+"https://i.imgur.com/AP5WFS5.gif",
+"https://i.imgur.com/b4Pk9yv.gif",
+"https://i.imgur.com/zVMWCNi.gif",
+"http://orig03.deviantart.net/6dc8/f/2010/259/2/5/ith_finale_by_mikeinel-d2mqvg2.gif",
+"https://i.imgur.com/qNnAjCU.gif",
+"https://i.imgur.com/JbsDaFS.gif",
+"https://i.imgur.com/qM1ZVa7.gif",
+"https://i.imgur.com/MRaTmRD.gif",
+"https://i.imgur.com/qXe7DvR.gif",
+"https://i.imgur.com/Iqj3c5w.gif",
+"https://i.imgur.com/wQS0j5M.gif",
+"https://i.imgur.com/r4iiJGo.gif",
+"https://i.imgur.com/ftAlELU.jpg",
+"https://i.imgur.com/yl8UCt0.jpg",
+"https://i.imgur.com/XLH7rFug.jpg",
+"https://i.imgur.com/2DYHWoi.png",
+"https://i.imgur.com/Zdck72W.png",
+"https://i.imgur.com/9JdgyMA.jpg",
+"https://i.imgur.com/XLH7rFu.jpg",
+"https://i.imgur.com/2Pcoz.gif",
+"https://i.imgur.com/4JNMXS7.gif",
+"https://i.imgur.com/uCeMTGV.gif",
+"https://i.imgur.com/1lHS0wr.gif",
+"https://i.imgur.com/aSYSID3.gif",
+"https://i.imgur.com/y170QmI.gif",
+"https://i.imgur.com/ehgvnyx.gif",
+"https://i.imgur.com/wQBvNTW.gif",
+"https://i.imgur.com/zKzPQsw.gif",
+"https://i.imgur.com/kM0drgr.jpg",
+"https://i.imgur.com/rLiaUp1.gif",
+"https://i.imgur.com/OQUD3RC.gif",
+"http://sciblogs.co.nz/app/uploads/2011/04/TOAST-invader-zim-6223825-1024-768.gif"
+]
+
+  60.times do
   post = Post.create({
     title: Faker::RickAndMorty.quote,
     description: Faker::RickAndMorty.quote,
@@ -45,7 +134,7 @@ User.create!(username: 'Tommy_Pickles', password: 'password')
       Image.create({
         imageable_id: post.id,
         imageable_type: 'Post',
-        image: Faker::LoremPixel.image,
+        image: links.sample,
         main_image: true,
         description: Faker::RickAndMorty.quote
     })
@@ -69,7 +158,7 @@ User.create!(username: 'Tommy_Pickles', password: 'password')
       end
     end
 end
-  10.times do
+  30.times do
   post = Post.create({
     title: Faker::HitchhikersGuideToTheGalaxy.quote,
     description: Faker::HitchhikersGuideToTheGalaxy.quote,
@@ -79,7 +168,7 @@ end
       Image.create({
         imageable_id: post.id,
         imageable_type: 'Post',
-        image: Faker::LoremPixel.image,
+        image: links.sample,
         main_image: true,
         description: Faker::HitchhikersGuideToTheGalaxy.quote
     })
@@ -112,11 +201,11 @@ end
 #   o = Comment.create!(user_id: User.find_by(username: 'Oscar'), parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'I wish you were in my circle')
 #   Comment.create!(user_id: User.find_by(username: 'MikeBoan'), parent_id: o.id, parent_type: 'Comment', post_id: post.id, body: 'Too bad')
 # end
-User.all.each do |user|
-  Post.all.each do |post|
-  Vote.create!(user_id: user.id, voteable_type: 'Post', voteable_id: post.id, vote_type: %w[Upvote Downvote].sample)
-end
-end
+# User.all.each do |user|
+#   Post.all.each do |post|
+#   Vote.create!(user_id: user.id, voteable_type: 'Post', voteable_id: post.id, vote_type: %w[Upvote Downvote].sample)
+# end
+# end
 
 #
 # rand(10).times do
@@ -127,7 +216,7 @@ end
 #     Image.create!(imageable_id: new_post.id,
 #     imageable_type: 'Post',
 #     imageable_id: new_post.id,
-#     image: Faker::LoremPixel.image,
+#     image: links.sample,
 #     main_image: true,
 #     description: Faker::RickAndMorty.quote)
 #   end

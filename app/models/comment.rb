@@ -14,6 +14,12 @@
 
 class Comment < ActiveRecord::Base
   validates :user, :body, presence: true
+  after_create :self_vote
+
+  def self_vote
+    self.user.increment!(:votes)
+    Vote.create!(user_id: self.user.id, voteable_type: 'Comment', voteable_id: self.id, vote_type: %w[Upvote].sample)
+  end
   belongs_to :user
   belongs_to :post
   has_one :main_image,

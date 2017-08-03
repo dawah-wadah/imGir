@@ -12,7 +12,7 @@
 
 class Post < ActiveRecord::Base
   validates :title, :user, presence: true
-
+  after_create :self_vote
   belongs_to :user
 
   has_one :main_image,
@@ -32,5 +32,10 @@ class Post < ActiveRecord::Base
   end
   def upvote_count
     Vote.where(voteable_id: self.id, voteable_type: 'Post', vote_type: 'Upvote').count
+  end
+
+  def self_vote
+    self.user.increment!(:votes)
+    Vote.create!(user_id: self.user.id, voteable_type: 'Post', voteable_id: self.id, vote_type: %w[Upvote].sample)
   end
 end
