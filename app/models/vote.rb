@@ -3,7 +3,7 @@
 # Table name: votes
 #
 #  id            :integer          not null, primary key
-#  voter_id      :integer          not null
+#  user_id       :integer          not null
 #  voteable_id   :integer
 #  voteable_type :string
 #  created_at    :datetime         not null
@@ -12,10 +12,10 @@
 #
 
 class Vote < ActiveRecord::Base
-  validates :vote_type, :voter_id, :voteable_type, presence: true
-  validates :voter_id, uniqueness: { scope: %i[voteable_id voteable_type] }
+  validates :vote_type, :user_id, :voteable_type, presence: true
+  validates :user_id, uniqueness: { scope: %i[voteable_id voteable_type] }
 
-  belongs_to :voter, class_name: 'User'
+  belongs_to :user
   belongs_to :voteable, polymorphic: true
 
   scope :upvotes, -> { where(vote_type: 'Upvote')}

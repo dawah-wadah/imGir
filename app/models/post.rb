@@ -5,17 +5,15 @@
 #  id          :integer          not null, primary key
 #  title       :string           not null
 #  description :text
-#  author_id   :integer          not null
+#  user_id     :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Post < ActiveRecord::Base
-  validates :title, :author, presence: true
+  validates :title, :user, presence: true
 
-  belongs_to :author,
-             class_name: :User,
-             foreign_key: :author_id
+  belongs_to :user
 
   has_one :main_image,
           -> { where main_image: true },

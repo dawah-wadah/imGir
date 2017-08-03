@@ -2,7 +2,7 @@
   json.set! comment.id do
     json.id comment.id
     json.user_id comment.user_id
-    json.author_name comment.user.username
+    json.user_name comment.user.username
     json.body comment.body
     json.reply_count comment.replies.count
     json.set! :time_since, (comment.created_at.to_f * 1000).floor

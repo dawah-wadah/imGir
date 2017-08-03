@@ -21,7 +21,7 @@
       title: 'Check out my applesauce',
       description: 'mmmmm AppleSaws is my favorite',
       points: '1',
-      authorid: 'Gir'
+      userid: 'Gir'
       imageId: 1
     }
     2: {
@@ -29,7 +29,7 @@
       title: 'Why does Zim hate me',
       description: 'Zim is always mad at me',
       points: '-5',
-      authorid: 'Gir'
+      userid: 'Gir'
       imageId: 2
     }
   }

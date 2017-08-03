@@ -1,20 +1,20 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = if params[:author_id].present?
-               Post.includes(:author, :main_image)
-                   .where('author_id =(?)', params[:author_id])
+    @posts = if params[:user_id].present?
+               Post.includes(:user, :main_image)
+                   .where('user_id =(?)', params[:user_id])
              else
-               Post.includes(:author, :main_image).all
+               Post.includes(:user, :main_image).all
              end
     render 'api/posts/index'
   end
 
   def show
-    @post = Post.includes(:author, :images).find(params[:id])
+    @post = Post.includes(:user, :images).find(params[:id])
     @comments = @post.comments.includes(:replies, :user)
   end
 
-  # vote = Vote.find_by(voter_id: current_user.id, voteable_type: 'Post', voteable_id: @post.id)
+  # vote = Vote.find_by(user_id: current_user.id, voteable_type: 'Post', voteable_id: @post.id)
   def new
 
   end
@@ -22,7 +22,9 @@ class Api::PostsController < ApplicationController
   def create
 
     @post = Post.new(post_params)
-    @post.author_id = current_user.id
+    @post.user_id = current_user.id
+    @user = User.find(@post.user_id)
+    @user.increment!(:votes)
     if @post.save
       render :show
     else
@@ -38,6 +40,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :points, :author_id, :description)
+    params.require(:post).permit(:title, :points, :user_id, :description)
   end
 end

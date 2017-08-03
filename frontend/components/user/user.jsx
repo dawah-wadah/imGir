@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-	NavLink, Link
+	NavLink,
+	Link
 } from 'react-router-dom';
 import Moment from 'react-moment';
 
@@ -76,18 +77,34 @@ class User extends React.Component {
 	}
 
 	displayInfo() {
-		let param = this.props.location.pathname.split( '/' )[ 3 ];
+		let param;
+		let post_id;
+		switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
+		case 'comments': case 'replies':
+			param = 'comments'
+			break;
+		case 'submitted': case 'favorites':
+			param = 'posts'
+			break;
+		default:
+			param = 'comments'
+			break;
+
+		}
+		debugger
 		if ( this.props[ param ] ) {
 			return this.props[ param ].map( ( el ) => {
+				let post_id = param === 'comments' ? el.post_id :
+					el.id
 				return (
-					<Link to={`/posts/${el.post_id}`}>
+					<Link to={`/posts/${post_id}`}>
 					  <div className='user-info-item'>
 					    <div className='user-info-item-pic'>
 					      <img src={el.main_image}/>
 					    </div>
 							<div className='user-info-item-info'>
-									<div className="author">
-											<div className="comment-username">{el.author_name}</div>
+									<div className="user">
+											<div className="comment-username">{el.user_name}</div>
 											<div className="comment-username spacer">{el.points} pts</div>
 											<div className='time-since-posted spacer'>
 												<Moment fromNow>
@@ -134,7 +151,8 @@ class User extends React.Component {
           <div className='panel user-info-bio'>
             <div className='textbox'>{this.props.user ?
                 <div style={{display: 'flex'}}>
-                  Member since
+									{this.props.user.votes} points
+                  · Member since
                   <div className='spacer'></div>
                   <Moment fromNow>
                     {this.props.user.created_at}

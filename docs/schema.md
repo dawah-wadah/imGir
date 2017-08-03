@@ -15,7 +15,7 @@ id          | integer   | not null, primary key
 title       | string    | not null
 description | text      | not null
 points      | integer   | not null, default: 0
-author_id   | integer   | not null, foreign key (references users), indexed
+user_id   | integer   | not null, foreign key (references users), indexed
 
 ## comments
 column name       | data type | details
@@ -39,6 +39,6 @@ description | text      |
 ## votes(join table)
 column name     | data type | details
 ----------------|-----------|-----------------------
-voter_id        | integer   | not null, foreign key
+user_id        | integer   | not null, foreign key
 vote_id         | integer   | not null, foreign key
 vote_type       | integer   | not null

@@ -7,19 +7,19 @@ export const fetchUser = (id) => {
 );};
 
 
-export const fetchUserPosts = author_id => (
+export const fetchUserPosts = user_id => (
   $.ajax({
     method: 'get',
     url: '/api/posts',
-    data: { author_id }
+    data: { user_id }
   })
 );
-export const fetchUserComments = (author_id, parent_type) => {
+export const fetchUserComments = (user_id, parent_type) => {
   return(
   $.ajax({
     method: 'get',
     url: '/api/comments',
-    data: { author_id, parent_type }
+    data: { user_id, parent_type }
   })
 )};
 

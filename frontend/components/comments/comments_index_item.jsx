@@ -68,6 +68,7 @@ class CommentsIndexItem extends React.Component {
 				 toggle={this.toggle}
 				 toggleChild={this.toggleChild}
 				 replies={this.replies}
+				 postId={this.props.comment.post_id}
 				 open={this.state.hideReplies}
         parentType='Comment' /> ;
 	}
@@ -190,7 +191,7 @@ render() {
 				</div>
 
           <div className="comment-info">
-            <div className="author">
+            <div className="user">
                 <div className="comment-username">{this.props.comment.username}</div>
                 <div className="comment-username spacer">{this.props.comment.points} pts</div>
 								<div className='time-since-posted spacer'>

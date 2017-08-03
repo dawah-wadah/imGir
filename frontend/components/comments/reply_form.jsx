@@ -9,7 +9,7 @@ class ReplyForm extends React.Component{
 				body: '',
 				parent_id: this.props.parentId,
 				parent_type: this.props.parentType,
-				post_id: this.props.CommentId,
+				post_id: this.props.postId,
 			charsLeft: 140
 		};
     this.handleSubmit = this.handleSubmit.bind(this);

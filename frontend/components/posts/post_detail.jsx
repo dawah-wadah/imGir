@@ -185,12 +185,12 @@ class PostDetail extends React.Component {
 						<div className='header-left'>
 
 						<h1 className='post-title'>{this.props.post.title}</h1>
-						<span className='post-author-link'>
+						<span className='post-user-link'>
 							by
 							<Link
-								className='post-author-link sm-spacer'
-								to={`/users/${this.props.post.author_id}`}>
-								{this.props.post.author_name}
+								className='post-user-link sm-spacer'
+								to={`/users/${this.props.post.user_id}`}>
+								{this.props.post.user_name}
 							</Link>
 						</span>
 					</div>

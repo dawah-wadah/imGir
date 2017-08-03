@@ -8,7 +8,7 @@ import { requestOneUser, requestUserPosts, requestUserComments } from '../../act
 
 const mapStateToProps = ({user}) => ({
   user: user.user,
-  submitted: values(user.posts),
+  posts: values(user.posts),
   comments: values(user.comments)
 });
 

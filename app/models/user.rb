@@ -8,6 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  votes           :integer          default(0)
 #
 
 class User < ActiveRecord::Base
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token_uniqueness
 
   has_many :posts,
-           foreign_key: :author_id
+           foreign_key: :user_id
 
   has_many :comments
 
