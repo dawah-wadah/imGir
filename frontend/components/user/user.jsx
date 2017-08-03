@@ -91,7 +91,6 @@ class User extends React.Component {
 			break;
 
 		}
-		debugger
 		if ( this.props[ param ] ) {
 			return this.props[ param ].map( ( el ) => {
 				let post_id = param === 'comments' ? el.post_id :

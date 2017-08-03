@@ -192,7 +192,9 @@ render() {
 
           <div className="comment-info">
             <div className="user">
-                <div className="comment-username">{this.props.comment.username}</div>
+                <Link to={`/users/${this.props.comment.user_id}`}>
+									<div className="comment-username">{this.props.comment.username}</div>
+                </Link>
                 <div className="comment-username spacer">{this.props.comment.points} pts</div>
 								<div className='time-since-posted spacer'>
 									<Moment fromNow>
