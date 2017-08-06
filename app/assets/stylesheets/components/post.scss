@@ -112,7 +112,7 @@
 }
 
 .photo-zoom img {
-  width: 70vw;
+  max-height: 100vh;
 }
 
 .post-description {
@@ -161,6 +161,7 @@
   display: flex;
   justify-content: center;
   background-color: #000;
+  overflow: hidden;
 }
 
 .post-image {
