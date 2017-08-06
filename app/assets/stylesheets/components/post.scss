@@ -158,17 +158,17 @@
 .post-images {
   border-radius: 0 0 4px 4px;
   margin: 5px 0;
-  background-color: #2c2f34;
+  display: flex;
+  justify-content: center;
+  background-color: #000;
 }
 
 .post-image {
-  width: 70vw;
-  height: 70vh;
+  max-height: 70vh;
 }
 
 .post-images img {
-  width: 100%;
-  height: inherit;
+
   cursor: zoom-in;
 }
 
