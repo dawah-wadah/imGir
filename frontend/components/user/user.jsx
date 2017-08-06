@@ -45,7 +45,7 @@ class User extends React.Component {
 			this.props.requestUserComments( parseInt( this.userId ), 'Comment' )
 			break
 		default:
-			this.props.requestUserComments( this.userId )
+			this.props.requestUserComments( this.userId, 'Post' )
 			break;
 
 		}
@@ -91,6 +91,8 @@ class User extends React.Component {
 			break;
 
 		}
+
+
 		if ( this.props[ param ] ) {
 			return this.props[ param ].map( ( el ) => {
 				let post_id = param === 'comments' ? el.post_id :
@@ -118,12 +120,13 @@ class User extends React.Component {
 				)
 			} )
 		} else {
-			return <p>WE GOT NOTHING</p>
+			return <p>Nothing to Show</p>
 		}
 
 	}
 
 	render() {
+		this.props.user ?  document.title = this.props.user.username : document.title = 'Zimgir';
 		return (
 			<div className='user-page'>
         <div className='user-comments'>
@@ -157,7 +160,7 @@ class User extends React.Component {
                     {this.props.user.created_at}
                   </Moment>
                 </div>
-                : null }
+                : window.images.loading }
               </div>
           </div>
           <div className='panel user-info-Notoriety'></div>

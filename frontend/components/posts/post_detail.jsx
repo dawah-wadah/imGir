@@ -178,6 +178,9 @@ class PostDetail extends React.Component {
 		} else {
 			allPics = null;
 		}
+		if (document.title != this.props.post.title) {
+    document.title = this.props.post.title;
+}
 		return (
 			<div className='show-page' onKeyPress={this.handleKeyPress}>
 				<section className='post-container'>
