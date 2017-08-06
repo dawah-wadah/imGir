@@ -13,7 +13,6 @@ class CommentsIndex extends React.Component{
         return (
           <div className="comment-index-container">
             <div className="comment-index">
-              <ul>
                 {comments.map( (comment) => {
                   if(comment) {
                     return (
@@ -22,7 +21,6 @@ class CommentsIndex extends React.Component{
                   }
                 }
                 )}
-             </ul>
             </div>
           </div>
         );
