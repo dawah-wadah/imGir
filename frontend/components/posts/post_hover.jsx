@@ -59,7 +59,7 @@ const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayMo
 			</div>
 			<div className='post-info-tags'>
 				<p>Tags: Album</p>
-				<p>{post.view_count}</p>
+				<p>{post.view_count + ' views'}</p>
 			</div>
 		</div>
 	);

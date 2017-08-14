@@ -32,6 +32,8 @@
 .post-info {
   padding: 0;
   height: 134px;
+  max-height: 300px;
+  // overflow: auto;
   position: relative;
   bottom: 60px;
   z-index: 4;
@@ -57,6 +59,8 @@
   padding: 7%;
   width: 120%;
   z-index: 2;
+  max-height: 100px;
+  overflow: hidden;
   background-color: #121211;
   top: 101%;
   margin-left: -19%;
@@ -73,7 +77,7 @@
   line-height: 1.5em;
   color: #fff;
   max-height: 11em;
-  padding: 0;
+  padding: 2;
   letter-spacing: 0.03em;
   margin-bottom: 27px;
 }
