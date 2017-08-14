@@ -12,6 +12,7 @@ gem 'rails_12factor'
 gem 'pry-rails'
 gem 'faker', github: 'stympy/faker'
 gem 'annotate'
+gem 'impressionist'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

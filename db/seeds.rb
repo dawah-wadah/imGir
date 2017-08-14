@@ -93,7 +93,6 @@ links = [
 "https://i.imgur.com/AP5WFS5.gif",
 "https://i.imgur.com/b4Pk9yv.gif",
 "https://i.imgur.com/zVMWCNi.gif",
-"http://orig03.deviantart.net/6dc8/f/2010/259/2/5/ith_finale_by_mikeinel-d2mqvg2.gif",
 "https://i.imgur.com/qNnAjCU.gif",
 "https://i.imgur.com/JbsDaFS.gif",
 "https://i.imgur.com/qM1ZVa7.gif",
@@ -192,46 +191,6 @@ end
       end
     end
 end
-# rand(8).times do
-#   comment = Comment.create!(user_id: User.all.sample.id, parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'Wadah your presentation is awesome')
-#   Comment.create!(user_id: User.all.sample.id, parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'Dude, this site is killer AF')
-#   Comment.create!(user_id: User.all.sample.id, parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'Right, on keep it up')
-#   Comment.create!(user_id: User.find_by(username: 'MikeBoan'), parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'I\'ve seen better')
-#   Comment.create!(user_id: User.all.sample.id, parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'Wadah, you\'re the man')
-#   o = Comment.create!(user_id: User.find_by(username: 'Oscar'), parent_id: post.id, parent_type: 'Post', post_id: post.id, body: 'I wish you were in my circle')
-#   Comment.create!(user_id: User.find_by(username: 'MikeBoan'), parent_id: o.id, parent_type: 'Comment', post_id: post.id, body: 'Too bad')
-# end
-# User.all.each do |user|
-#   Post.all.each do |post|
-#   Vote.create!(user_id: user.id, voteable_type: 'Post', voteable_id: post.id, vote_type: %w[Upvote Downvote].sample)
-# end
-# end
-
-#
-# rand(10).times do
-#   new_post = Post.create!(title: Faker::RickAndMorty.quote,
-#    description: Faker::RickAndMorty.quote,
-#     user_id: User.all.sample.id)
-#
-#     Image.create!(imageable_id: new_post.id,
-#     imageable_type: 'Post',
-#     imageable_id: new_post.id,
-#     image: links.sample,
-#     main_image: true,
-#     description: Faker::RickAndMorty.quote)
-#   end
-#   #   rand(3).times do
-# end
-#     Image.create!(imageable_id: new_post.id,
-#                  imageable_type: 'Post',
-#                  image: Faker::LoremPixel.image,
-#                  main_image: false,
-#                  description: Faker::RickAndMorty.quote)
-#               end
-#
-# rand(7).times do
-#   Comment.create!(user_id: User.all.sample.id, parent_id: comment.id, parent_type: 'Post', post_id: new_post.id, body: Faker::RickAndMorty.quote)
-# end
 # User.all.each do |user|
 #   Vote.create!(user_id: user.id, voteable_type: 'Post', voteable_id: new_post.id, vote_type: ['Upvote', 'Downvote'].sample)
 # end

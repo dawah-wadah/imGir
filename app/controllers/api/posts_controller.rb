@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+
   def index
     @posts = if params[:user_id].present?
                Post.includes(:user, :main_image)
@@ -11,6 +12,7 @@ class Api::PostsController < ApplicationController
 
   def show
     @post = Post.includes(:user, :images).find(params[:id])
+    impressionist(@post)
     @comments = @post.comments.includes(:replies, :user)
   end
 

@@ -2,15 +2,17 @@
 #
 # Table name: posts
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  description :text
-#  user_id     :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id               :integer          not null, primary key
+#  title            :string           not null
+#  description      :text
+#  user_id          :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  impression_count :integer
 #
 
 class Post < ActiveRecord::Base
+  is_impressionable :counter_cache => true, :column_name => :impression_count
   validates :title, :user, presence: true
   after_create :self_vote
   belongs_to :user

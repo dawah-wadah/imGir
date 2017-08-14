@@ -59,11 +59,12 @@ const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayMo
 			</div>
 			<div className='post-info-tags'>
 				<p>Tags: Album</p>
-				<p>{Math.floor(Math.random() * 90) + 123 + ' views'}</p>
+				<p>{post.view_count}</p>
 			</div>
 		</div>
 	);
 };
+// <p>{Math.floor(Math.random() * 90) + 123 + ' views'}</p>
 
 import {createVote , editVote, deleteVote} from '../../actions/vote_actions';
 import {displayModal} from '../../actions/modal_actions';

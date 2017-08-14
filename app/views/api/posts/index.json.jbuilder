@@ -2,6 +2,7 @@
   json.set! post.id do
     json.title post.title
     json.id post.id
+    json.view_count post.impressionist_count(:filter => :ip_address)
     json.description post.description
     json.user_id post.user.id
     json.user_name post.user.username
