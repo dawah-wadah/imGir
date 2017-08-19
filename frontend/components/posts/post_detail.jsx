@@ -52,7 +52,6 @@ class PostDetail extends React.Component {
 		if ( !this.props.loggedIn ) {
 			this.props.displayModal( <SessionFormModal /> );
 		} else {
-			debugger
 			if ( this.props.voted ) {
 				if ( this.props.post.vote.vote_type !== type ) {
 					return ( this.props.editVote( {
