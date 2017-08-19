@@ -26,8 +26,9 @@ class Api::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @user = User.find(@post.user_id)
-    @user.increment!(:votes)
+    # @user.increment!(:votes)
     if @post.save
+      # Vote.create!({user_id: @user.id, vote_type: 'Upvote', voteable_type: 'Post', voteable_id: @post.id})
       render :show
     else
       render json: @post.errors.full_messages, status: 422

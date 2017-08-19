@@ -44,10 +44,10 @@ class Api::VotesController < ApplicationController
       klass = vote[:voteable_type] == "Post" ? Post : Comment
       @voteable_item = klass.find(vote[:voteable_id])
       instance_variable_set("@#{klass}".downcase, @voteable_item)
-      if vote_params[:vote_type] == 'Upvote'
-        @voteable_item.user.increment!(:votes)
-      else
+      if vote[:vote_type] == 'Upvote'
         @voteable_item.user.decrement!(:votes)
+      else
+        @voteable_item.user.increment!(:votes)
       end
       render "/api/#{"#{klass}".downcase}s/show"
     else

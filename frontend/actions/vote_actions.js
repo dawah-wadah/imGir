@@ -32,7 +32,7 @@ export const createVote = voteData => dispatch => {
 
 export const editVote = voteData => dispatch => {
   let action;
-  
+
   voteData.vote.voteable_type === 'Post' ?
   action = receiveOnePost :
   action = receiveOneComment;
@@ -50,6 +50,6 @@ export const deleteVote = (params) => dispatch => {
 
   VoteUtil.deleteVote(params).then(votedItem => {
     dispatch(action(votedItem));
-    return votedItem;
+    // return votedItem;
   });
 };
