@@ -1,9 +1,12 @@
 import React from 'react';
 import {
 	NavLink,
-	Link
+	Link, Switch, Route
 } from 'react-router-dom';
 import Moment from 'react-moment';
+import UserSideBar from './user_side_bar';
+import UserGallery from './user_gallery';
+import UserComments from './user_comments';
 
 
 class User extends React.Component {
@@ -18,34 +21,34 @@ class User extends React.Component {
 	headerType() {
 		switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
 		case 'comments':
-			return "Gallery Comments"
+			return "Gallery Comments";
 		case 'submitted':
-			return 'Submitted Images'
+			return 'Submitted Images';
 		case 'favorites':
-			return "Gallery Favorites"
+			return "Gallery Favorites";
 		case 'replies':
-			return 'Comment Replies'
+			return 'Comment Replies';
 		default:
-			return "Gallery Comments"
+			return "Gallery Comments";
 		}
 	}
 
 	componentDidMount() {
-		this.props.requestOneUser( this.userId )
+		this.props.requestOneUser( this.userId );
 		switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
 		case 'comments':
-			this.props.requestUserComments( parseInt( this.userId ), 'Post' )
+			this.props.requestUserComments( parseInt( this.userId ), 'Post' );
 			break;
 		case 'submitted':
-			this.props.requestUserPosts( this.userId )
+			this.props.requestUserPosts( this.userId );
 			break;
 		case 'favorites':
-			return "Gallery Favorites"
+			return "Gallery Favorites";
 		case 'replies':
-			this.props.requestUserComments( parseInt( this.userId ), 'Comment' )
-			break
+			this.props.requestUserComments( parseInt( this.userId ), 'Comment' );
+			break;
 		default:
-			this.props.requestUserComments( this.userId, 'Post' )
+			this.props.requestUserComments( this.userId, 'Post' );
 			break;
 
 		}
@@ -58,18 +61,18 @@ class User extends React.Component {
 			.pathname.split( '/' )[ 3 ] ) {
 			switch ( nextProps.location.pathname.split( '/' )[ 3 ] ) {
 			case 'comments':
-				this.props.requestUserComments( parseInt( this.userId ), 'Post' )
+				this.props.requestUserComments( parseInt( this.userId ), 'Post' );
 				break;
 			case 'submitted':
-				this.props.requestUserPosts( this.userId )
+				this.props.requestUserPosts( this.userId );
 				break;
 			case 'favorites':
-				return "Gallery Favorites"
+				return "Gallery Favorites";
 			case 'replies':
-				this.props.requestUserComments( parseInt( this.userId ), 'Comment' )
-				break
+				this.props.requestUserComments( parseInt( this.userId ), 'Comment' );
+				break;
 			default:
-				this.props.requestUserComments( this.userId )
+				this.props.requestUserComments( this.userId );
 				break;
 			}
 
@@ -117,15 +120,16 @@ class User extends React.Component {
 							</div>
 					  </div>
 					</Link>
-				)
-			} )
+				);
+			} );
 		} else {
-			return <p>Nothing to Show</p>
+			return <p>Nothing to Show</p>;
 		}
 
 	}
 
 	render() {
+
 		this.props.user ?  document.title = this.props.user.username : document.title = 'Zimgir';
 		return (
 			<div className='user-page'>
@@ -139,37 +143,19 @@ class User extends React.Component {
             </div>
           </div>
           <div className='user-info display'>
-						{this.displayInfo()}
+						<Switch>
+							<Route exact path='/users/:id/comments' component={() => <UserComments props={this.props.comments}/>}/>
+							<Route exact path='/users/:id/replies' component={() => <UserComments props={this.props.comments}/>}/>
+							<Route exact path='/users/:id/submitted' component={() => <UserGallery posts={this.props.posts}/>}/>
+						</Switch>
           </div>
 
         </div>
-        <div className='user-side-bar'>
-          <div className='panel user-info-picker'>
-            <NavLink to={`/users/${this.userId}/comments`} className='textbox'activeClassName="selected"> Comments </NavLink>
-            <NavLink to={`/users/${this.userId}/submitted`} className='textbox' activeClassName="selected">Submitted Images</NavLink>
-            <NavLink to={`/users/${this.userId}/favorites`} className='textbox' activeClassName="selected">Favorites</NavLink>
-            <NavLink to={`/users/${this.userId}/replies`} className='textbox' activeClassName="selected">Replies</NavLink>
-          </div>
-          <div className='panel user-info-bio'>
-            <div className='textbox'>{this.props.user ?
-                <div style={{display: 'flex'}}>
-									{this.props.user.votes} points
-                  · Member since
-                  <div className='spacer'></div>
-                  <Moment fromNow>
-                    {this.props.user.created_at}
-                  </Moment>
-                </div>
-                : window.images.loading }
-              </div>
-          </div>
-          <div className='panel user-info-Notoriety'></div>
-          <div className='panel user-info-trophy'></div>
-        </div>
+				<UserSideBar userId={this.userId} user={this.props.user} />
 
       </div>
 		);
 	}
 }
-
 export default User;
+// {this.displayInfo()}

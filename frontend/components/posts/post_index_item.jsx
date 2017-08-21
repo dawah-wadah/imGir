@@ -57,13 +57,13 @@ class PostIndexItem extends React.Component {
 		return (
 
 			<div
-				className='image-index-item'
+				className='image-index-item gallery'
 				key={this.props.post.id}
 				onMouseEnter={() => this.mouseEnter()}
 				onMouseLeave={() => this.mouseLeave()}>
-				<div className='index-no-overflow'>
+				<div className='index-no-overflow gallery'>
 					<Link to={`/posts/${this.props.post.id}`}>
-						<img className='image-list-link' style={this.style()}
+						<img className='image-list-link gallery' style={this.style()}
 src={this.props.post.main_image}></img>
 					</Link>
 				</div>

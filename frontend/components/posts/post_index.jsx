@@ -18,7 +18,7 @@ class PostIndex extends React.Component {
 			<PostIndexItem post={post} key={post.id}/>
 			));
 		return (
-			<div className='post-index-container'>
+			<div className='post-index-container top-90 gallery five-seven'>
 				{allPosts}
 			</div>
 		);

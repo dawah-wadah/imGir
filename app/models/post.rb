@@ -20,8 +20,9 @@ class Post < ActiveRecord::Base
   has_one :main_image,
           -> { where main_image: true },
           class_name: 'Image',
-          foreign_key: :imageable_id
-  has_many :votes
+          foreign_key: :imageable_id,
+          dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   has_many :upvotes, -> { where vote_type: 'Upvote' }, as: :voteable, class_name: "Vote"
   has_many :downvotes, -> { where vote_type: 'Downvote' }, as: :voteable, class_name: "Vote"
