@@ -16,7 +16,7 @@ export default class UserComments extends React.Component {
   displayInfo() {
 
     if ( this.props.comments.length ) {
-      return this.props.comments.map( ( el ) => {
+      return this.props.comments.sort((a, b) => (b.time_since - a.time_since)).map( ( el ) => {
 
         return (
 					<Link to={`/posts/${el.post_id}`} key={Math.floor(Math.random(0,1) * 5000000)}>

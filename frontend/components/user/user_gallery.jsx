@@ -7,7 +7,8 @@ export default class UserGallery extends React.Component {
   }
 
   render() {
-    const allPosts = this.props.posts.map((post) => (
+    debugger
+    const allPosts = this.props.posts.sort((a, b) => (b.created_at - a.created_at)).map((post) => (
       <PostIndexItem post={post} key={post.id}/>
       ));
     return (

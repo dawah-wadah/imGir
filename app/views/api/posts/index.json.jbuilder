@@ -8,6 +8,7 @@
     json.user_name post.user.username
     json.totalvotes post.upvote_count - post.downvote_count
     json.main_image asset_path(post.main_image.image.url(:thumb))
+    json.created_at (post.created_at.to_f * 1000).floor
     if current_user
       vote = Vote.where('user_id = :id and voteable_id = :post and voteable_type = :type', {id: current_user.id, post: post.id, type: 'Post'})
 
