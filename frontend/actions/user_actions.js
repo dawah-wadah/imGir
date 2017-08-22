@@ -7,13 +7,15 @@ export const fetchUser = (id) => {
 );};
 
 
-export const fetchUserPosts = user_id => (
+export const fetchUserPosts = (user_id, type) => {
+
+  return (
   $.ajax({
     method: 'get',
     url: '/api/posts',
-    data: { user_id }
+    data: { user_id, type }
   })
-);
+);};
 export const fetchUserComments = (user_id, parent_type) => {
   return(
   $.ajax({
@@ -21,7 +23,7 @@ export const fetchUserComments = (user_id, parent_type) => {
     url: '/api/comments',
     data: { user_id, parent_type }
   })
-)};
+);};
 
 export const fetchComments = (id) => (
   $.ajax({
@@ -31,8 +33,8 @@ export const fetchComments = (id) => (
 );
 
 export const RECEIVE_ONE_USER = "RECEIVE_ONE_USER";
-export const RECEIVE_USER_POSTS = 'RECEIVE_USER_POSTS'
-export const RECEIVE_USER_COMMENTS = 'RECEIVE_USER_COMMENTS'
+export const RECEIVE_USER_POSTS = 'RECEIVE_USER_POSTS';
+export const RECEIVE_USER_COMMENTS = 'RECEIVE_USER_COMMENTS';
 
 export const receiveOneUser = (user) => ({
   type: RECEIVE_ONE_USER,
@@ -42,11 +44,11 @@ export const receiveOneUser = (user) => ({
 export const receiveUserPosts = posts => ({
   type: RECEIVE_USER_POSTS,
   posts
-})
+});
 export const receiveUserComments = comments => ({
   type: RECEIVE_USER_COMMENTS,
   comments
-})
+});
 
 
 export const requestOneUser = (id) => (dispatch) => {
@@ -55,14 +57,15 @@ export const requestOneUser = (id) => (dispatch) => {
     return user;
   });
 };
-export const requestUserPosts = (id) => (dispatch) => {
-  return fetchUserPosts(id).then(posts => {
+export const requestUserPosts = (id, type) => (dispatch) => {
+
+  return fetchUserPosts(id, type).then(posts => {
     dispatch(receiveUserPosts(posts));
     return posts;
   });
 };
-export const requestUserComments = (id, parent_type) => (dispatch) => {
-  return fetchUserComments(id, parent_type).then(comments => {
+export const requestUserComments = (id, parentType) => (dispatch) => {
+  return fetchUserComments(id, parentType).then(comments => {
     dispatch(receiveUserComments(comments));
     return comments;
   });

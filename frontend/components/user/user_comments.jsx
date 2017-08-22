@@ -17,10 +17,10 @@ export default class UserComments extends React.Component {
 
     if ( this.props.comments.length ) {
       return this.props.comments.map( ( el ) => {
-				debugger
+
         return (
-					<Link to={`/posts/${el.post_id}`}>
-            <li className='user-info-item' key={el.post_id * 3}>
+					<Link to={`/posts/${el.post_id}`} key={Math.floor(Math.random(0,1) * 5000000)}>
+            <li className='user-info-item'>
               <div className='user-info-item-pic'>
                 <img src={el.main_image}/>
               </div>

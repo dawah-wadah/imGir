@@ -2,8 +2,15 @@ class Api::PostsController < ApplicationController
 
   def index
     @posts = if params[:user_id].present?
-               Post.includes(:user, :main_image)
-                   .where('user_id =(?)', params[:user_id])
+              if params[:type] == 'favorites'
+                Post.includes(:user, :main_image)
+                .joins("INNER JOIN  votes ON votes.voteable_id = posts.id AND votes.voteable_type = 'Post' AND votes.vote_type = 'Upvote'")
+                .joins("INNER JOIN users ON votes.user_id = #{params[:user_id]}")
+                .uniq
+              else
+                Post.includes(:user, :main_image)
+                .where('user_id =(?)', params[:user_id])
+              end
              else
                Post.includes(:user, :main_image).all
              end
@@ -16,19 +23,15 @@ class Api::PostsController < ApplicationController
     @comments = @post.comments.includes(:replies, :user)
   end
 
-  # vote = Vote.find_by(user_id: current_user.id, voteable_type: 'Post', voteable_id: @post.id)
   def new
 
   end
 
   def create
-
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @user = User.find(@post.user_id)
-    # @user.increment!(:votes)
     if @post.save
-      # Vote.create!({user_id: @user.id, vote_type: 'Upvote', voteable_type: 'Post', voteable_id: @post.id})
       render :show
     else
       render json: @post.errors.full_messages, status: 422
@@ -43,6 +46,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :points, :user_id, :description)
+    params.require(:post).permit(:title, :points, :user_id, :description, :type)
   end
 end

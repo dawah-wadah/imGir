@@ -40,10 +40,10 @@ class User extends React.Component {
 			this.props.requestUserComments( parseInt( this.userId ), 'Post' );
 			break;
 		case 'submitted':
-			this.props.requestUserPosts( this.userId );
+			this.props.requestUserPosts( this.userId, 'submitted' );
 			break;
 		case 'favorites':
-			return "Gallery Favorites";
+			this.props.requestUserPosts( this.userId, 'favorites' );
 		case 'replies':
 			this.props.requestUserComments( parseInt( this.userId ), 'Comment' );
 			break;
@@ -64,10 +64,12 @@ class User extends React.Component {
 				this.props.requestUserComments( parseInt( this.userId ), 'Post' );
 				break;
 			case 'submitted':
-				this.props.requestUserPosts( this.userId );
+				this.props.requestUserPosts( this.userId, 'submitted' );
 				break;
 			case 'favorites':
-				return "Gallery Favorites";
+			this.props.requestUserPosts( this.userId, 'favorites' );
+				// return "Gallery Favorites";
+				break;
 			case 'replies':
 				this.props.requestUserComments( parseInt( this.userId ), 'Comment' );
 				break;
@@ -145,8 +147,10 @@ class User extends React.Component {
           <div className='user-info display'>
 						<Switch>
 							<Route exact path='/users/:id/comments' component={() => <UserComments comments={this.props.comments}/>}/>
+							<Route exact path='/users/:id' component={() => <UserComments comments={this.props.comments}/>}/>
 							<Route exact path='/users/:id/replies' component={() => <UserComments comments={this.props.comments}/>}/>
 							<Route exact path='/users/:id/submitted' component={() => <UserGallery posts={this.props.posts}/>}/>
+							<Route exact path='/users/:id/favorites' component={() => <UserGallery posts={this.props.posts}/>}/>
 						</Switch>
           </div>
 
