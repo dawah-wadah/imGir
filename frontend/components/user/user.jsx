@@ -144,8 +144,8 @@ class User extends React.Component {
           </div>
           <div className='user-info display'>
 						<Switch>
-							<Route exact path='/users/:id/comments' component={() => <UserComments props={this.props.comments}/>}/>
-							<Route exact path='/users/:id/replies' component={() => <UserComments props={this.props.comments}/>}/>
+							<Route exact path='/users/:id/comments' component={() => <UserComments comments={this.props.comments}/>}/>
+							<Route exact path='/users/:id/replies' component={() => <UserComments comments={this.props.comments}/>}/>
 							<Route exact path='/users/:id/submitted' component={() => <UserGallery posts={this.props.posts}/>}/>
 						</Switch>
           </div>

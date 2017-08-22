@@ -9,32 +9,18 @@ import Moment from 'react-moment';
 export default class UserComments extends React.Component {
   constructor(props) {
 		super(props);
+		this.displayInfo = this.displayInfo.bind(this);
   }
 
-	
+
   displayInfo() {
-    let param;
-    let postId;
-    switch ( this.props.location.pathname.split( '/' )[ 3 ] ) {
-    case 'comments': case 'replies':
-      param = 'comments';
-      break;
-    case 'submitted': case 'favorites':
-      param = 'posts';
-      break;
-    default:
-      param = 'comments';
-      break;
 
-    }
-
-
-    if ( this.props[ param ] ) {
-      return this.props[ param ].map( ( el ) => {
-        postId = param === 'comments' ? el.postId : el.id;
+    if ( this.props.comments.length ) {
+      return this.props.comments.map( ( el ) => {
+				debugger
         return (
-          <Link to={`/posts/${postId}`}>
-            <div className='user-info-item'>
+					<Link to={`/posts/${el.post_id}`}>
+            <li className='user-info-item' key={el.post_id * 3}>
               <div className='user-info-item-pic'>
                 <img src={el.main_image}/>
               </div>
@@ -50,8 +36,8 @@ export default class UserComments extends React.Component {
                     </div>
                     <p>{el.body}</p>
               </div>
-            </div>
-          </Link>
+            </li>
+					</Link>
         );
       } );
     } else {
@@ -62,6 +48,12 @@ export default class UserComments extends React.Component {
 
 	render(){
 
-		return <h1>User Comments</h1>;
+		return (
+			<ul>
+
+			{this.displayInfo()}
+		</ul>
+
+	);
 	}
 }
