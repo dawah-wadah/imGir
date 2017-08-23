@@ -1,0 +1,25 @@
+svg {
+    cursor: pointer;
+    height: 23px;
+    width: 23px;
+}
+svg > circle {
+    stroke: #1bb76e;
+    fill: #34373c;
+}
+svg > path {
+    stroke: #1bb76e;
+}
+svg:hover > circle {
+    fill: red;
+}
+svg:hover > path {
+    stroke: #34373c;
+}
+
+.deleteButton {
+  z-index: 5;
+  position: absolute;
+  right: -18px;
+  top: -5px;
+}

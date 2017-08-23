@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // window.createPost = PostActions.createPost;
-  window.requestUserPosts = UserActions.requestUserPosts;
-  window.requestUserComments = UserActions.requestUserComments;
-  window.dispatch = store.dispatch;
+  // window.requestUserPosts = UserActions.requestUserPosts;
+  // window.requestUserComments = UserActions.requestUserComments;
+  // window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

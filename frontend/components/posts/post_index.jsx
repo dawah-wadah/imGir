@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PostIndexItem from './post_index_item';
+import PostIndexItem from './post_index_item_container';
 
 
 class PostIndex extends React.Component {

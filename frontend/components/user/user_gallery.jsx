@@ -1,5 +1,5 @@
 import React from 'react';
-import PostIndexItem from '../posts/post_index_item';
+import PostIndexItem from '../posts/post_index_item_container';
 import { DeleteButton } from '../delete/delete_button';
 
 export default class UserGallery extends React.Component {

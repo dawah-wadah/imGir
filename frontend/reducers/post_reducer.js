@@ -9,7 +9,8 @@ import {
 
 import {
   RECEIVE_ONE_POST,
-  RECEIVE_ALL_POSTS
+  RECEIVE_ALL_POSTS,
+  DESTROY_POST
 } from '../actions/post_actions';
 
 import {
@@ -37,6 +38,9 @@ const PostReducer = (state = defaultState(), action) => {
         },
         currentPost: post.id
       });
+    case DESTROY_POST:
+      delete state.entities[actions.post.id]
+      return state
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
       const parentType = comment.parent_type;
@@ -48,6 +52,7 @@ const PostReducer = (state = defaultState(), action) => {
         newState.entities[comment.parent_id].comment_ids.push(comment.id);
         return newState;
       }
+
     default:
       return state;
   }

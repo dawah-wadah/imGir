@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SessionFormModal from '../session_form/session_form_modal';
+import { DeleteButton } from '../delete/delete_button';
+
 
 const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayModal}) => {
   const _voted = (obj) => {
@@ -64,14 +66,18 @@ const PostDetail = ({post, createVote, editVote, deleteVote, loggedIn, displayMo
 		</div>
 	);
 };
-// <p>{Math.floor(Math.random() * 90) + 123 + ' views'}</p>
 
 import {createVote , editVote, deleteVote} from '../../actions/vote_actions';
 import {displayModal} from '../../actions/modal_actions';
 
-const mapStateToProps = ({session}) => ({
+const mapStateToProps = ({session}) => {
+  let userId = 0;
+  if (session.currentUser){ userId = session.currentUser.id}
+
+  return ({
   loggedIn: Boolean(session.currentUser),
-});
+  currentUser: userId
+})};
 
 
 const mapDispatchToProps = (dispatch) => {
