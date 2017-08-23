@@ -25,6 +25,7 @@ export const createPost = (props) => {
 );};
 
 export const deletePost = (id) => {
+  debugger
   return (
   $.ajax({
     method: 'DELETE',

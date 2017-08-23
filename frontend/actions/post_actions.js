@@ -44,8 +44,10 @@ export const createPost = postdata => dispatch => (
     return post;
   }).fail(err => dispatch(receivePostErrors(err.responseJSON)))
 );
-export const deletePost = id => dispatch => (
+export const deletePost = id => dispatch => {
+  debugger
+  return (
   PostUtil.deletePost(id).then(post => {
     dispatch(destroyPost(post));
   }).fail(err => dispatch(receivePostErrors(err.responseJSON)))
-);
+)};

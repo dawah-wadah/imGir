@@ -39,7 +39,7 @@ const PostReducer = (state = defaultState(), action) => {
         currentPost: post.id
       });
     case DESTROY_POST:
-      delete state.entities[actions.post.id]
+      delete state.entities[action.post.id]
       return state
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
