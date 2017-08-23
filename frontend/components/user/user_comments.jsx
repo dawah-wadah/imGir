@@ -7,19 +7,20 @@ import Moment from 'react-moment';
 
 
 export default class UserComments extends React.Component {
-  constructor(props) {
-		super(props);
-		this.displayInfo = this.displayInfo.bind(this);
-  }
+	constructor( props ) {
+		super( props );
+		this.displayInfo = this.displayInfo.bind( this );
+	}
 
 
-  displayInfo() {
+	displayInfo() {
 
-    if ( this.props.comments.length ) {
-      return this.props.comments.sort((a, b) => (b.time_since - a.time_since)).map( ( el ) => {
+		if ( this.props.comments.length ) {
+			return this.props.comments.sort( ( a, b ) => ( b.time_since - a.time_since ) )
+				.map( ( el ) => {
 
-        return (
-					<Link to={`/posts/${el.post_id}`} key={Math.floor(Math.random(0,1) * 5000000)}>
+					return (
+						<Link to={`/posts/${el.post_id}`} key={Math.floor(Math.random(0,1) * 5000000)}>
             <li className='user-info-item'>
               <div className='user-info-item-pic'>
                 <img src={el.main_image}/>
@@ -38,22 +39,21 @@ export default class UserComments extends React.Component {
               </div>
             </li>
 					</Link>
-        );
-      } );
-    } else {
-      return <p>Nothing to Show</p>;
-    }
+					);
+				} );
+		} else {
+			return <p>Nothing to Show</p>;
+		}
 
-  }
+	}
 
-	render(){
+	render() {
 
 		return (
 			<ul>
-
 			{this.displayInfo()}
-		</ul>
+			</ul>
 
-	);
+		);
 	}
 }

@@ -23,3 +23,11 @@ export const createPost = (props) => {
     data: props ,
   })
 );};
+
+export const deletePost = (id) => {
+  return (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/posts/${id}`,
+  })
+);};

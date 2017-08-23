@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router';
 import UploadModalContent from './upload_button';
 import { uploadImage } from '../../actions/image_actions';
-import { createPost } from '../../actions/post_actions';
+import { createPost, deletePost } from '../../actions/post_actions';
 import {clearModals} from '../../actions/modal_actions';
 
 const mapStateToProps = ({ session }) => {
@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     uploadImage: (image) => dispatch(uploadImage(image)),
     createPost: (post, image) => dispatch(createPost(post, image)),
-    clearModals: () => dispatch(clearModals())
+    clearModals: () => dispatch(clearModals()),
+    deletePost: (id) => dispatch(deletePost(id))
   };
 };
 

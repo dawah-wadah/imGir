@@ -22,10 +22,10 @@ class Post < ActiveRecord::Base
           class_name: 'Image',
           foreign_key: :imageable_id,
           dependent: :destroy
-  has_many :votes, dependent: :destroy
+  has_many :votes
 
-  has_many :upvotes, -> { where vote_type: 'Upvote' }, as: :voteable, class_name: "Vote"
-  has_many :downvotes, -> { where vote_type: 'Downvote' }, as: :voteable, class_name: "Vote"
+  has_many :upvotes, -> { where vote_type: 'Upvote' }, as: :voteable, class_name: "Vote", dependent: :destroy
+  has_many :downvotes, -> { where vote_type: 'Downvote' }, as: :voteable, class_name: "Vote", dependent: :destroy
   has_many :comments, as: :parent, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
 

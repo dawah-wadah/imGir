@@ -39,7 +39,7 @@ class UploadModalContent extends React.Component {
 
 	updateFile(e) {
 		e.forEach((image) => {
-
+		if (image.type.split('/')[0] !== 'image') return null;
 		let file = image;
 		let fileReader = new FileReader();
 		fileReader.onloadend = function() {
@@ -90,14 +90,10 @@ class UploadModalContent extends React.Component {
 				imageData.append("image[imageable_id]", post.id);
 				imageData.append("image[imageable_type]", 'Post');
 				return (this.props.uploadImage(imageData).then(response => {
-					this
-						.props
-						.clearModals();
-					this
-						.props
-						.history
-						.push(`/posts/${response.id}`);
-				}));
+					this.props.clearModals();
+					this.props.history.push(`/posts/${response.id}`);
+				}, err => {
+					this.props.deletePost(post.id);}));
 			});
 		});
 	}
