@@ -24,7 +24,7 @@ const defaultState = () => ({
 });
 
 const PostReducer = (state = defaultState(), action) => {
-  Object.freeze(state);
+  const newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_ALL_POSTS:
       return merge({}, state, {
@@ -39,8 +39,8 @@ const PostReducer = (state = defaultState(), action) => {
         currentPost: post.id
       });
     case DESTROY_POST:
-      delete state.entities[action.post.id]
-      return state
+      delete newState.entities[action.post.id]
+      return newState
     case RECEIVE_ONE_COMMENT:
       const comment = action.comment;
       const parentType = comment.parent_type;

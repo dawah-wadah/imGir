@@ -13,6 +13,12 @@ class PostIndex extends React.Component {
 		this.props.requestAllPosts();
 	}
 
+	componentWillUpdate(nextProps) {
+		if (this.props.posts.length != nextProps.posts.length){
+			
+		}
+	}
+
 	render() {
 		const allPosts = this.props.posts.map((post) => (
 			<PostIndexItem post={post} key={post.id}/>

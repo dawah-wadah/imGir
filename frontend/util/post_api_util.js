@@ -15,7 +15,6 @@ export const fetchPost = (id) => {
 );};
 
 export const createPost = (props) => {
-
   return (
   $.ajax({
     method: 'POST',
@@ -25,7 +24,6 @@ export const createPost = (props) => {
 );};
 
 export const deletePost = (id) => {
-  debugger
   return (
   $.ajax({
     method: 'DELETE',

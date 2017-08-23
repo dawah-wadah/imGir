@@ -22,7 +22,7 @@ class PostIndexItem extends React.Component {
 			.mouseLeave
 			.bind( this );
 		this.style = this.style.bind( this );
-		this.hoverRenders = this.hoverRenders.bind(this);
+		this.hoverRenders = this.hoverRenders.bind( this );
 	}
 
 	mouseEnter() {
@@ -65,12 +65,11 @@ class PostIndexItem extends React.Component {
 	}
 
 	hoverRenders( post ) {
-		// <PostDetail post={post}/>
 		return (
 			<div>
+				<PostDetail post={post}/>
 			{post.user_id === this.props.currentUser ?
-				<DeleteButton deleteFunction={() => this.props.deletePost(post.id)}
-					object={post}/> : console.log('not mine')}
+				<DeleteButton deleteFunction={() => this.props.deletePost(post.id)}/> : null}
 		</div>
 		)
 		// {post.user_id === this.props.user ? <DeleteButton /> : console.log('not mine')}
@@ -88,7 +87,7 @@ class PostIndexItem extends React.Component {
 				<div className='index-no-overflow gallery'>
 					<Link to={`/posts/${this.props.post.id}`}>
 						<img className='image-list-link gallery' style={this.style()}
-src={this.props.post.main_image}></img>
+							src={this.props.post.main_image}></img>
 					</Link>
 				</div>
 				{this.state.visibleDetails
