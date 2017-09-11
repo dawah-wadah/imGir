@@ -31,21 +31,28 @@ class PostDetail extends React.Component {
 		this.upvote = this.upvote.bind( this );
 		this.downvote = this.downvote.bind( this );
 		this.handleKeyPress = this.handleKeyPress.bind( this );
+		this.findPost = this.findPost.bind(this);
+	}
+
+	findPost(post){
+		return post.id === parseInt(this.props.match.params.id);
 	}
 
 	prevPost() {
-		const id = parseInt( this.props.match.params.id ) - 1;
+		const id = parseInt( this.props.match.params.id );
+		let a = this.props.posts.findIndex(this.findPost);
 		this
 			.props
 			.history
-			.push( `/posts/${id}` );
+			.push( `/posts/${this.props.posts[a + 1].id}` );
 	}
 	nextPost() {
-		const id = parseInt( this.props.match.params.id ) + 1;
+		const id = parseInt( this.props.match.params.id );
+		let a = this.props.posts.findIndex(this.findPost);
 		this
 			.props
 			.history
-			.push( `/posts/${id}` );
+			.push( `/posts/${this.props.posts[a - 1].id}` );
 	}
 
 	toggleVote( type ) {
@@ -119,7 +126,7 @@ class PostDetail extends React.Component {
 			<img src={window.images.resume_icon} className="post-actions-social"></img>
 		</a>
 	</div>
-);
+		);
 	}
 
 	upvote() {
@@ -177,9 +184,9 @@ class PostDetail extends React.Component {
 		} else {
 			allPics = null;
 		}
-		if (document.title != this.props.post.title) {
-    document.title = this.props.post.title;
-}
+		if ( document.title != this.props.post.title ) {
+			document.title = this.props.post.title;
+		}
 		return (
 			<div className='show-page' onKeyPress={this.handleKeyPress}>
 				<section className='post-container'>
@@ -258,13 +265,17 @@ import {
 	createVote,
 	deleteVote
 } from '../../actions/vote_actions';
+import {
+	selectAllPosts
+} from '../../reducers/selectors';
 
 const mapStateToProps = ( state, ownProps ) => {
 	return {
-		loggedIn: Boolean(state.session.currentUser),
+		loggedIn: Boolean( state.session.currentUser ),
 		voted: Boolean( ownProps.post.vote ),
 		modal: Boolean( state.dropdown.uploadModal ),
-		postId: ownProps.post.id
+		postId: ownProps.post.id,
+		posts: selectAllPosts( state.post.entities ),
 	};
 };
 

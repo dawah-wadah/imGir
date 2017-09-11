@@ -71,10 +71,8 @@ class PostIndexItem extends React.Component {
 			{post.user_id === this.props.currentUser ?
 				<DeleteButton deleteFunction={() => this.props.deletePost(post.id)}/> : null}
 		</div>
-		)
-		// {post.user_id === this.props.user ? <DeleteButton /> : console.log('not mine')}
+	);
 	}
-	// ? <PostDetail post={this.props.post}/>
 
 	render() {
 		return (
