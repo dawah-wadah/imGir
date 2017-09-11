@@ -22,37 +22,25 @@ class PostDetail extends React.Component {
 		this.toggleVote = this
 			.toggleVote
 			.bind( this );
-		this.nextPost = this
-			.nextPost
-			.bind( this );
-		this.prevPost = this
-			.prevPost
-			.bind( this );
 		this.upvote = this.upvote.bind( this );
 		this.downvote = this.downvote.bind( this );
 		this.handleKeyPress = this.handleKeyPress.bind( this );
 		this.findPost = this.findPost.bind(this);
+		this.navPost = this.navPost.bind(this);
 	}
 
 	findPost(post){
 		return post.id === parseInt(this.props.match.params.id);
 	}
 
-	prevPost() {
+	navPost(direction) {
 		const id = parseInt( this.props.match.params.id );
 		let a = this.props.posts.findIndex(this.findPost);
+		direction === 'next' ? a-- : a ++
 		this
 			.props
 			.history
-			.push( `/posts/${this.props.posts[a + 1].id}` );
-	}
-	nextPost() {
-		const id = parseInt( this.props.match.params.id );
-		let a = this.props.posts.findIndex(this.findPost);
-		this
-			.props
-			.history
-			.push( `/posts/${this.props.posts[a - 1].id}` );
+			.push( `/posts/${this.props.posts[a].id}` );
 	}
 
 	toggleVote( type ) {
@@ -99,10 +87,10 @@ class PostDetail extends React.Component {
 	handleKeyPress( e ) {
 		switch ( e.keyCode ) {
 		case 39:
-			this.prevPost();
+		this.navPost('prev');
 			break;
 		case 37:
-			this.nextPost();
+		this.navPost('next');
 			break;
 		case 48:
 			//this would be where you would like if you pressed '0'
@@ -205,7 +193,7 @@ class PostDetail extends React.Component {
 					</div>
 					<div className='header-right'>
 
-						<div className='prev-next' onClick={this.prevPost}>
+						<div className='prev-next' onClick={() => this.navPost('prev')}>
 							<div className='next-post-btn-text'>
 								Next Post
 							</div>
