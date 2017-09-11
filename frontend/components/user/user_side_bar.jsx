@@ -4,6 +4,8 @@ import {
 	Link
 } from 'react-router-dom';
 import Moment from 'react-moment';
+import Notoriety from './notoriety';
+import Trophies from './trophies';
 
 export default class UserSideBar extends React.Component {
   constructor(props){
@@ -33,8 +35,14 @@ export default class UserSideBar extends React.Component {
               : window.images.loading }
             </div>
         </div>
-        <div className='panel user-info-Notoriety'></div>
-        <div className='panel user-info-trophy'></div>
+        <div className='panel user-info-Notoriety'>
+					{this.props.user ?
+						<Notoriety points={this.props.user.votes}/>
+              : window.images.loading }
+        </div>
+        <div className='panel user-info-trophy'>
+					<Trophies />
+        </div>
       </div>
     );
   }
