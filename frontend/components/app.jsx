@@ -33,7 +33,9 @@ const App = (props) => {
   return (
   <div>
     <button onClick={topFunction} id ="myBtn" title="Go to top" >Head back to Top </button>
-    <Modal/><Header/><Main />
+    <Modal/>
+		<Header/>
+		<Main />
   </div>);
 };
 

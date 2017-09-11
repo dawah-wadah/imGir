@@ -15,7 +15,6 @@ componentDidMount() {
   }
 }
 
-
 render(){
   const posts = this.props.posts.map( (post) => (
     <SideBarItem post={post} key={post.id}/>

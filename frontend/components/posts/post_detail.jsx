@@ -36,7 +36,7 @@ class PostDetail extends React.Component {
 	navPost(direction) {
 		const id = parseInt( this.props.match.params.id );
 		let a = this.props.posts.findIndex(this.findPost);
-		direction === 'next' ? a-- : a ++
+		if (direction === 'next') { a--; } else { a ++; }
 		this
 			.props
 			.history
