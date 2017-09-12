@@ -89,13 +89,13 @@ export default class UserSideBar extends React.Component {
                   {this.props.user.created_at}
                 </Moment>
               </div>
-              : window.images.loading }
+              : <img src={window.images.loading}/>}
             </div>
         </div>
         <div className='panel user-info-Notoriety'>
 					{this.props.user ?
 						<Notoriety points={this.props.user.votes}/>
-              : window.images.loading }
+              : <img src={window.images.loading}/> }
 							{this.list()}
 							<div className='left-end'>{
 									this.state.open ?

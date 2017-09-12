@@ -1,13 +1,18 @@
 import React from 'react';
-import {bindall} from 'lodash';
-import {Redirect} from 'react-router-dom';
+import {
+	bindall
+} from 'lodash';
+import {
+	Redirect
+} from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import values from 'lodash/values';
 
 class UploadModalContent extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor( props ) {
+		super( props );
 		this.state = {
+			className: 'uploadForm',
 			images: [],
 			postTitle: 'Default Post Title',
 			imageFile: null,
@@ -19,101 +24,124 @@ class UploadModalContent extends React.Component {
 
 		this.updateFile = this
 			.updateFile
-			.bind(this);
+			.bind( this );
 		this.handleSubmit = this
 			.handleSubmit
-			.bind(this);
+			.bind( this );
 		this.updateState = this
 			.updateState
-			.bind(this);
+			.bind( this );
 		this.update = this
 			.update
-			.bind(this);
-			this.selectMainPhoto = this.selectMainPhoto.bind(this);
+			.bind( this );
+		this.selectMainPhoto = this.selectMainPhoto.bind( this );
 
 	}
 
-	updateState(post) {
-		this.setState({title: post.title, description: post.description});
+	updateState( post ) {
+		this.setState( {
+			title: post.title,
+			description: post.description
+		} );
 	}
 
-	updateFile(e) {
-		e.forEach((image) => {
-		if (image.type.split('/')[0] !== 'image') return null;
-		let file = image;
-		let fileReader = new FileReader();
-		fileReader.onloadend = function() {
-			this.setState({
-				images: this.state.images.concat({imageFile: file, imageUrl: fileReader.result})
-				});
-		}.bind(this);
-		if (file) {
-			fileReader.readAsDataURL(file);
-		}
-
-	}
-);
-	}
-
-
-	update(field) {
-		return e => this.setState({[field]: e.currentTarget.value});
-	}
-
-	selectMainPhoto(obj){
-		this.setState({main_image_index: this.state.images.indexOf(obj)});
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		let postData = {
-			post: {
-				title: this.state.postTitle,
-				description: this.state.description
+	updateFile( e ) {
+		e.forEach( ( image ) => {
+			if ( image.type.split( '/' )[ 0 ] !== 'image' ) return null;
+			let file = image;
+			let fileReader = new FileReader();
+			fileReader.onloadend = function () {
+				this.setState( {
+					images: this.state.images.concat( {
+						imageFile: file,
+						imageUrl: fileReader.result
+					} )
+				} );
+			}.bind( this );
+			if ( file ) {
+				fileReader.readAsDataURL( file );
 			}
-		};
 
-		this
-		.props
-		.createPost(postData)
-		.then(post => {
-		values(this.state.images).forEach((image) => {
-		let imageData = new FormData();
-		imageData.append("image[description]", this.state.description);
-		this.state.main_image_index === this.state.images.indexOf(image)
-		? imageData.append("image[main_image]", true)
-		: imageData.append("image[main_image]", false);
+		} );
+	}
 
 
-		imageData.append("image[image]", image.imageFile);
-		this.setState({main_image: false});
-				imageData.append("image[imageable_id]", post.id);
-				imageData.append("image[imageable_type]", 'Post');
-				return (this.props.uploadImage(imageData).then(response => {
-					this.props.clearModals();
-					this.props.history.push(`/posts/${response.id}`);
-				}, err => {
-					this.props.deletePost(post.id);}));
-			});
-		});
+	update( field ) {
+		return e => this.setState( {
+			[ field ]: e.currentTarget.value
+		} );
+	}
+
+	selectMainPhoto( obj ) {
+		this.setState( {
+			main_image_index: this.state.images.indexOf( obj )
+		} );
+	}
+
+	handleSubmit( e ) {
+		e.preventDefault();
+		if ( this.state.title === 'Default Post Title' || this.state.description ===
+			'Working Description' ) {
+			this.setState( {
+				className: 'uploadForm shake'
+			} );
+			setTimeout(() => this.setState({ className: 'uploadForm'}), 500);
+		} else {
+
+			let postData = {
+				post: {
+					title: this.state.postTitle,
+					description: this.state.description
+				}
+			};
+
+			this
+				.props
+				.createPost( postData )
+				.then( post => {
+					values( this.state.images )
+						.forEach( ( image ) => {
+							let imageData = new FormData();
+							imageData.append( "image[description]", this.state.description );
+							this.state.main_image_index === this.state.images.indexOf( image ) ?
+								imageData.append( "image[main_image]", true ) :
+								imageData.append( "image[main_image]", false );
+							imageData.append( "image[image]", image.imageFile );
+							this.setState( {
+								main_image: false
+							} );
+							imageData.append( "image[imageable_id]", post.id );
+							imageData.append( "image[imageable_type]", 'Post' );
+							return ( this.props.uploadImage( imageData )
+								.then( response => {
+									this.props.clearModals();
+									this.props.history.push( `/posts/${response.id}` );
+								}, err => {
+									this.props.deletePost( post.id );
+								} ) );
+						} );
+				} );
+		}
 	}
 
 
 	imagePreviews() {
-		return this.state.images.map((image => {
+		return this.state.images.map( ( image => {
 			let styleName;
-			this.state.images.indexOf(image) === this.state.main_image_index
-			? styleName = 'image-preview-selected'
-			: styleName = 'image-preview';
+			this.state.images.indexOf( image ) === this.state.main_image_index ?
+				styleName = 'image-preview-selected' :
+				styleName = 'image-preview';
 			return (
-			<img id={styleName} src={image.imageUrl}
+				<img id={styleName} src={image.imageUrl}
 				key={this.state.images.indexOf(image)}
 				onMouseDown={() => this.selectMainPhoto(image)} />
-		);}));
+			);
+		} ) );
 	}
 
 	render() {
-		const thingsToShow = [ <div className = 'upload-actions'>
+		const thingsToShow = [
+			<div className = 'upload-actions'>
 		<div className='drag-and-drop-text'>
 			<div className='drag-and-drop-box'>
 				<Dropzone
@@ -134,8 +162,8 @@ class UploadModalContent extends React.Component {
   ];
 
 
-  const gottenPhoto = [
-    <div className='uploadForm'>
+		const gottenPhoto = [
+    <div className={this.state.className}>
         <input type="text"
           onChange={this.update('postTitle')}
           className="new-post-text"
@@ -154,14 +182,15 @@ class UploadModalContent extends React.Component {
 
   ];
 
-  return(
-  <div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
+		return (
+			<div className='uploadModal' onClick={(e)=> e.stopPropagation()}>
     { this.state.images.length > 0 ?
       gottenPhoto
       :thingsToShow
     }
-  </div>);
-		}
+  </div>
+		);
 	}
+}
 
-	export default UploadModalContent;
+export default UploadModalContent;

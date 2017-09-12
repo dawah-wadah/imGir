@@ -42,7 +42,11 @@ export default class UserComments extends React.Component {
 					);
 				} );
 		} else {
-			return <p>Nothing to Show</p>;
+			return (
+				<div className='center flex'>
+				<img src={window.images.loading}/>;
+			</div>
+			);
 		}
 
 	}

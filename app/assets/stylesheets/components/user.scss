@@ -1,153 +1,145 @@
 .user-page {
-  top: 10px;
-  width: 57%;
-  border-radius: 15px;
-  position: relative;
-  display: flex;
-  margin: 10px auto 0;
-  min-height: 150px;
-  justify-content: space-around;
+  display         : flex;
+  position        : relative;
+  top             : 10px;
+  width           : 57%;
+  min-height      : 150px;
+  margin          : 10px auto 0;
+  border-radius   : 15px;
+  justify-content : space-around;
 }
 
 .user-comments {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 63%;
-  padding: 20px 5px;
-  border-radius: 4px;
-  background-color: #34373c;
-  height: 70vh;
+  display          : flex;
+  width            : 63%;
+  height           : 70vh;
+  padding          : 20px 5px;
+  border-radius    : 4px;
+  background-color : #34373c;
+  flex-direction   : column;
+  justify-content  : center;
 }
 
 .notoriety-list {
-  font-size: 16px;
-  letter-spacing: 1px;
-  line-height: 18px;
-  height: 0;
-  overflow: hidden;
-  // -webkit-transition: height 0.3s ease-in;
-  // -moz-transition: height 0.3s ease-in;
-  // -o-transition: height 0.3s ease-in;
-  // -ms-transition: height 0.3s ease-in;
-  transition: height 0.3s ease;
-}
-
-.close {
-  padding: 0;
+  height         : 0;
+  overflow       : hidden;
+  font-size      : 14px;
+  line-height    : 15px;
+  letter-spacing : 1px;
+  transition     : height 0.3s ease;
 }
 
 .open {
-  height: 300px;
-  display: block;
+  display : block;
+  height  : 245px;
 }
 
 .notoriety-list td {
-}
-
-.notoriety-list td {
-  border-bottom: 2px solid #222;
-  padding: 2px;
+  padding       : 2px;
+  border-bottom : 2px solid #222;
 }
 
 .stat {
-  color: #AFD8F8;
-  font-weight: 700;
-  vertical-align: top;
+  color          : #AFD8F8;
+  vertical-align : top;
+  font-weight    : 700;
 }
 
 .left-end {
-  text-align: end;
+  text-align : end;
 }
 
 .user-side-bar {
-  top: 90px;
-  border-radius: 15px;
-  // background-color: #34373c;
-  height: 70vh;
-  width: 35%;
+  top           : 90px;
+  width         : 35%;
+  height        : 70vh;
+  border-radius : 15px;
 }
 
 .user-info-item {
-  border-radius: 5px;
-  display: flex;
-  padding: 8px;
-  margin: 15px 0;
-  height: 80px;
+  display       : flex;
+  height        : 80px;
+  margin        : 15px 0;
+  padding       : 8px;
+  border-radius : 5px;
 }
 
 .user-info-item img {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-  overflow: hidden;
-  margin-right: 20px;
+  width        : 80px;
+  height       : 80px;
+  margin-right : 20px;
+  overflow     : hidden;
+  object-fit   : cover;
 }
 
-.user-info-item-pic {}
-
 .user-info-item-info {
-  color: white;
-  overflow: hidden;
+  color    : white;
+  overflow : hidden;
 }
 
 .panel-header-toolbox {
-  margin: 0 auto 5px;
-  background-color: #141518;
-  padding: 10px;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
+  display          : flex;
+  width            : 90%;
+  margin           : 0 auto 5px;
+  padding          : 10px;
+  background-color : #141518;
+  justify-content  : space-between;
 }
 
 .user-info {
-  height: auto;
+  height : auto;
 }
 
 .display {
-  margin: 0 auto;
-  overflow: auto;
-  height: 80%;
-  width: 90%;
-  padding: 10px;
+  width    : 90%;
+  height   : 80%;
+  margin   : 0 auto;
+  padding  : 10px;
+  overflow : auto;
 }
 
 .panel {
-  padding: 10px;
-  background-color: #34373c;
-  margin: 0 0 10px;
-  min-height: 50px;
-  border-radius: 5px;
+  min-height       : 50px;
+  margin           : 0 0 10px;
+  padding          : 10px;
+  border-radius    : 5px;
+  background-color : #34373c;
 }
 
 .textbox {
-  color: white;
-  background-color: #141518;
-  padding: 10px;
-  margin: 4.5px;
+  margin           : 4.5px;
+  padding          : 10px;
+  color            : white;
+  background-color : #141518;
+}
+
+.close {
+  padding : 0;
 }
 
 .blue {
-  color: #4E76C9;
+  color : #4E76C9;
 }
 
 .selected {
-  color: #1bb76e;
+  color : #1bb76e;
 }
 
 .user-info-picker {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  display         : flex;
+  padding         : 25px;
+  flex-direction  : column;
+  justify-content : space-around;
 }
 
 .notoriety {
+  display : flex;
+}
+
+.flex {
   display: flex;
 }
 
-.user-info-bio {}
-
-.user-info-Notoriety {}
-
-.user-info-trophy {}
+.center {
+  justify-content: center;
+}
