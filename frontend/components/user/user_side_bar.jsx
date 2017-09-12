@@ -36,31 +36,31 @@ export default class UserSideBar extends React.Component {
                         </tr>
                         <tr>
                             <td>Glorious</td>
-                            <td className="stat">20,000</td>
+                            <td className="stat">150</td>
                         </tr>
                         <tr>
                             <td>Renowned</td>
-                            <td className="stat">8,000 to 19,999</td>
+                            <td className="stat">120 to 149</td>
                         </tr>
                         <tr>
                             <td>Idolized</td>
-                            <td className="stat">4,000 to 7,999</td>
+                            <td className="stat">100 to 119</td>
                         </tr>
                         <tr>
                             <td>Trusted</td>
-                            <td className="stat">2,000 to 3,999</td>
+                            <td className="stat">80 to 99</td>
                         </tr>
                         <tr>
                             <td>Liked</td>
-                            <td className="stat">1,000 to 1,999</td>
+                            <td className="stat">40 to 79</td>
                         </tr>
                         <tr>
                             <td>Accepted</td>
-                            <td className="stat">400 to 999</td>
+                            <td className="stat">20 to 39</td>
                         </tr>
                         <tr>
                             <td>Neutral</td>
-                            <td className="stat">under 400</td>
+                            <td className="stat">under 20</td>
                         </tr>
                     </tbody></table>
                 </div>
@@ -104,9 +104,6 @@ export default class UserSideBar extends React.Component {
 								}
 
 							</div>
-        </div>
-        <div className='panel user-info-trophy'>
-					<Trophies />
         </div>
       </div>
     );
