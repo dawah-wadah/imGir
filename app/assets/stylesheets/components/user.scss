@@ -20,8 +20,41 @@
   height: 70vh;
 }
 
+.notoriety-list {
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 18px;
+  display: none;
+}
+
+.open {
+  height: auto;
+  display: block;
+  transition: height 0.5s;
+  transition: height 0.5s, padding-top 0.5s, padding-bottom 0.5s;
+}
+
+.notoriety-list:target td {
+  height: 600px;
+}
+
+.notoriety-list .section.large:target td {
+  overflow: auto;
+}
+
+.notoriety-list td {
+  border-bottom: 2px solid #222;
+  padding: 2px;
+}
+
+.stat {
+  color: #AFD8F8;
+  font-weight: 700;
+  vertical-align: top;
+}
+
 .left-end {
-  text-align: end
+  text-align: end;
 }
 
 .user-side-bar {

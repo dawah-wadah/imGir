@@ -13,16 +13,61 @@ export default class UserSideBar extends React.Component {
 		this.expand = this.expand.bind(this);
 		this.state = {
 			open: false,
+			class: 'notoriety-list textbox close'
 		};
   }
 
 	expand(e){
 		e.preventDefault();
 		this.setState({
-			open: !this.state.open
+			open: !this.state.open,
+			class: this.state.class === 'notoriety-list textbox close' ? 'notoriety-list textbox open' : 'notoriety-list textbox close'
 		});
 		console.log('clicked');
 	}
+
+	list(){
+		return (
+			<div className={this.state.class}>
+                    <table>
+                        <tbody><tr>
+                            <td><h2>Notoriety</h2></td>
+                            <td><h2>Reputation Points</h2></td>
+                        </tr>
+                        <tr>
+                            <td>Glorious</td>
+                            <td className="stat">20,000</td>
+                        </tr>
+                        <tr>
+                            <td>Renowned</td>
+                            <td className="stat">8,000 to 19,999</td>
+                        </tr>
+                        <tr>
+                            <td>Idolized</td>
+                            <td className="stat">4,000 to 7,999</td>
+                        </tr>
+                        <tr>
+                            <td>Trusted</td>
+                            <td className="stat">2,000 to 3,999</td>
+                        </tr>
+                        <tr>
+                            <td>Liked</td>
+                            <td className="stat">1,000 to 1,999</td>
+                        </tr>
+                        <tr>
+                            <td>Accepted</td>
+                            <td className="stat">400 to 999</td>
+                        </tr>
+                        <tr>
+                            <td>Neutral</td>
+                            <td className="stat">under 400</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+		);
+	}
+
+
 
 
   render(){
@@ -51,6 +96,7 @@ export default class UserSideBar extends React.Component {
 					{this.props.user ?
 						<Notoriety points={this.props.user.votes}/>
               : window.images.loading }
+							{this.list()}
 							<div className='left-end'>{
 									this.state.open ?
 									<p onClick={(e) => this.expand(e)}>hide list</p>
