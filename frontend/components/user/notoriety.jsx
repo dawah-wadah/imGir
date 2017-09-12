@@ -9,7 +9,7 @@ const Notoriety = ( {
 		status = 'Glorious';
 	} else if ( points >= 8000 ) {
 		status = 'Renowned';
-  } else if ( points >= 8000 ) {
+	} else if ( points >= 8000 ) {
 		status = 'Idolized';
 	} else if ( points >= 2000 ) {
 		status = 'Trusted';
@@ -21,8 +21,8 @@ const Notoriety = ( {
 		status = 'Neutral';
 	}
 	return (
-		<div>
-    <h1>Notoriety : </h1> <h1>{status}</h1>
+		<div className='notoriety textbox'>
+    <h1>Notoriety: {status}</h1>
   </div>
 	);
 };

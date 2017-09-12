@@ -10,17 +10,29 @@ import Trophies from './trophies';
 export default class UserSideBar extends React.Component {
   constructor(props){
     super(props);
+		this.expand = this.expand.bind(this);
+		this.state = {
+			open: false,
+		};
   }
+
+	expand(e){
+		e.preventDefault();
+		this.setState({
+			open: !this.state.open
+		});
+		console.log('clicked');
+	}
 
 
   render(){
     return (
       <div className='user-side-bar'>
         <div className='panel user-info-picker'>
-          <NavLink to={`/users/${this.props.userId}/comments`} className='textbox'activeClassName="selected"> Comments </NavLink>
-          <NavLink to={`/users/${this.props.userId}/submitted`} className='textbox' activeClassName="selected">Submitted Images</NavLink>
-          <NavLink to={`/users/${this.props.userId}/favorites`} className='textbox' activeClassName="selected">Upvoted Posts</NavLink>
-          <NavLink to={`/users/${this.props.userId}/replies`} className='textbox' activeClassName="selected">Replies</NavLink>
+          <NavLink to={`/users/${this.props.userId}/comments`} className='textbox blue'activeClassName="selected"> Comments </NavLink>
+          <NavLink to={`/users/${this.props.userId}/submitted`} className='textbox blue' activeClassName="selected">Submitted Images</NavLink>
+          <NavLink to={`/users/${this.props.userId}/favorites`} className='textbox blue' activeClassName="selected">Upvoted Posts</NavLink>
+          <NavLink to={`/users/${this.props.userId}/replies`} className='textbox blue' activeClassName="selected">Replies</NavLink>
         </div>
         <div className='panel user-info-bio'>
           <div className='textbox'>{this.props.user ?
@@ -39,6 +51,13 @@ export default class UserSideBar extends React.Component {
 					{this.props.user ?
 						<Notoriety points={this.props.user.votes}/>
               : window.images.loading }
+							<div className='left-end'>{
+									this.state.open ?
+									<p onClick={(e) => this.expand(e)}>hide list</p>
+									: <p onClick={(e) => this.expand(e)}>show list</p>
+								}
+
+							</div>
         </div>
         <div className='panel user-info-trophy'>
 					<Trophies />

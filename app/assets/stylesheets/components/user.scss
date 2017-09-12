@@ -20,6 +20,10 @@
   height: 70vh;
 }
 
+.left-end {
+  text-align: end
+}
+
 .user-side-bar {
   top: 90px;
   border-radius: 15px;
@@ -38,26 +42,21 @@
 
 .user-info-item img {
   height: 80px;
-    width: 80px;
-    object-fit: cover;
-    overflow: hidden;
-    margin-right: 20px;
+  width: 80px;
+  object-fit: cover;
+  overflow: hidden;
+  margin-right: 20px;
 }
 
-.user-info-item-pic {
-
-}
+.user-info-item-pic {}
 
 .user-info-item-info {
   color: white;
   overflow: hidden;
 }
 
-
-
 .panel-header-toolbox {
-  margin: 0 auto;
-  margin-bottom: 5px;
+  margin: 0 auto 5px;
   background-color: #141518;
   padding: 10px;
   width: 90%;
@@ -68,6 +67,7 @@
 .user-info {
   height: auto;
 }
+
 .display {
   margin: 0 auto;
   overflow: auto;
@@ -76,32 +76,23 @@
   padding: 10px;
 }
 
-.left-side {}
-
-.right-side {}
-
 .panel {
-  padding: 25px;
+  padding: 10px;
   background-color: #34373c;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   min-height: 50px;
+  border-radius: 5px;
 }
-// .selected{
-//   border-bottom: 18px solid transparent;
-// border-right: 14px solid #181817;
-// border-top: 18px solid transparent;
-// height: 0;
-// left: -14px;
-// position: absolute;
-// top: 0;
-// width: 0;
-// }
 
 .textbox {
   color: white;
   background-color: #141518;
   padding: 10px;
   margin: 4.5px;
+}
+
+.blue {
+  color: #4E76C9;
 }
 
 .selected {
@@ -113,6 +104,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.notoriety {
+  display: flex;
 }
 
 .user-info-bio {}
