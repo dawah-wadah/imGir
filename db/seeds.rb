@@ -50,7 +50,7 @@ def create_replies(comment, post, com)
           post_id: post,
           body: comment["comment"]
           })
-                  Votes.create({
+                  Vote.create({
            voteable_id: com,
  voteable_type: 'Comment'
         })
@@ -88,7 +88,7 @@ bar = Post.create({
           post_id: bar.id,
           body: comment["comment"]
         })
-        Votes.create({
+        Vote.create({
            voteable_id: bar.id,
  voteable_type: 'Post'
         })
