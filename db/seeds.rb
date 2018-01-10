@@ -33,7 +33,7 @@ User.create!(username: 'Tommy_Pickles', password: 'password')
 
 
 
-def create_replies(comment, post_id, parent_id,)
+def create_replies(comment, post_id, parent_id)
    user_id = User.all.sample.id   
   Comment.create({
           user_id: user_id,
