@@ -50,13 +50,10 @@ def create_replies(comment, post, com)
           post_id: post,
           body: comment["comment"]
           })
-<<<<<<< HEAD
                   Votes.create({
-           voteable_id   com,
- voteable_type 'Comment'
+           voteable_id: com,
+ voteable_type: 'Comment'
         })
-=======
->>>>>>> 7f9d5d9dd31cd06fd4c868f674e17f4061ba82dd
           if (comment["children"]) 
             comment["children"].each do |reply|
             create_replies(reply, post, com)
@@ -74,10 +71,7 @@ bar = Post.create({
     user_id: User.all.sample.id
     })
     post["images"].each do |image|
-<<<<<<< HEAD
       next if image.split.[0] == "gif"
-=======
->>>>>>> 7f9d5d9dd31cd06fd4c868f674e17f4061ba82dd
       Image.create({
         imageable_id: bar.id,
         imageable_type: 'Post',
@@ -95,8 +89,8 @@ bar = Post.create({
           body: comment["comment"]
         })
         Votes.create({
-           voteable_id   bar.id,
- voteable_type 'Post'
+           voteable_id: bar.id,
+ voteable_type: 'Post'
         })
         if comment["children"]
         comment["children"].each do |child|
