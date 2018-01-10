@@ -230,7 +230,7 @@ bar = Post.create({
     user_id: User.all.sample.id
     })
     post["images"].each do |image|
-      next if image.split[0] == "gif"
+      next if image.split[1] == "gif"
       Image.create({
         imageable_id: bar.id,
         imageable_type: 'Post',
