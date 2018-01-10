@@ -36,15 +36,15 @@ User.create!(username: 'Tommy_Pickles', password: 'password')
 def create_replies(comment, post_id, parent_id,)
    user_id = User.all.sample.id   
   Comment.create({
-          user_id: , user_id
-          parent_id:, parent_id,
+          user_id: user_id
+          parent_id: parent_id,
           parent_type: 'Comment',
           post_id: post_id
           body: comment["comment"]
           })
                   Vote.create({
                     user_id: user_id,
-           voteable_id:, parent_id,
+           voteable_id: parent_id,
  voteable_type: 'Comment',
  vote_type: "Upvote"
           
@@ -86,7 +86,7 @@ bar = Post.create({
         })
                   Vote.create({
                     user_id: user_id,
-           voteable_id:, bar.id,
+           voteable_id: bar.id,
  voteable_type: 'Post',
  vote_type: "Upvote"
           
