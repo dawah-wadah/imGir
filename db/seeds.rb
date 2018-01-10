@@ -8,8 +8,8 @@ require 'json'
 #
 #   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
-file = File.read('db/message.json')
-data_hash = JSON.parse(file)
+# file = File.read('db/message.json')
+# data_hash = JSON.parse(file)
 
 User.create!(username: 'Wadah', password: 'password')
 User.create!(username: 'Yaakov', password: 'password')
@@ -39,63 +39,222 @@ User.create!(username: 'Nathan', password: 'password')
 User.create!(username: 'Tommy_Pickles', password: 'password')
 
 
+links = [
+  "https://i.imgur.com/HvFb6X8.gif",
+"https://i.imgur.com/gVRBlOD.gif",
+"https://i.imgur.com/0HzLDq1.gif",
+"https://i.imgur.com/cMbFuNE.gif",
+"https://i.imgur.com/EtGhzOb.gif",
+"https://i.imgur.com/PXae3AQ.gif",
+"https://i.imgur.com/AIl1zkm.gif",
+"https://i.imgur.com/bfxdauk.gif",
+"https://i.imgur.com/LoJLxP4.gif",
+"https://i.imgur.com/HxLfe73g.jpg",
+"https://i.imgur.com/GJGYcOJg.jpg",
+"https://i.imgur.com/QZQTN9xg.jpg",
+"https://i.imgur.com/HxLfe73.jpg",
+"https://i.imgur.com/GJGYcOJ.jpg",
+"https://i.imgur.com/QZQTN9x.jpg",
+"https://i.imgur.com/C7ZG5MJ.gif",
+"https://i.imgur.com/FQfaA2s.gif",
+"https://i.imgur.com/kCtEGp0.gif",
+"https://i.imgur.com/FYiQ0dF.png",
+"https://i.imgur.com/DKWsYqY.jpg",
+"https://i.imgur.com/5p2MCmN.gif",
+"https://i.imgur.com/ZyUSOpm.gif",
+"https://i.imgur.com/7fdK5Nk.gif",
+"https://i.imgur.com/pwM6Tx4.gif",
+"https://i.imgur.com/YE63Te2.gif",
+"https://i.imgur.com/24hOcqL.jpg",
+"https://i.imgur.com/KGaF23E.gif",
+"https://i.imgur.com/p5459Wr.gif",
+"https://i.imgur.com/kCvmGyk.gif",
+"https://i.imgur.com/dBppIgQ.gif",
+"https://i.imgur.com/ttWL8G6.gif",
+"https://i.imgur.com/DYmTNEZ.gif",
+"https://i.imgur.com/sn6phYQ.gif",
+"https://i.imgur.com/d6D6yK0.gif",
+"https://i.imgur.com/EVoUolV.gif",
+"https://i.imgur.com/lnV93yk.gif",
+"https://i.imgur.com/eTxQdmW.gif",
+"https://i.imgur.com/wOSWO0T.gif",
+"https://i.imgur.com/oYt0p5F.gif",
+"https://i.imgur.com/pm0xdSE.gif",
+"https://i.imgur.com/aL24Y3G.gif",
+"https://i.imgur.com/xtz7rGh.gif",
+"https://i.imgur.com/bQx5ttQ.gif",
+"https://i.imgur.com/rNauOZJ.png",
+"https://i.imgur.com/IxUdqiU.jpg",
+"http://33.media.tumblr.com/tumblr_lyd7bb9tzW1r6h95jo1_500.gif",
+"https://i.imgur.com/883eUED.gif",
+"https://i.imgur.com/aYCp7IP.gif",
+"https://i.imgur.com/MN0tBhJ.gif",
+"https://i.imgur.com/z0aLZLY.gif",
+"https://i.imgur.com/JSskEbb.gif",
+"https://i.imgur.com/czZCrRt.gif",
+"https://i.imgur.com/mSw31S0.gif",
+"https://i.imgur.com/Od8SlF0.gif",
+"https://i.imgur.com/AP5WFS5.gif",
+"https://i.imgur.com/b4Pk9yv.gif",
+"https://i.imgur.com/zVMWCNi.gif",
+"https://i.imgur.com/qNnAjCU.gif",
+"https://i.imgur.com/JbsDaFS.gif",
+"https://i.imgur.com/qM1ZVa7.gif",
+"https://i.imgur.com/MRaTmRD.gif",
+"https://i.imgur.com/qXe7DvR.gif",
+"https://i.imgur.com/Iqj3c5w.gif",
+"https://i.imgur.com/wQS0j5M.gif",
+"https://i.imgur.com/r4iiJGo.gif",
+"https://i.imgur.com/ftAlELU.jpg",
+"https://i.imgur.com/yl8UCt0.jpg",
+"https://i.imgur.com/XLH7rFug.jpg",
+"https://i.imgur.com/2DYHWoi.png",
+"https://i.imgur.com/Zdck72W.png",
+"https://i.imgur.com/9JdgyMA.jpg",
+"https://i.imgur.com/XLH7rFu.jpg",
+"https://i.imgur.com/2Pcoz.gif",
+"https://i.imgur.com/4JNMXS7.gif",
+"https://i.imgur.com/uCeMTGV.gif",
+"https://i.imgur.com/1lHS0wr.gif",
+"https://i.imgur.com/aSYSID3.gif",
+"https://i.imgur.com/y170QmI.gif",
+"https://i.imgur.com/ehgvnyx.gif",
+"https://i.imgur.com/wQBvNTW.gif",
+"https://i.imgur.com/zKzPQsw.gif",
+"https://i.imgur.com/kM0drgr.jpg",
+"https://i.imgur.com/rLiaUp1.gif",
+"https://i.imgur.com/OQUD3RC.gif",
+"http://sciblogs.co.nz/app/uploads/2011/04/TOAST-invader-zim-6223825-1024-768.gif"
+]
 
-
-
-def create_replies(comment, post, com)
-        Comment.create({
-          user_id: User.all.sample.id,
-          parent_id: com,
-          parent_type: 'Comment',
-          post_id: post,
-          body: comment["comment"]
-          })
-                  Vote.create({
-           voteable_id: com,
- voteable_type: 'Comment'
-        })
-          if (comment["children"]) 
-            comment["children"].each do |reply|
-            create_replies(reply, post, com)
-            end
-        end
-
-end
-
-data_hash.each do |post|
-
-  # puts post["images"].to_s
-bar = Post.create({
-    title: post["title"],
-    description: post["description"],
+  60.times do
+  post = Post.create({
+    title: Faker::RickAndMorty.quote,
+    description: Faker::RickAndMorty.quote,
     user_id: User.all.sample.id
     })
-    post["images"].each do |image|
-      next if image.split[0] == "gif"
+    2.times do
       Image.create({
-        imageable_id: bar.id,
+        imageable_id: post.id,
         imageable_type: 'Post',
-        image: image,
+        image: links.sample,
         main_image: true,
         description: Faker::RickAndMorty.quote
     })
-    end
-    post["comments"][0..30].each do |comment|
-      c2 = Comment.create({
+      6.times do
+      comment = Comment.create({
           user_id: User.all.sample.id,
-          parent_id: bar.id,
+          parent_id: post.id,
           parent_type: 'Post',
-          post_id: bar.id,
-          body: comment["comment"]
+          post_id: post.id,
+          body: Faker::RickAndMorty.quote
         })
-        Vote.create({
-           voteable_id: bar.id,
- voteable_type: 'Post'
-        })
-        if comment["children"]
-        comment["children"].each do |child|
-          create_replies(child, bar.id, c2.id)
+        rand(5).times do
+        Comment.create({
+          user_id: User.all.sample.id,
+          parent_id: comment.id,
+          parent_type: 'Comment',
+          post_id: post.id,
+          body: Faker::RickAndMorty.quote
+          })
         end
+      end
     end
-  end
 end
+  30.times do
+  post = Post.create({
+    title: Faker::HitchhikersGuideToTheGalaxy.quote,
+    description: Faker::HitchhikersGuideToTheGalaxy.quote,
+    user_id: User.all.sample.id
+    })
+    2.times do
+      Image.create({
+        imageable_id: post.id,
+        imageable_type: 'Post',
+        image: links.sample,
+        main_image: true,
+        description: Faker::HitchhikersGuideToTheGalaxy.quote
+    })
+      6.times do
+      comment = Comment.create({
+          user_id: User.all.sample.id,
+          parent_id: post.id,
+          parent_type: 'Post',
+          post_id: post.id,
+          body: Faker::HitchhikersGuideToTheGalaxy.quote
+        })
+        rand(5).times do
+        Comment.create({
+          user_id: User.all.sample.id,
+          parent_id: comment.id,
+          parent_type: 'Comment',
+          post_id: post.id,
+          body: Faker::HitchhikersGuideToTheGalaxy.quote
+          })
+        end
+      end
+    end
+end
+
+
+# def create_replies(comment, post_id, parent_id,)
+#    user_id = User.all.sample.id   
+#   Comment.create({
+#           user_id: , user_id
+#           parent_id:, parent_id,
+#           parent_type: 'Comment',
+#           post_id: post_id
+#           body: comment["comment"]
+#           })
+#                   Vote.create({
+#            voteable_id:, parent_id,
+#  voteable_type: 'Comment',
+#  vote_type: "Upvote"
+          
+#         })
+#           if (comment["children"]) 
+#             comment["children"].each do |reply|
+#             create_replies(reply, post_id, parent_id)
+#             end
+#         end
+
+# end
+
+# data_hash.each do |post|
+
+#   # puts post["images"].to_s
+# bar = Post.create({
+#     title: post["title"],
+#     description: post["description"],
+#     user_id: User.all.sample.id
+#     })
+#     post["images"].each do |image|
+#       next if image.split[0] == "gif"
+#       Image.create({
+#         imageable_id: bar.id,
+#         imageable_type: 'Post',
+#         image: image,
+#         main_image: true,
+#         description: Faker::RickAndMorty.quote
+#     })
+#     end
+#     post["comments"][0..30].each do |comment|
+#       c2 = Comment.create({
+#           user_id: User.all.sample.id,
+#           parent_id: bar.id,
+#           parent_type: 'Post',
+#           post_id: bar.id,
+#           body: comment["comment"]
+#         })
+#         Vote.create({
+#            voteable_id: bar.id,
+#  voteable_type: 'Post',
+#  vote_type: "Upvote"
+#         })
+#         if comment["children"]
+#         comment["children"].each do |child|
+#           create_replies(child, bar.id, c2.id)
+#         end
+#     end
+#   end
+# end
