@@ -18,8 +18,12 @@ class Api::CommentsController < ApplicationController
 
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    klass = @comment.parent_type == "Post" ? Post : Comment
+
+    @parent = klass.find(@comment.parent_id)
     @user = User.find(@comment.user_id)
     @user.increment!(:votes)
+    @parent.increment!(:votes)
     if @comment.save
       render :show
     else
