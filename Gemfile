@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.8'
 # Use postgresql as the database for Active Record
 gem 'figaro'
-gem 'aws-sdk', '<= 3.0'
+gem 'aws-sdk', '>= 2.0'
 gem 'paperclip', '5.0.0.beta1'
 gem 'pg', '~> 0.15'
 gem 'rails_12factor'
