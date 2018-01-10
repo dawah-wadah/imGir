@@ -55,6 +55,7 @@ GEM
       aws-sdk-core (= 2.10.3)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
@@ -107,6 +108,8 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.0-x86-mingw32)
+      mini_portile2 (~> 2.2.0)
     paperclip (5.0.0.beta1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -114,6 +117,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
+    pg (0.21.0-x86-mingw32)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -191,11 +195,12 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   annotate
   aws-sdk (>= 2.0)
-  bcrypt (~> 3.1.7)
+  bcrypt
   bullet
   byebug
   coffee-rails (~> 4.1.0)
