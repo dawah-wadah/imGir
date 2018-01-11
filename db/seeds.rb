@@ -31,70 +31,67 @@ User.create!(username: 'NathanNathan', password: 'password')
 User.create!(username: 'Nathan', password: 'password')
 User.create!(username: 'Tommy_Pickles', password: 'password')
 
-
-
 def create_replies(comment, post_id, parent_id)
-   user_id = User.all.sample.id   
-  Comment.create({
-          user_id: user_id,
-          parent_id: parent_id,
-          parent_type: 'Comment',
-          post_id: post_id,
-          body: comment["comment"]
-          })
-                  Vote.create({
-                    user_id: user_id,
-           voteable_id: parent_id,
- voteable_type: 'Comment',
- vote_type: "Upvote"
-          
-        })
-          if (comment["children"]) 
-            comment["children"][0..10].each do |reply|
-            create_replies(reply, post_id, parent_id)
-            end
-        end
+user_id = User.all.sample.id
+Comment.create({
+  user_id: user_id,
+  parent_id: parent_id,
+  parent_type: 'Comment',
+  post_id: post_id,
+  body: comment["comment"]
+})
+Vote.create({
+  user_id: user_id,
+  voteable_id: parent_id,
+  voteable_type: 'Comment',
+  vote_type: "Upvote"
+
+})
+if (comment["children"])
+  comment["children"][0. .5].each do |reply |
+    create_replies(reply, post_id, parent_id)
+  end
+end
 
 end
 
-data_hash.each do |post|
+data_hash.each do |post |
 
-  # puts post["images"].to_s
-bar = Post.create({
+    #puts post["images"].to_s
+  bar = Post.create({
     title: post["title"],
     description: post["description"],
     user_id: User.all.sample.id
-    })
-    post["images"].each do |image|
-      next if image.split[1] == "gif"
-      Image.create({
-        imageable_id: bar.id,
-        imageable_type: 'Post',
-        image: image,
-        main_image: true,
-        description: Faker::RickAndMorty.quote
-    })
-    end
-    post["comments"][0..30].each do |comment|
-      user_id = User.all.sample.id
-      c2 = Comment.create({
-          user_id: user_id,
-          parent_id: bar.id,
-          parent_type: 'Post',
-          post_id: bar.id,
-          body: comment["comment"]
-        })
-                  Vote.create({
-                    user_id: user_id,
-           voteable_id: bar.id,
- voteable_type: 'Post',
- vote_type: "Upvote"
-          
-        })
-        if comment["children"]
-        comment["children"][0..20].each do |child|
-          create_replies(child, bar.id, c2.id)
-        end
-    end
+  })
+post["images"].each do |image |
+Image.create({
+  imageable_id: bar.id,
+  imageable_type: 'Post',
+  image: image,
+  main_image: true,
+  description: Faker::RickAndMorty.quote
+})
+end
+post["comments"][0. .30].each do |comment |
+    user_id = User.all.sample.id
+  c2 = Comment.create({
+    user_id: user_id,
+    parent_id: bar.id,
+    parent_type: 'Post',
+    post_id: bar.id,
+    body: comment["comment"]
+  })
+Vote.create({
+  user_id: user_id,
+  voteable_id: bar.id,
+  voteable_type: 'Post',
+  vote_type: "Upvote"
+
+})
+if comment["children"]
+comment["children"][0. .5].each do |child |
+    create_replies(child, bar.id, c2.id)
   end
+end
+end
 end

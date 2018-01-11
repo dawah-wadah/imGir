@@ -7,7 +7,7 @@ gem 'rails', '4.2.8'
 gem 'figaro'
 gem 'aws-sdk', '>= 2.0'
 gem 'paperclip', '5.0.0.beta1'
-gem 'pg', '~> 0.15'
+gem 'pg'
 gem 'rails_12factor'
 gem 'pry-rails'
 gem 'faker', github: 'stympy/faker'
@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', :require => 'bcrypt'
+gem 'bcrypt', platforms: :ruby
 # Use Unicorn as the app server
 # gem 'unicorn'
 
