@@ -72,7 +72,7 @@ Image.create({
   description: "DESC"
 })
 end
-post["comments"].reverse[0. .30].each do |comment |
+post["comments"].reverse[0. .20].each do |comment |
     user_id = User.all.sample.id
   c2 = Comment.create({
     user_id: user_id,
