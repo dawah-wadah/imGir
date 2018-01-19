@@ -1,47 +1,47 @@
 class Api::CommentsController < ApplicationController
 def index
-if params[: user_id].present ? && params[: parent_type].present ?
-    @comments = Comment.includes(: user, : main_image).where("user_id =(?) AND parent_type=(?)", params[: user_id], params[: parent_type])
-render: user_comment
+if params[:user_id].present ? && params[:parent_type].present ?
+    @comments = Comment.includes(:user, :main_image).where("user_id =(?) AND parent_type=(?)", params[:user_id], params[:parent_type])
+render:user_comment
 else
-    post = Post.find(params[: post_id])
-@comments = post.comments.order(created_at: : desc)
+    post = Post.find(params[:post_id])
+@comments = post.comments.order(created_at::desc)
 end
 end
 
 def show
 
-@comment = Comment.includes(: replies, : user).find(params[: id])
+@comment = Comment.includes(:replies, :user).find(params[:id])
 end
 
 def create
 
 @comment = Comment.new(comment_params)
 @comment.user_id = current_user.id
-klass = @comment.parent_type == "Post" ? Post : Comment
+klass = @comment.parent_type == "Post" ? Post :Comment
 
 @parent = klass.find(@comment.parent_id)
 @user = User.find(@comment.user_id)
-@user.increment!(: votes)
-@parent.increment!(: votes)
+@user.increment!(:votes)
+@parent.increment!(:votes)
 if @comment.save
-render: show
+render:show
 else
-    render json: @comment.errors.full_messages, status: 422
+    render json:@comment.errors.full_messages, status:422
 end
 end
 
 def destroy
-@comment = Comment.includes(: replies).find(params[: id])
+@comment = Comment.includes(:replies).find(params[:id])
 @comment.destroy!
     end
 
 def update
-@comment = Comment.find(params[: id])
+@comment = Comment.find(params[:id])
 if @comment.update(comment_params)
-render: show
+render:show
 else
-    render json: @comment.errors.full_messages, status: 422
+    render json:@comment.errors.full_messages, status:422
 end
 end
 
