@@ -630,6 +630,8 @@ GEM
     multi_json (1.13.1)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.1-x64-mingw32)
+      mini_portile2 (~> 2.3.0)
     paperclip (5.0.0.beta1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -637,6 +639,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
+    pg (0.21.0-x64-mingw32)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -719,6 +722,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   annotate
@@ -745,4 +749,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.1
+   1.16.1
