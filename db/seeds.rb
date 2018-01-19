@@ -48,7 +48,7 @@ Vote.create({
 
 })
 if (comment["children"])
-  comment["children"][0. .5].each do |reply |
+  comment["children"].reverse[0. .2].each do |reply |
     create_replies(reply, post_id, parent_id)
   end
 end
@@ -69,10 +69,10 @@ Image.create({
   imageable_type: 'Post',
   image: image,
   main_image: true,
-  description: Faker::RickAndMorty.quote
+  description: "DESC"
 })
 end
-post["comments"][0. .30].each do |comment |
+post["comments"].reverse[0. .30].each do |comment |
     user_id = User.all.sample.id
   c2 = Comment.create({
     user_id: user_id,
@@ -89,7 +89,7 @@ Vote.create({
 
 })
 if comment["children"]
-comment["children"][0. .5].each do |child |
+comment["children"].reverse[0. .5].each do |child |
     create_replies(child, bar.id, c2.id)
   end
 end
