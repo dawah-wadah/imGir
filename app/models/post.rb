@@ -41,4 +41,5 @@ class Post < ActiveRecord::Base
     self.user.increment!(:votes)
     Vote.create!(user_id: self.user.id, voteable_type: 'Post', voteable_id: self.id, vote_type: %w[Upvote].sample)
   end
+
 end

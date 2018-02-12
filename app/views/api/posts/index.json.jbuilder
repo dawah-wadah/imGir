@@ -11,7 +11,7 @@
     json.created_at (post.created_at.to_f * 1000).floor
     if current_user
       vote = Vote.where('user_id = :id and voteable_id = :post and voteable_type = :type', {id: current_user.id, post: post.id, type: 'Post'})
-
+      
       json.vote vote[0] ? vote[0] : nil
      else
       json.voted false

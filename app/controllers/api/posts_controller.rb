@@ -1,21 +1,25 @@
 class Api::PostsController < ApplicationController
 
   def index
+    page = params[:page].to_i
+    
     @posts = if params[:user_id].present?
               if params[:type] == 'favorites'
                 Post.includes(:user, :main_image)
                 .joins("INNER JOIN  votes ON votes.voteable_id = posts.id AND votes.voteable_type = 'Post' AND votes.vote_type = 'Upvote'")
                 .joins("INNER JOIN users ON votes.user_id = #{params[:user_id]}")
-                .uniq
+                .uniq.order(created_at: :desc).limit(25).offset(page * 25)
               else
                 Post.includes(:user, :main_image)
-                .where('user_id =(?)', params[:user_id])
+                .where('user_id =(?)', params[:user_id]).order(created_at: :desc).limit(25).offset(page * 25)
               end
              else
-               Post.includes(:user, :main_image).all
+              #  Post.includes(:user, :main_image).all.limit(25)
+               Post.includes(:user, :main_image).order(created_at: :desc).limit(25).offset(page * 25)
              end
     render 'api/posts/index'
   end
+
 
   def show
     @post = Post.includes(:user, :images).find(params[:id])
@@ -46,6 +50,8 @@ class Api::PostsController < ApplicationController
       render json: @post.errors.full_messages, status: 422
     end
   end
+
+
 
 
   private

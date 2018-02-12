@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
+    # resources :posts, only: %i[inde show]
     resources :posts do
       resources :comments, only: %i[index]
     end

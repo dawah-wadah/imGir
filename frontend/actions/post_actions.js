@@ -26,8 +26,9 @@ export const receivePostErrors = errors => ({
 });
 
 
-export const requestAllPosts = () => (dispatch) => {
-  return PostUtil.fetchPosts()
+export const requestAllPosts = (page) => (dispatch) => {
+  
+  return PostUtil.fetchPosts(page)
     .then(posts => dispatch(receiveAllPosts(posts)));
 };
 
