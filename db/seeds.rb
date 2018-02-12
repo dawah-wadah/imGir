@@ -69,7 +69,6 @@ Image.create({
   imageable_type: 'Post',
   image: image,
   main_image: true,
-  description: "DESC"
 })
 end
 post["comments"].reverse[0..20].each do |comment |
