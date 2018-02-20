@@ -4,8 +4,13 @@ require 'json'
 file = File.read('db/message2.json')
 data_hash = JSON.parse(file)
 
-# User.create!(username: 'Wadah', password: 'password')
-# User.create!(username: 'Yaakov', password: 'password')
+User.create!(username: 'Wadah', password: 'password')
+User.create!(username: 'Yaakov', password: 'password')
+
+40.times do ||
+  User.create!(username: Faker::Internet.user_name, password: Faker::Internet.password(8))
+end
+
 # User.create!(username: 'Musgrave', password: 'SpursSpurs123')
 # User.create!(username: 'Chris_Hakos', password: 'password')
 # User.create!(username: 'CalvinLEE', password: 'password')
