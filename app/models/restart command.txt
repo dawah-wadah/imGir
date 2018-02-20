@@ -1,0 +1,1 @@
+heroku restart; heroku pg:reset DATABASE --confirm imgirrrrr; heroku run bundle exec rake db:migrate; heroku run bundle exec rake db:seed
